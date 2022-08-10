@@ -1,0 +1,13 @@
+,Merge,Conf_files,Conf_javas,Conf_details,Loc,Loc_details
+0,a7cc087378cb1ec4eb36e2f8e5741b9ca8daf401,2,0,[],0,[]
+1,c124bc9f956754d80b1cf5e3da842c19d9088bd9,3,3,"['services/core/java/com/android/server/policy/PhoneWindowManager.java', 'services/core/java/com/android/server/notification/NotificationManagerService.java', 'services/tests/uiservicestests/src/com/android/server/notification/BuzzBeepBlinkTest.java']",6,"[1, 4, 1]"
+2,31664aa5defc5bc091dffc8201ef48e540aa21c7,1,1,['services/core/java/com/android/server/fingerprint/AuthenticationClient.java'],2,[2]
+3,5df8608656b363f13049855431e2618dd153edaf,1,1,['services/core/java/com/android/server/policy/keyguard/KeyguardStateMonitor.java'],0,[0]
+4,6e7d07c3e9ed000778dede983193c2e8c5691c4e,1,1,['tests/net/java/com/android/server/ConnectivityServiceTest.java'],25,[25]
+5,71911afa2c85bbbf9fa9ee1b4dd616b5681c6562,1,1,['core/java/android/text/TextLine.java'],12,[12]
+6,c84634b9b4278035e2c5b3ef38376ad4eea0c019,1,1,['services/core/java/com/android/server/AppOpsService.java'],5,[5]
+7,ab78fedc0100a93b5e9590b0fdc5cfa48386184e,5,4,"['services/core/java/com/android/server/am/PendingIntentRecord.java', 'services/core/java/com/android/server/am/ActivityManagerService.java', 'services/core/java/com/android/server/am/ActivityStarter.java', 'services/core/java/com/android/server/am/ActivityStartController.java']",19,"[3, 3, 1, 12]"
+8,86f624786016fcd90918747cab2b72ca086cd817,1,0,[],0,[]
+9,63d76f28fe78b240b481a690e14966fb3838aa3f,3,3,"['location/java/com/android/internal/location/GpsNetInitiatedHandler.java', 'packages/SystemUI/src/com/android/systemui/statusbar/policy/Clock.java', 'services/core/java/com/android/server/display/DisplayPowerController.java']",5,"[5, 0, 0]"
+10,12930acc5076e1acff0744b8d225bb2d2173f1b5,10,7,"['packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java', 'packages/SystemUI/src/com/android/systemui/statusbar/policy/HotspotControllerImpl.java', 'telephony/java/android/provider/Telephony.java', 'services/core/java/com/android/server/am/ActivityManagerService.java', 'packages/SystemUI/src/com/android/systemui/statusbar/policy/Clock.java', 'packages/SettingsLib/src/com/android/settingslib/dream/DreamBackend.java', 'packages/SystemUI/src/com/android/keyguard/KeyguardPatternView.java']",55,"[20, 0, 25, 0, 6, 2, 2]"
+11,8f7726cc447f76dd163e9813f1aef8de3907141e,4,4,"['packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBar.java', 'services/core/java/com/android/server/am/ActivityStack.java', 'packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarWindowView.java', 'services/core/java/com/android/server/notification/NotificationManagerService.java']",20,"[8, 10, 1, 1]"
