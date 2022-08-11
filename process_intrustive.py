@@ -10,6 +10,26 @@ coupling_files = 'file-pattern'
 conflicts_path = 'E:/PycharmProjects/Analyzer/conflicts'
 intrusives = defaultdict(list)
 conffiles = defaultdict(list)
+responsible_field = defaultdict(list)
+
+def process_responsible_field():
+    data = pd.read_excel('./责任田信息.xlsx')
+    for index, row in data.iterrows():
+        # print(row['包含目录/文件'])
+        if ';' in row['包含目录/文件']:
+            responsible_field[row['责任田名称']].extend(row['包含目录/文件'].split(';'))
+        else:
+            responsible_field[row['责任田名称']].append(row['包含目录/文件'])
+    print(responsible_field)
+
+def get_file_pkg(file_path: str):
+    if 'src' in file_path:
+        file_path = file_path.split('src')[0]
+    if 'java' in file_path:
+        file_path = file_path.split('java')[0]
+    if 'tests' in file_path and not file_path.startswith('tests'):
+        file_path = file_path.split('tests')[0]
+    return file_path
 
 def get_final_ownership():
     for root, lists, files in os.walk(path):
@@ -85,6 +105,14 @@ def process_coupling_pattern():
                 coupling_data.to_csv(os.path.join('./coupling/', version+'.csv', ))
 
 
+def filter_pkg(file_list: list):
+    pkg = []
+    for file in file_list:
+        current_pkg = get_file_pkg(file)
+        if current_pkg not in pkg:
+            pkg.append(current_pkg)
+    return pkg
+
 def conf_vs_intrusive():
     result = []
     for conf_version,conf_files in conffiles.items():
@@ -98,6 +126,10 @@ def conf_vs_intrusive():
                         conf_intrusive.append(conf_file)
                     else:
                         conf_not_intrusive.append(conf_file)
+                version.append(len(filter_pkg(conf_intrusive)))
+                version.append(str(filter_pkg(conf_intrusive)))
+                version.append(len(filter_pkg(conf_not_intrusive)))
+                version.append(str(filter_pkg(conf_not_intrusive)))
                 version.append(len(conf_intrusive))
                 version.append(len(conf_not_intrusive))
                 version.append(str(conf_intrusive))
@@ -106,7 +138,7 @@ def conf_vs_intrusive():
     return result
 
 def output_intrusive(data):
-    name_attribute = ['Project', 'Conf_intrusive', 'Conf_not_intrusive', 'Conf_intrusive_detail', 'Conf_not_intrusive_details']
+    name_attribute = ['Project', 'Conf_intrusive_pkg', 'Conf_intrusive_pkgs', 'Conf_not_intrusive_pkg', 'Conf_not_intrusive_pkgs', 'Conf_intrusive', 'Conf_not_intrusive', 'Conf_intrusive_detail', 'Conf_not_intrusive_details']
     writerCSV = pd.DataFrame(columns=name_attribute, data=data)
     writerCSV.to_csv('./conf_vs_intrusive.csv', encoding='utf-8')
 
@@ -122,3 +154,4 @@ if __name__ == '__main__':
     # get_merge_files()
     output_intrusive(conf_vs_intrusive())
     process_coupling_pattern()
+    process_responsible_field()
