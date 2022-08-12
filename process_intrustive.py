@@ -5,7 +5,7 @@ from collections import defaultdict
 import pandas as pd
 
 path = 'E:/ASE/实验数据/3-侵入式修改'
-Intrusive_files = 'ownership_file_count'
+Intrusive_files = 'final_ownership_file_count'
 coupling_files = 'file-pattern'
 conflicts_path = 'E:/PycharmProjects/Analyzer/conflicts'
 intrusives = defaultdict(list)
