@@ -12,6 +12,7 @@ intrusives = defaultdict(list)
 conffiles = defaultdict(list)
 responsible_field = defaultdict(list)
 
+
 def process_responsible_field():
     data = pd.read_excel('./责任田信息.xlsx')
     for index, row in data.iterrows():
@@ -20,16 +21,45 @@ def process_responsible_field():
             responsible_field[row['责任田名称']].extend(row['包含目录/文件'].split(';'))
         else:
             responsible_field[row['责任田名称']].append(row['包含目录/文件'])
-    print(responsible_field)
+    # print(responsible_field)
+
+
+def process_responsible_file_pkg(file_path: str):
+    print(get_file_pkg(file_path[1:]))
+    return get_file_pkg(file_path[1:])
+
+
+def get_file_responsible(file_path: str):
+    file_path = '/' + file_path
+    for key, value in responsible_field.items():
+        if file_path in value:
+            # print(file_path)
+            return key, process_responsible_file_pkg(file_path)
+        for pkg_or_file in value:
+            if file_path.startswith(pkg_or_file):
+                # print(pkg_or_file)
+                return key, pkg_or_file
+    return '', process_responsible_file_pkg(file_path)
+
 
 def get_file_pkg(file_path: str):
-    if 'src' in file_path:
-        file_path = file_path.split('src')[0]
-    if 'java' in file_path:
-        file_path = file_path.split('java')[0]
-    if 'tests' in file_path and not file_path.startswith('tests'):
-        file_path = file_path.split('tests')[0]
-    return file_path
+    # if 'src' in file_path:
+    #     file_path = file_path.split('src')[0]
+    # if 'java' in file_path:
+    #     file_path = file_path.split('java')[0]
+    # if 'tests' in file_path and not file_path.startswith('tests'):
+    #     file_path = file_path.split('tests')[0]
+    pkg = '/'
+    for file_piece in file_path.split('/'):
+        if not file_piece[0].isupper():
+            pkg = pkg + file_piece + '/'
+        elif file_piece.endswith('.java'):
+            break
+        else:
+            pkg = pkg + file_piece + '/'
+            # break
+    return pkg
+
 
 def get_final_ownership():
     for root, lists, files in os.walk(path):
@@ -41,6 +71,7 @@ def get_final_ownership():
                 intrusives[version] = get_intrusive_files(write)
     return intrusives
 
+
 def get_intrusive_files(ownership_file: str):
     intrusive = []
     with open(ownership_file, encoding="utf-8") as f:
@@ -50,6 +81,7 @@ def get_intrusive_files(ownership_file: str):
                 intrusive.append(row['file'])
     return intrusive
 
+
 def get_conf_csvs():
     for root, lists, files in os.walk(conflicts_path):
         for file in files:
@@ -58,6 +90,7 @@ def get_conf_csvs():
             print("%s %s" % (version, write))
             conffiles[version] = get_conf_files(write)
     return conffiles
+
 
 def get_conf_files(merge_file: str):
     confs = []
@@ -78,6 +111,7 @@ def get_conf_csv(version_couple: str):
             write = os.path.join(root, file)
             if version_couple in version:
                 return write
+
 
 def process_file_conf_times(data: pd.DataFrame, file_path: str):
     times = 0
@@ -102,21 +136,28 @@ def process_coupling_pattern():
                 for coupling_file in coupling_data['filename']:
                     conf_times.append(process_file_conf_times(conf_data, coupling_file))
                 coupling_data['Conflict_times'] = conf_times
-                coupling_data.to_csv(os.path.join('./coupling/', version+'.csv', ))
+                coupling_data.to_csv(os.path.join('./coupling/', version + '.csv', ))
 
 
 def filter_pkg(file_list: list):
     pkg = []
+    res = []
     for file in file_list:
-        current_pkg = get_file_pkg(file)
+        responsible, current_pkg = get_file_responsible(file)
+        # if responsible == '':
+        #     current_pkg = get_file_pkg(file)
+        # print(current_pkg)
         if current_pkg not in pkg:
             pkg.append(current_pkg)
-    return pkg
+        if responsible not in res and responsible != '':
+            res.append(responsible)
+    return res, pkg
+
 
 def conf_vs_intrusive():
     result = []
-    for conf_version,conf_files in conffiles.items():
-        for intru_version,intru_files in intrusives.items():
+    for conf_version, conf_files in conffiles.items():
+        for intru_version, intru_files in intrusives.items():
             if intru_version in conf_version:
                 version = [conf_version]
                 conf_intrusive = []
@@ -126,10 +167,16 @@ def conf_vs_intrusive():
                         conf_intrusive.append(conf_file)
                     else:
                         conf_not_intrusive.append(conf_file)
-                version.append(len(filter_pkg(conf_intrusive)))
-                version.append(str(filter_pkg(conf_intrusive)))
-                version.append(len(filter_pkg(conf_not_intrusive)))
-                version.append(str(filter_pkg(conf_not_intrusive)))
+                res, pkg = filter_pkg(conf_intrusive)
+                version.append(len(res))
+                version.append(len(pkg))
+                version.append(str(res))
+                version.append(str(pkg))
+                res, pkg = filter_pkg(conf_not_intrusive)
+                version.append(len(res))
+                version.append(len(pkg))
+                version.append(str(res))
+                version.append(str(pkg))
                 version.append(len(conf_intrusive))
                 version.append(len(conf_not_intrusive))
                 version.append(str(conf_intrusive))
@@ -137,10 +184,16 @@ def conf_vs_intrusive():
                 result.append(version)
     return result
 
+
 def output_intrusive(data):
-    name_attribute = ['Project', 'Conf_intrusive_pkg', 'Conf_intrusive_pkgs', 'Conf_not_intrusive_pkg', 'Conf_not_intrusive_pkgs', 'Conf_intrusive', 'Conf_not_intrusive', 'Conf_intrusive_detail', 'Conf_not_intrusive_details']
+    name_attribute = ['Project', 'Conf_Intru_Res_Num', 'Conf_intrusive_Pkg_Num', 'Conf_Intru_Res',
+                      'Conf_intrusive_pkgs',
+                      'Conf_Not_Intru_Res_Num', 'Conf_Not_intrusive_Pkg_Num', 'Conf_Not_Intru_Res',
+                      'Conf_Not_intrusive_pkgs',
+                      'Conf_intrusive', 'Conf_not_intrusive', 'Conf_intrusive_detail', 'Conf_not_intrusive_details']
     writerCSV = pd.DataFrame(columns=name_attribute, data=data)
     writerCSV.to_csv('./conf_vs_intrusive.csv', encoding='utf-8')
+
 
 def list_to_csv(csv_path, data):
     with open(csv_path, 'w') as f:
@@ -148,10 +201,10 @@ def list_to_csv(csv_path, data):
 
 
 if __name__ == '__main__':
+    process_responsible_field()
     list_to_csv('./Intrusive_files.csv', get_final_ownership())
     list_to_csv('./conf_files.csv', get_conf_csvs())
     # get_final_ownership()
     # get_merge_files()
     output_intrusive(conf_vs_intrusive())
     process_coupling_pattern()
-    process_responsible_field()
