@@ -25,7 +25,7 @@ def process_responsible_field():
 
 
 def process_responsible_file_pkg(file_path: str):
-    print(get_file_pkg(file_path[1:]))
+    # print(get_file_pkg(file_path[1:]))
     return get_file_pkg(file_path[1:])
 
 
@@ -136,6 +136,7 @@ def process_coupling_pattern():
                 for coupling_file in coupling_data['filename']:
                     conf_times.append(process_file_conf_times(conf_data, coupling_file))
                 coupling_data['Conflict_times'] = conf_times
+                coupling_data = coupling_data.fillna(0)
                 coupling_data.to_csv(os.path.join('./coupling/', version + '.csv', ))
 
 
