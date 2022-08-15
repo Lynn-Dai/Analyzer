@@ -7,6 +7,7 @@ import pandas as pd
 path = 'E:/ASE/实验数据/3-侵入式修改'
 Intrusive_files = 'final_ownership_file_count'
 coupling_files = 'file-pattern'
+Intrusive_details = 'intrusive_file_count'
 conflicts_path = 'E:/PycharmProjects/Analyzer/conflicts'
 intrusives = defaultdict(list)
 conffiles = defaultdict(list)
@@ -62,6 +63,7 @@ def get_file_pkg(file_path: str):
 
 
 def get_final_ownership():
+    print("--获取是否为侵入式文件--")
     for root, lists, files in os.walk(path):
         for file in files:
             if Intrusive_files in file:
@@ -83,6 +85,7 @@ def get_intrusive_files(ownership_file: str):
 
 
 def get_conf_csvs():
+    print("---获取各版本冲突信息---")
     for root, lists, files in os.walk(conflicts_path):
         for file in files:
             version = file.split('-merge')[0]
@@ -123,6 +126,7 @@ def process_file_conf_times(data: pd.DataFrame, file_path: str):
 
 
 def process_coupling_pattern():
+    print("--获取耦合信息--")
     for root, lists, files in os.walk(path):
         for file in files:
             if coupling_files in file:
@@ -138,6 +142,25 @@ def process_coupling_pattern():
                 coupling_data['Conflict_times'] = conf_times
                 coupling_data = coupling_data.fillna(0)
                 coupling_data.to_csv(os.path.join('./coupling/', version + '.csv', ))
+
+
+def process_intrusive_detail():
+    print("--获取侵入式细节信息--")
+    for root, lists, files in os.walk(path):
+        for file in files:
+            if Intrusive_details in file:
+                conf_times = []
+                version = root.split('\\')[-1]
+                write = os.path.join(root, file)
+                print('%s %s' % (version, write))
+                coupling_data = pd.read_csv(write)
+                conf_data = pd.read_csv(get_conf_csv(version))
+                # Go through the whole coupling files in current version
+                for coupling_file in coupling_data['file']:
+                    conf_times.append(process_file_conf_times(conf_data, coupling_file))
+                coupling_data['Conflict_times'] = conf_times
+                coupling_data = coupling_data.fillna(0)
+                coupling_data.to_csv(os.path.join('./intrusive/', version + '.csv', ))
 
 
 def filter_pkg(file_list: list):
@@ -209,3 +232,4 @@ if __name__ == '__main__':
     # get_merge_files()
     output_intrusive(conf_vs_intrusive())
     process_coupling_pattern()
+    process_intrusive_detail()

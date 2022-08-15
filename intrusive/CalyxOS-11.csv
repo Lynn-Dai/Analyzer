@@ -1,0 +1,12 @@
+,file,access_modify,final_modify,param_modify,Move Class,Rename Class,Move And Rename Class,Move Method,Rename Method,Move And Rename Method,Extract Method,Extract And Move Method,Rename Parameter,Add Parameter,Remove Parameter,Conflict_times
+0,packages/SystemUI/src/com/android/keyguard/KeyguardPinBasedInputView.java,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+1,packages/SystemUI/src/com/android/keyguard/NumPadKey.java,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+2,packages/SystemUI/src/com/android/systemui/qs/SecureSetting.java,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+3,packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+4,core/java/android/net/NetworkUtils.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+5,packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+6,packages/SystemUI/src/com/android/systemui/screenshot/GlobalScreenshot.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+7,packages/SystemUI/src/com/android/systemui/statusbar/policy/KeyButtonView.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+8,core/java/android/widget/SelectionActionModeHelper.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+9,services/core/java/com/android/server/net/NetworkPolicyManagerService.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0
+10,services/tests/servicestests/utils/com/android/server/testutils/FakeDeviceConfigInterface.java,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0

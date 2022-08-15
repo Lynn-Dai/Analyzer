@@ -1,0 +1,23 @@
+,file,access_modify,final_modify,param_modify,Move Class,Rename Class,Move And Rename Class,Move Method,Rename Method,Move And Rename Method,Extract Method,Extract And Move Method,Rename Parameter,Add Parameter,Remove Parameter,Conflict_times
+0,packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialogLite.java,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+1,packages/SystemUI/src/com/android/systemui/navigationbar/NavigationBarController.java,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+2,packages/SystemUI/src/com/android/systemui/statusbar/notification/row/FooterView.java,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+3,services/core/java/com/android/server/wm/WindowManagerService.java,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+4,packages/SystemUI/src/com/android/systemui/biometrics/UdfpsView.java,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+5,packages/SystemUI/plugin/src/com/android/systemui/plugins/GlobalActions.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0
+6,packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsComponent.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0
+7,packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsImpl.java,0.0,0.0,3.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0
+8,packages/SystemUI/src/com/android/systemui/navigationbar/buttons/KeyButtonView.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+9,packages/SystemUI/src/com/android/systemui/qs/QuickQSPanel.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+10,packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+11,packages/SystemUI/src/com/android/systemui/statusbar/CommandQueue.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0
+12,packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarPolicy.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+13,services/core/java/com/android/server/pm/PackageManagerService.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1
+14,services/core/java/com/android/server/power/PowerManagerService.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+15,services/core/java/com/android/server/statusbar/StatusBarManagerInternal.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+16,services/core/java/com/android/server/statusbar/StatusBarManagerService.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+17,core/java/android/hardware/display/AmbientDisplayConfiguration.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+18,packages/SystemUI/src/com/android/systemui/qs/customize/TileQueryHelper.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+19,services/core/java/com/android/server/wm/InsetsPolicy.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+20,services/core/java/com/android/server/wm/WallpaperWindowToken.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+21,services/core/java/com/android/server/wm/WindowToken.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0

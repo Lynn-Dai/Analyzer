@@ -1,0 +1,18 @@
+,file,access_modify,final_modify,param_modify,Move Class,Rename Class,Move And Rename Class,Move Method,Rename Method,Move And Rename Method,Extract Method,Extract And Move Method,Rename Parameter,Add Parameter,Remove Parameter,Conflict_times
+0,core/java/com/android/internal/os/BatteryStatsHistory.java,2.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0
+1,packages/SystemUI/src/com/android/keyguard/NumPadKey.java,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+2,packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSTileImpl.java,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+3,packages/SystemUI/src/com/android/systemui/tuner/TunerServiceImpl.java,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+4,core/java/android/app/admin/ManagedProfileProvisioningParams.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+5,core/java/android/os/BatteryUsageStats.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+6,core/java/com/android/internal/content/om/OverlayConfig.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0
+7,core/java/com/android/internal/net/NetworkUtilsInternal.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+8,packages/SystemUI/src/com/android/systemui/navigationbar/buttons/KeyButtonView.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+9,packages/SystemUI/src/com/android/systemui/qs/customize/TileQueryHelper.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0
+10,packages/SystemUI/src/com/android/systemui/qs/QSTileHost.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0
+11,packages/SystemUI/src/com/android/systemui/qs/tileimpl/QSFactoryImpl.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0
+12,packages/SystemUI/src/com/android/systemui/screenshot/ScreenshotController.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+13,packages/SystemUI/src/com/android/systemui/statusbar/policy/NetworkController.java,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0
+14,packages/SystemUI/tests/src/com/android/systemui/qs/QSTileHostTest.java,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1
+15,services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0
+16,services/core/java/com/android/server/net/NetworkPolicyManagerService.java,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,2.0,0.0,0
