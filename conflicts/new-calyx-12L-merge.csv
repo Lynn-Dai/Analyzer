@@ -1,0 +1,2 @@
+,Merge,Conf_files,Conf_javas,Conf_details,Loc,Block,Loc_details
+0,901b13b3f7c6f458366fbc62f9046226490965fc,3,3,"['packages/SystemUI/src/com/android/systemui/statusbar/phone/fragment/CollapsedStatusBarFragment.java', 'services/core/java/com/android/server/BluetoothManagerService.java', 'packages/SettingsProvider/src/android/provider/settings/backup/SecureSettings.java']",7,3,"[3, 3, 1]"

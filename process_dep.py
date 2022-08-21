@@ -17,10 +17,11 @@ def read_json(path: str):
                 if 'hidden' in entity:
                     field_match = field_match + 1
             else:
-                if 'hidden' in entity:
-                    if entity['category'] == 'Class' or entity['category'] == 'Interface' or entity['category'] == 'Enum' or entity['category'] == 'Annotation':
+                if entity['category'] == 'Class' or entity['category'] == 'Interface' or entity['category'] == 'Enum' or entity['category'] == 'Annotation':
+                    type_entity = type_entity + 1
+                    if 'hidden' in entity:
                         type_match = type_match + 1
-                        type_entity = type_entity + 1
+
         print(field_entity, field_match, meth_entity, meth_match, type_entity, type_match)
 
 
@@ -41,6 +42,16 @@ if __name__ == '__main__':
     print("--------------------------------------------------------")
 
     file_path = "E:\\ASE\\实验数据\\2-Hidden\\匹配情况\\12\\hidden-12.json"
+    read_json(file_path)
+
+    print("--------------------------------------------------------")
+
+    file_path = "E:\\ASE\\实验数据\\2-Hidden\\匹配情况\\lineage-18.1\\base-out-lineage18.json"
+    read_json(file_path)
+
+    print("--------------------------------------------------------")
+
+    file_path = "E:\\ASE\\实验数据\\2-Hidden\\匹配情况\\lineage-19.1\\base-out-lineage19.json"
     read_json(file_path)
 
     # commit_path = "E:/PycharmProjects/DataExtraction/CustomizedAndroid/history/android/branches/android12-gsi.txt"

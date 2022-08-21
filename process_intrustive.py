@@ -115,6 +115,14 @@ def get_conf_csv(version_couple: str):
             if version_couple in version:
                 return write
 
+def get_couple_csv(version_intrusive: str):
+    for root, lists, files in os.walk('./coupling'):
+        for file in files:
+            version = file.split('.')[0]
+            write = os.path.join(root, file)
+            if version_intrusive in version:
+                return write
+
 
 def process_file_conf_times(data: pd.DataFrame, file_path: str):
     times = 0
@@ -224,6 +232,18 @@ def list_to_csv(csv_path, data):
         [f.write('{0},{1}\n'.format(key, value)) for key, value in data.items()]
 
 
+def merge_csv():
+    for root, lists, files in os.walk('./intrusive'):
+        for file in files:
+            version = file.split('.')[0]
+            write = os.path.join(root, file)
+            print('%s %s' % (version, write))
+            intrusive_data = pd.read_csv(write)
+            couple_data = pd.read_csv(get_couple_csv(version))
+            result = pd.merge(intrusive_data, couple_data, left_on='file', right_on='filename')
+            result.to_csv('./intrusive_couple_conf/'+version+'.csv', encoding='utf-8')
+
+
 if __name__ == '__main__':
     process_responsible_field()
     list_to_csv('./Intrusive_files.csv', get_final_ownership())
@@ -233,3 +253,4 @@ if __name__ == '__main__':
     output_intrusive(conf_vs_intrusive())
     process_coupling_pattern()
     process_intrusive_detail()
+    merge_csv()
