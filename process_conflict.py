@@ -4,6 +4,7 @@ from collections import defaultdict
 
 import pandas as pd
 
+csv.field_size_limit(500 * 1024 * 1024)
 
 def get_conflict_files(path: str):
     with open(path, encoding="utf-8") as f:
