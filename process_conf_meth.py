@@ -3,6 +3,7 @@ import json
 
 import pandas as pd
 
+csv.field_size_limit(500 * 1024 * 1024)
 
 def get_conflict_files(path: str):
     with open(path, encoding="utf-8") as f:
@@ -23,8 +24,8 @@ def get_conflict_files(path: str):
                 #     conf_details.append(column)
                 # elif index == 3:
                 if index == 3:
-                    line = column.replace('\'', '\"')
-                    ast = json.loads(line)
+                    line = column.replace('\'', '\"').replace("\\", "\\\\")
+                    ast = json.loads(line, strict=False)
                     for file in ast:
                         conf_details = []
                         conf_loc = []
@@ -56,6 +57,7 @@ def process_meth(conf_info: list[str]):
     conf_meths = []
     # print(conf_info)
     for meth in conf_info:
+        meth.replace(", ", ",")
         conf_parts = meth.split(" ")
         conf_class = conf_parts[0].replace("<", "").replace(":", "")
         conf_meth_return = conf_parts[1]
@@ -64,9 +66,9 @@ def process_meth(conf_info: list[str]):
         if not conf_parts[2].split("(")[1].startswith(")"):
             conf_meth_par = conf_parts[2].split("(")[1].split(")")[0]
         conf_meth_qualified_name = conf_class + "." + conf_meth_name
-        # print(conf_meth_qualified_name)
-        # print(conf_meth_return)
-        # print(conf_meth_par)
+        print(conf_meth_qualified_name)
+        print(conf_meth_return)
+        print(conf_meth_par)
         conf_meths.append(conf_meth_return+" "+conf_meth_qualified_name+"("+conf_meth_par+")")
     return conf_meths
 
@@ -74,10 +76,10 @@ def process_meth(conf_info: list[str]):
 def list_to_csv(data):
     name_attribute = ['Conf_details', 'Conf_methods', 'Loc', 'Block', 'Loc_details']
     writerCSV = pd.DataFrame(columns=name_attribute, data=data)
-    writerCSV.to_csv('./conf_meths/omnirom-12.1-meths.csv', encoding='utf-8')
+    writerCSV.to_csv('./conf_meths/honor-s-meths.csv', encoding='utf-8')
 
 
 
 if __name__ == '__main__':
-    ast_csv = "E:/PycharmProjects/DataExtraction/CustomizedAndroid/history/android_base/ast/omnirom/android-12.1-merge.csv"
+    ast_csv = "E:/PycharmProjects/DataExtraction/CustomizedAndroid/history/android_base/ast/honor/honor_s_trunk_magicui-merge.csv"
     list_to_csv(get_conflict_files(ast_csv))

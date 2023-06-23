@@ -1,0 +1,2 @@
+,Conf_details,Conf_methods,Loc,Block,Loc_details
+0,packages/SystemUI/src/com/android/systemui/statusbar/phone/fragment/CollapsedStatusBarFragment.java,"['void com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.onViewCreated(View,Bundle)']",5,1,"[(193, 197, 5)]"

@@ -1,0 +1,3 @@
+,Conf_details,Conf_methods,Loc,Block,Loc_details
+0,services/core/java/com/android/server/audio/AudioDeviceBroker.java,[],6,1,"[(1524, 1529, 6)]"
+1,packages/SystemUI/src/com/android/systemui/statusbar/phone/fragment/CollapsedStatusBarFragment.java,"['void com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.onViewCreated(View,Bundle)']",7,4,"[(41, 41, 1), (70, 70, 1), (120, 121, 2), (199, 201, 3)]"

@@ -1,0 +1,12 @@
+,Conf_details,Conf_methods,Loc,Block,Loc_details
+0,location/java/com/android/internal/location/GpsNetInitiatedHandler.java,['boolean com.android.internal.location.GpsNetInitiatedHandler.getInEmergency()'],4,2,"[(124, 125, 2), (248, 249, 2)]"
+1,packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBar.java,[],1,1,"[(339, 339, 1)]"
+2,packages/SystemUI/src/com/android/systemui/qs/PagedTileLayout.java,[],2,1,"[(12, 13, 2)]"
+3,services/core/java/com/android/server/am/ActivityManagerService.java,"['void com.android.server.am.ActivityManagerService.handleAppDiedLocked(ProcessRecord,boolean,boolean)']",12,1,"[(5944, 5955, 12)]"
+4,telephony/java/android/provider/Telephony.java,[],0,1,"[(0, 0, 0)]"
+5,packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java,"['void com.android.systemui.globalactions.GlobalActionsDialog.buildMenuList()', 'void com.android.systemui.globalactions.GlobalActionsDialog.buildMenuList()']",8,3,"[(47, 48, 2), (297, 298, 2), (343, 346, 4)]"
+6,core/java/android/provider/Settings.java,[],174,3,"[(4790, 4853, 64), (5120, 5228, 109), (9050, 9050, 1)]"
+7,services/java/com/android/server/SystemServer.java,[],0,1,"[(0, 0, 0)]"
+8,services/core/java/com/android/server/am/ActivityManagerService.java,['void com.android.server.am.ActivityManagerService.PendingAssistExtras.run()'],1,1,"[(876, 876, 1)]"
+9,packages/SystemUI/src/com/android/systemui/ScreenDecorations.java,['void com.android.systemui.ScreenDecorations.onConfigurationChanged(Configuration)'],6,1,"[(217, 222, 6)]"
+10,services/core/java/com/android/server/PinnerService.java,"['ApplicationInfo com.android.server.PinnerService.getApplicationInfoForIntent(Intent,int,boolean)']",20,1,"[(398, 417, 20)]"

@@ -27,8 +27,16 @@ def read_json(path: str):
                                 if start >= start_line and end <= end_line:
                                     if entity['category'] == "Method":
                                         print("Method: " + entity['qualifiedName'])
+                                        entity['conflict'] = True
+                                        data.update(entity)
                                 if start <= start_line and end >= end_line:
                                     print("Var: " + entity['qualifiedName'])
+                                    entity['conflict'] = True
+                                    data.update(entity)
+
+    with open(path, 'w') as f_new:
+        json.dump(data, f_new)
+
 
 # def read_java(path: str):
 
