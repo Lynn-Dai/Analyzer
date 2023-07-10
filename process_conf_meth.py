@@ -13,9 +13,9 @@ def get_conflict_files(path: str):
         rows = [row for row in reader]
         for row in rows:
             for index, column in enumerate(row):
-                # if index == 0:
-                #     # merge id
-                #     conf_details.append(column)
+                if index == 0:
+                    # merge id
+                    merge = column
                 # elif index == 1:
                 #     # conf files num
                 #     conf_details.append(column)
@@ -28,6 +28,7 @@ def get_conflict_files(path: str):
                     ast = json.loads(line, strict=False)
                     for file in ast:
                         conf_details = []
+                        conf_details.append(merge)
                         conf_loc = []
                         sum_loc = 0
                         block_sum = 0
@@ -74,12 +75,13 @@ def process_meth(conf_info: list[str]):
 
 
 def list_to_csv(data):
-    name_attribute = ['Conf_details', 'Conf_methods', 'Loc', 'Block', 'Loc_details']
+    name_attribute = ['Merge', 'Conf_details', 'Conf_methods', 'Loc', 'Block', 'Loc_details']
     writerCSV = pd.DataFrame(columns=name_attribute, data=data)
-    writerCSV.to_csv('./conf_meths/honor-s-meths.csv', encoding='utf-8')
+    writerCSV.to_csv('./conf_meths/lineage-19.1-meths.csv', encoding='utf-8')
 
 
 
 if __name__ == '__main__':
-    ast_csv = "E:/PycharmProjects/DataExtraction/CustomizedAndroid/history/android_base/ast/honor/honor_s_trunk_magicui-merge.csv"
+    # ast_csv = "E:/PycharmProjects/DataExtraction/CustomizedAndroid/history/android_base/ast/honor/honor_s_trunk_magicui-merge.csv"
+    ast_csv = "E:/PycharmProjects/DataExtraction/CustomizedAndroid/history/android_base/ast/lineage/lineage-19.1-merge.csv"
     list_to_csv(get_conflict_files(ast_csv))

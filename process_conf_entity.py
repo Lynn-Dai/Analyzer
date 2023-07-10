@@ -4,12 +4,12 @@ from collections import defaultdict
 import pandas as pd
 
 conf_files = defaultdict(list)
-
+res = []
 
 def get_conflict_detail(path: str):
-    df = pd.read_csv(path, encoding="gbk")[['Conf_details', 'Loc_details']]
+    df = pd.read_csv(path, encoding="gbk")[['Merge', 'Conf_details', 'Loc_details']]
     for index, row in df.iterrows():
-        conf_files[row['Conf_details']] = eval(row['Loc_details'])
+        conf_files[row['Merge']+"-"+row['Conf_details']] = eval(row['Loc_details'])
 
 
 def read_json(path: str):
@@ -27,15 +27,17 @@ def read_json(path: str):
                                 if start >= start_line and end <= end_line:
                                     if entity['category'] == "Method":
                                         print("Method: " + entity['qualifiedName'])
-                                        entity['conflict'] = True
-                                        data.update(entity)
+                                        # entity['conflict'] = True
+                                        # data.update(entity)
+                                        res.append(entity)
                                 if start <= start_line and end >= end_line:
                                     print("Var: " + entity['qualifiedName'])
-                                    entity['conflict'] = True
-                                    data.update(entity)
+                                    # entity['conflict'] = True
+                                    # data.update(entity)
+                                    res.append(entity)
 
-    with open(path, 'w') as f_new:
-        json.dump(data, f_new)
+    with open("./conf_entity/lineage-19.1.json", 'w') as f_new:
+        json.dump(res, f_new, indent=4, ensure_ascii=False)
 
 
 # def read_java(path: str):

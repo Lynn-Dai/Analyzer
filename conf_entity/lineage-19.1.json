@@ -1,0 +1,201 @@
+[
+    {
+        "external": false,
+        "id": 397,
+        "qualifiedName": "com.android.server.audio.AudioDeviceBroker.MSG_IL_SAVE_PREF_DEVICES_FOR_CAPTURE_PRESET",
+        "name": "MSG_IL_SAVE_PREF_DEVICES_FOR_CAPTURE_PRESET",
+        "category": "Variable",
+        "parentId": 5,
+        "File": "AudioDeviceBroker.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "global": true,
+        "location": {
+            "startLine": 1524,
+            "endLine": 1524,
+            "startColumn": 29,
+            "endColumn": 76
+        },
+        "modifiers": "private static final",
+        "rawType": "int",
+        "conflict": true
+    },
+    {
+        "external": false,
+        "id": 398,
+        "qualifiedName": "com.android.server.audio.AudioDeviceBroker.MSG_I_SAVE_CLEAR_PREF_DEVICES_FOR_CAPTURE_PRESET",
+        "name": "MSG_I_SAVE_CLEAR_PREF_DEVICES_FOR_CAPTURE_PRESET",
+        "category": "Variable",
+        "parentId": 5,
+        "File": "AudioDeviceBroker.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "global": true,
+        "location": {
+            "startLine": 1525,
+            "endLine": 1525,
+            "startColumn": 29,
+            "endColumn": 81
+        },
+        "modifiers": "private static final",
+        "rawType": "int",
+        "conflict": true
+    },
+    {
+        "external": false,
+        "id": 399,
+        "qualifiedName": "com.android.server.audio.AudioDeviceBroker.MSG_L_UPDATE_COMMUNICATION_ROUTE",
+        "name": "MSG_L_UPDATE_COMMUNICATION_ROUTE",
+        "category": "Variable",
+        "parentId": 5,
+        "File": "AudioDeviceBroker.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "global": true,
+        "location": {
+            "startLine": 1527,
+            "endLine": 1527,
+            "startColumn": 29,
+            "endColumn": 65
+        },
+        "modifiers": "private static final",
+        "rawType": "int",
+        "conflict": true
+    },
+    {
+        "external": false,
+        "id": 400,
+        "qualifiedName": "com.android.server.audio.AudioDeviceBroker.MSG_IL_SET_PREF_DEVICES_FOR_STRATEGY",
+        "name": "MSG_IL_SET_PREF_DEVICES_FOR_STRATEGY",
+        "category": "Variable",
+        "parentId": 5,
+        "File": "AudioDeviceBroker.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "global": true,
+        "location": {
+            "startLine": 1528,
+            "endLine": 1528,
+            "startColumn": 29,
+            "endColumn": 69
+        },
+        "modifiers": "private static final",
+        "rawType": "int",
+        "conflict": true
+    },
+    {
+        "external": false,
+        "id": 401,
+        "qualifiedName": "com.android.server.audio.AudioDeviceBroker.MSG_I_REMOVE_PREF_DEVICES_FOR_STRATEGY",
+        "name": "MSG_I_REMOVE_PREF_DEVICES_FOR_STRATEGY",
+        "category": "Variable",
+        "parentId": 5,
+        "File": "AudioDeviceBroker.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "global": true,
+        "location": {
+            "startLine": 1529,
+            "endLine": 1529,
+            "startColumn": 29,
+            "endColumn": 71
+        },
+        "modifiers": "private static final",
+        "rawType": "int",
+        "conflict": true
+    },
+    {
+        "external": false,
+        "id": 552,
+        "qualifiedName": "com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.mClockController",
+        "name": "mClockController",
+        "category": "Variable",
+        "parentId": 520,
+        "File": "CollapsedStatusBarFragment.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "global": true,
+        "location": {
+            "startLine": 120,
+            "endLine": 120,
+            "startColumn": 28,
+            "endColumn": 43
+        },
+        "modifiers": "private",
+        "rawType": "com.android.systemui.statusbar.phone.fragment.ClockController",
+        "conflict": true
+    },
+    {
+        "external": false,
+        "id": 553,
+        "qualifiedName": "com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.mIsClockBlacklisted",
+        "name": "mIsClockBlacklisted",
+        "category": "Variable",
+        "parentId": 520,
+        "File": "CollapsedStatusBarFragment.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "global": true,
+        "location": {
+            "startLine": 121,
+            "endLine": 121,
+            "startColumn": 20,
+            "endColumn": 38
+        },
+        "modifiers": "private",
+        "rawType": "boolean",
+        "conflict": true
+    },
+    {
+        "external": false,
+        "id": 585,
+        "qualifiedName": "com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.onViewCreated",
+        "name": "onViewCreated",
+        "category": "Method",
+        "parentId": 520,
+        "File": "CollapsedStatusBarFragment.java",
+        "additionalBin": {
+            "binNum": 1,
+            "binPath": "E:/冲突节点与文件/冲突原文件/lineage19.1"
+        },
+        "enhancement": {
+            "isSynchronized": false,
+            "isStatic": false,
+            "isGetter": false,
+            "isSetter": false,
+            "isPublic": false,
+            "isDelegator": false,
+            "isConstructor": false,
+            "isOverride": false,
+            "isAbstract": false,
+            "isRecursive": false
+        },
+        "location": {
+            "startLine": 183,
+            "endLine": 214,
+            "startColumn": 4,
+            "endColumn": 4
+        },
+        "modifiers": "public",
+        "parameter": {
+            "types": "View Bundle",
+            "names": "view savedInstanceState"
+        },
+        "rawType": "void",
+        "conflict": true
+    }
+]
