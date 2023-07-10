@@ -1,4 +1,4 @@
-,Conf_details,Conf_methods,Loc,Block,Loc_details
-0,packages/SystemUI/src/com/android/systemui/statusbar/phone/fragment/CollapsedStatusBarFragment.java,"['void com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.onViewCreated(View,Bundle)']",3,1,"[(194, 196, 3)]"
-1,services/core/java/com/android/server/BluetoothManagerService.java,[],3,1,"[(474, 476, 3)]"
-2,packages/SettingsProvider/src/android/provider/settings/backup/SecureSettings.java,[],1,1,"[(195, 195, 1)]"
+,Merge,Conf_details,Conf_methods,Loc,Block,Loc_details
+0,901b13b3f7c6f458366fbc62f9046226490965fc,packages/SystemUI/src/com/android/systemui/statusbar/phone/fragment/CollapsedStatusBarFragment.java,"['void com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment.onViewCreated(View,Bundle)']",3,1,"[(194, 196, 3)]"
+1,901b13b3f7c6f458366fbc62f9046226490965fc,services/core/java/com/android/server/BluetoothManagerService.java,[],3,1,"[(474, 476, 3)]"
+2,901b13b3f7c6f458366fbc62f9046226490965fc,packages/SettingsProvider/src/android/provider/settings/backup/SecureSettings.java,[],1,1,"[(195, 195, 1)]"
