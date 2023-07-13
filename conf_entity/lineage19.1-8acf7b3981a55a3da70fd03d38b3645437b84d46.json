@@ -20,7 +20,8 @@
         },
         "modifiers": "private static final",
         "rawType": "int",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 1
     },
     {
         "external": false,
@@ -43,7 +44,8 @@
         },
         "modifiers": "private static final",
         "rawType": "int",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 1
     },
     {
         "external": false,
@@ -66,7 +68,8 @@
         },
         "modifiers": "private static final",
         "rawType": "int",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 1
     },
     {
         "external": false,
@@ -89,7 +92,8 @@
         },
         "modifiers": "private static final",
         "rawType": "int",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 1
     },
     {
         "external": false,
@@ -112,7 +116,8 @@
         },
         "modifiers": "private static final",
         "rawType": "int",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 1
     },
     {
         "external": false,
@@ -135,7 +140,8 @@
         },
         "modifiers": "private",
         "rawType": "com.android.systemui.statusbar.phone.fragment.ClockController",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 1
     },
     {
         "external": false,
@@ -158,7 +164,8 @@
         },
         "modifiers": "private",
         "rawType": "boolean",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 1
     },
     {
         "external": false,
@@ -196,6 +203,7 @@
             "names": "view savedInstanceState"
         },
         "rawType": "void",
-        "conflict": true
+        "conflict": true,
+        "confLOC": 3
     }
 ]
