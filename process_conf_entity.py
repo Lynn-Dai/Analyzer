@@ -25,12 +25,12 @@ def read_json(path, merge):
                     end_line = entity['location']['endLine']
                     for item in conf_files.items():
                         if file_name in item[0] and merge in item[0]:
-                            print(file_name)
+                            # print(file_name)
                             for start, end, count in item[1]:
-                                if max(start, start_line) < min(end, end_line):
+                                if max(start, start_line) <= min(end, end_line):
                                     print(entity['category'] + ": " + entity['qualifiedName'])
                                     entity['conflict'] = True
-                                    entity['confLOC'] = count
+                                    entity['confLOC'] = min(end, end_line) - max(start, start_line) + 1
                                     data.update(entity)
                                     res.append(entity)
                                 # if start >= start_line and end <= end_line:
@@ -47,10 +47,10 @@ def read_json(path, merge):
                                 #     data.update(entity)
                                 #     res.append(entity)
 
-    with open("./conf_entity/lineage17.1-9d930f996e.json", 'w') as f_new:
+    with open("./conf_entity/lineage16.0-31664aa5de.json", 'w') as f_new:
         json.dump(res, f_new, indent=4, ensure_ascii=False)
 
 
 if __name__ == '__main__':
-    get_conflict_detail("./conf_meths/lineage-17.1-meths.csv")
-    read_json("lineage17.1-9d930f996e.json", "9d930f996e6d31820e201f4eb7dd7bf11127f932")
+    get_conflict_detail("./conf_meths/lineage-16.0-meths.csv")
+    read_json("lineage16.0-31664aa5de.json", "31664aa5defc5bc091dffc8201ef48e540aa21c7")
