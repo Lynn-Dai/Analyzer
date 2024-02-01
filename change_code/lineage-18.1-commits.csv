@@ -1,0 +1,2471 @@
+,hash,commit,date
+0,d274c33a679b96f638f6b6d14abb2472dd3fc2ac,"Merge tag 'android-11.0.0_r32' into staging/lineage-18.1_merge-android-11.0.0_r32
+
+Android 11.0.0 Release 32 (RQ2A.210305.006)
+
+* tag 'android-11.0.0_r32':
+  Allow CBR when device owners is set up
+  DO NOT MERGE Revert ""Set fixed fps when ambient or display brightness is high""
+  DO NOT MERGE Revert ""Allow DeviceConfig to change display settings for high zone""
+  Protect account chooser activities against overlay.
+  DO NOT MERGE: Disable StrictMode VM Policy check.
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Copy the list before passing to deliverAlarms
+  Import translations. DO NOT MERGE ANYWHERE
+  MediaRouterService binds services when necessary
+  DO NOT MERGE add android.permission.STATUS_BAR for cellbroadcastreceiver
+  multiple users support for carrier wifi provisioning
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE port power tap gesture logs to new standard
+  Import translations. DO NOT MERGE ANYWHERE
+  Add package name when initializing SoundPool.
+  DO NOT MERGE Correctly reset cross-profile app-op
+  Add mediametrics enum for MediaExtractor usage
+  Import translations. DO NOT MERGE ANYWHERE
+  Adding logging for the ML mBack gesture model.
+  Import translations. DO NOT MERGE ANYWHERE
+  Removes undesirable invokation of checkUriPermission
+  Don't change the voice interactor setting if it's explicitly unset.
+  Make low storage notification PendingIntent immutable
+  Bluetooth: Check state correctly when client wants to bind
+  Automatically dismiss SIM combination warnings and selection dialogs.
+  Fix sharing shortcuts not showing for Work Profile.
+  [GraphicsEnvironment] Avoid null access.
+  Clear fixed rotation if rotated recents activity becomes top
+  Expose MediaExtractor entry point to MediaMetrics
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Move phone ID to extra for action provision
+  Combine uids for CpuTimePerUidFreq atom
+  Update Visualizer implementation after changes in AudioEffect
+  Extend Battery Defender strings chars limit
+  add permission check for exported activity
+  Send DROPBOX_ENTRY_ADDED to all users
+  Add rotary highlight to switches
+  Grant CHANGE_DEVICE_IDLE_TEMP_WHITELIST to call log provider.
+  Fix issue with saving protos to disk during shutdown.
+  Import translations. DO NOT MERGE ANYWHERE
+  Update rotary highlight on bordered buttons
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Migrate media output switcher metrics - 1/n
+  Use per-user Shell UID for adoptShellPermissionIdentity().
+  AudioService: increase audio mode timeout.
+  [SettingsProvider] fix font size scale validator
+  [SettingsProvider] fix font size scale validator
+  Make AOD battery text field support BatteryDefender
+  [SettingsProvider] fix font size scale validator
+  [SettingsProvider] fix font size scale validator
+  Revert ""Ignore to show splash screen if the decorView is not opaque""
+  Check isOnScreen for wallpaper target of recents animation
+  Allow the System UID to unregister ConnDiags CBs.
+  Filter conversation list by current users
+  Fix pixel buds icon is empty in output switcher
+  [DO NOT MERGE] Fixes CompanionDeviceManagerTest
+  DO NOT MERGE Use round highlight for navigation buttons
+  [DO NOT MERGE]Fix IndexOutOfBoundsException for TDA stack
+  Do not allow non-system dialogs on UsbConfirmAct
+  Import translations. DO NOT MERGE ANYWHERE
+  Update link for Permissions samples in Javadoc
+  Fix wrong target launches in Chooser.
+  Import translations. DO NOT MERGE ANYWHERE
+  Add back enforceReadPermission for getmetadata
+  Import translations. DO NOT MERGE ANYWHERE
+  Update CPA startActivity javadoc to refer to passing the result back
+  Update SystemUI and SettingsLib battery defender strings
+  Import translations. DO NOT MERGE ANYWHERE
+  Apply animation for Media Ouput Switcher dialog
+  Add dynamic item in output switcher if it is available
+  Fix NPE when notification icon is empty
+  Fix output switcher didn't show album art
+  Add dynamic group operation in output switcher
+  Enhancement for group operation in output switcher
+  Add dismiss timing for Media Output Dialog
+  Update OutputSwitcher from SettingsPanel to MediaOutputDialog in SystemUI
+  Add constant for dismiss Settings panel
+  Add animation when switching output device
+  Add dismiss intent and method for MediaOutputDialog
+  Add ""Stop"" button for remote device
+  Add constant for dialog dismiss
+  Rename MediaOutDialogReceiver to MediaOutputDialogReceiver
+  Add getFeatures() for get device supporting features
+  Add a receiver to launch Output Switcher dialog
+  Add MediaOutputDialogFactory to create MediaOutputDialog
+  Add Media Output Dialog for Output Switcher
+  Add controller for Media operation
+  Add MediaOutputAdapter for Media device list
+  Define strings for output switcher dialog in SystemUI
+  Add image utility methods
+  Import translations. DO NOT MERGE ANYWHERE
+  docs: Mention app query filters on Android 11
+  Add new carrier config option for enabling SIP PUBLISH of RCS caps
+  Camera: Document behavior when cropRegion and zoomRation conflict
+  Use current fullscreen opaque window as insets control target
+  Make the visibility of rotated insets up-to-date
+  Allow DeviceConfig to change display settings for high zone
+  Set fixed fps when ambient or display brightness is high
+  Add FakeSettingsProviderRule class
+  DO NOT MERGE: Add constant for Output Switcher to start Bluetooth paring page
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Fix ConcurrentModification in onUidStateChanged
+  Import translations. DO NOT MERGE ANYWHERE
+  Add ART optimization dimension to reportFullyDrawn
+  Import translations. DO NOT MERGE ANYWHERE
+  Make sure we preserve preserveLegacyExternalStorage.
+  Add Null check for mView.findFocus() in ViewRootImpl
+  DO NOT MERGE: Enable ENABLE_DYNAMIC_PERMISSIONS depending on MediaProvider.
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Ensure insets state for dispatch is processed by policy
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  RESTRICT AUTOMERGE Ensure caller identity is restored in CP quick-path.
+  RESTRICT AUTOMERGE Ensure caller identity is restored in CP quick-path.
+  RESTRICT AUTOMERGE Ensure caller identity is restored in CP quick-path.
+  Move all BluetoothCodecConfig and BluetoothCodecStatus APIs moved from the non-SDK API list to the blocklist in Android 11 back to the non-SDK API list.
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE: Disable ENABLE_DYNAMIC_PERMISSIONS without helper method.
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Allow only preloaded voice recognition services to blame calling apps.
+  Fix unique identifiers best practices links in device ID API docs
+  Allow self blames to be trusted
+  Add permissions to car shell
+  Add READ_DREAM_STATE to the settings list
+  Move handleCompleteDeferredRemoval to animator thread
+  Add Battery Defender strings to SystemUI and SettingsLib
+  Fix potential deadlock in shutdown in HistoricalRegistry
+  Ensure caller identity is restored in CP quick-path.
+  DO NOT MERGE: Associate notif cancels with notif posts
+  Controls UI - RTL for input pin/password
+  DO NOT MERGE Update bottom huns container to use HeadsUpContainerView
+  Delete orphaned staging directories for staged session on reboot
+  Clean up staged session data on validation failure
+  Import translations. DO NOT MERGE ANYWHERE
+  Run error callback when BiometricPrompt dismissed early
+  Do let IME fit invisible insets
+  Fix AccessibilityService#getWindows time out
+  Add flag to get the name of the Model file from the flag in case we want to try out different models. In addition, we should not log touches in the middle of the screen for logging so moving the block at the very beginning.
+  Add package_name to log for debugging the back gesture model.
+  Add log entries for the results for the ML model for the back gesture.
+  Delete orphaned staging directories for staged session on reboot
+  Clean up staged session data on validation failure
+  Fix up some camera API javadocs
+  Import translations. DO NOT MERGE ANYWHERE
+  [DO NOT MERGE] Transition to clear state after gesture cancelation.
+  [RESTRICT AUTOMERGE] Fix Keyboard shown after force stopped app package
+  Do not power off display on lockNow() on automotive builds.
+  Use ML model for the Back Gesture in EdgeBackGestureHandler.
+  Allow voice recognition service to blame other apps access.
+  Ignore GrantCredentials call with unexpected calling uid.
+  Ignore GrantCredentials call with unexpected calling uid.
+  Protect GrantCredentialsPermissionActivity against overlay.
+  Revert ""Ignore GrantCredentials call with unexpected calling uid.""
+  Protect GrantCredentialsPermissionActivity against overlay.
+  BroadcastQueue: temporarily unfreeze for parallel broadcasts
+  Fix the focus not move to the place where the finger clicks
+  Propagate callingPackage explicitly within CDM
+  Don't set timeout when showing CDM UI
+  Fix anr when installing package
+  Only log first input reader length
+  [DO NOT MERGE] Make GlobalScreenshot PendingIntents immutable
+  [DO NOT MERGE] Make GlobalScreenshot PendingIntents immutable
+  [DO NOT MERGE] Make GlobalScreenshot PendingIntents immutable
+  [DO NOT MERGE] Make GlobalScreenshot PendingIntents immutable
+  [DO NOT MERGE] Make GlobalScreenshot PendingIntents immutable
+  DO NOT MERGE Prevent isEnabled from mutating state
+  FileBridge: fix fd ownership mismanagement.
+  Ignore GrantCredentials call with unexpected calling uid.
+  Add disconnect message constant Bug: b/171255813 Test: make Change-Id: Ia300b12ecf7d0c1d7d057b48a801b2928354315e
+  iorap: Add a DEBUG guide on IORap debugging log.
+  Check that Account Parcel has name and type.
+  Ignore GrantCredentials call with unexpected calling uid.
+  Fix non-dismissible resumption players.
+  Grant access to the URI when forwarding intent from InstallStart to InstallInstalling
+  Controls - Large ranges improperly calculated
+  Ensure permissions are revoked on state changes
+  Revoke permission on non-runtime -> runtime upgrade
+  Revoke permission on non-runtime -> runtime upgrade
+  Ensure permissions are revoked on state changes
+  Revoke permission on non-runtime -> runtime upgrade
+  Ensure permissions are revoked on state changes
+  Revoke permission on non-runtime -> runtime upgrade
+  Ensure permissions are revoked on state changes
+  CPU time min threshold for CpuTimePerUidFreq
+  docs: fix ""buidler"" typos in Typeface.Builder
+  Reschedule the pre-reboot verification after boot completed.
+  Prevent sessions from resuming once boot is completed
+  Prevent extra sessions owned by staged install from living across restarts
+  Prevent exceptions during staged install from crashing system server
+  Prevent exceptions in pre-reboot verification from crashing system server
+  Only use system gesture insets for exclusion rects with root ime view
+  RESTRICT AUTOMERGE
+  DO NOT MERGE: Only restore the positions of types which are controlled
+  Do not allow uninstalling while an app is pinned
+  CachedAppOptimizer: ensure binder is never frozen with app unfrozen
+  Introduce INPUT_CONSUMER permission for InputConsumer
+  Allow the network stack to read network stats history
+  Add MediaMetrics support to MediaParser
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE: Disable ENABLE_DYNAMIC_PERMISSIONS flag for now to avoid crashes.
+  [DO NOT MERGE] Prevent extra sessions owned by staged install from living across restarts
+  Prevent exceptions during staged install from crashing system server
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE: Add conditions for Auto to isUserSetupComplete()
+  Hide overlays over uninstall confirm dialog
+  Hide overlays over uninstall confirm dialog
+  RESTRICT AUTOMERGE Fix CDM package check
+  RESTRICT AUTOMERGE Fix CDM package check
+  RESTRICT AUTOMERGE Fix CDM package check
+  RESTRICT AUTOMERGE Fix CDM package check
+  Default dual tone alpha set to 0.3
+  Prevent exceptions in pre-reboot verification from crashing system server
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Avoid MotionEvent no finish raise unnecessary ANR
+  Finish fixed rotation of recents if it is invisible
+  Ignore to show splash screen if the decorView is not opaque
+  Reland ""Distinguish warm/hot launch by whether the activity has attached process""
+  Revert ""Distinguish warm/hot launch by whether the activity has attached process""
+  Distinguish warm/hot launch by whether the activity has attached process
+  Import translations. DO NOT MERGE ANYWHERE
+  Makes the multi-touch prevention only works for editable TextView.
+  Release ICloseHandle instance after announcement listener is unregistered
+  initialized carrier_certificate_string_array to an empty array instead of null, so that when a certificate is removed, it is also removed in SubscriptionInfoUpdater#updateSubscriptionByCarrierConfig
+  Cache network capabilities.
+  Import translations. DO NOT MERGE ANYWHERE
+  Mark deleteMessageFromIcc() as @UnsupportedAppUsage.
+  Handle possible null PlaybackState
+  Update require attention in stats pull service
+  Change default value for face metrics
+  docs: Use correct profile for intent
+  Allow permission to change application state
+  Import translations. DO NOT MERGE ANYWHERE
+  Update ranking for uninflated updated notifs
+  Make framework-res dep in stubs explicit
+  Ignore orientation from invisible non-activity window
+  Doc: Fix typo the right way. Supersedes cl/318172931
+  remove sensitive pii from safetynet logging
+  remove sensitive pii from safetynet logging
+  remove sensitive pii from safetynet logging
+  remove sensitive pii from safetynet logging
+  remove sensitive pii from safetynet logging
+  DO NOT MERGE: Revert ""Don't let IME window fit status bar""
+  Notifications starting paused shall still be subject to timeout.
+  Disable player's ""Dismiss"" button when notification is not dismissible.
+  [DO NOT MERGE ] Stop setting flag to enable two-finger passthrough swipes.
+  [DO NOT MERGE] Fix Accidently trigger A11y button long pressed
+  [RESTRICT AUTOMERGE] Revert ""[RESTRICT AUTOMERGE] Revert ""Require permission to create trusted displays""""
+  Typo in the sand icon shape
+  Rememeber the last dark mode before shutdown when in auto mode
+  Remove accidentally added diff file
+  Remove SQLlite log
+  [DO NOT MERGE] MultiFingerSwipe: scale touch slop to number of fingers.
+  [DO NOT MERGE] Use correct touch slop value for two-finger passthrough.
+  [DO NOT MERGE] Fix sometime couldn't trigger A11y button with 3-finger
+  [DO NOT MERGE] Fix hardly to perform 3-finger swipe from the bottom
+  [DO NOT MERGE] Fix edge swipe logic.
+  [DO NOT MERGE] Require both fingers to move before starting two-finger passthrough.
+  [DO NOT MERGE] Start dragging where the fingers initially went down.
+  [DO NOT MERGE]  Address drag unreliability during touch exploration
+  [DO NOT MERGE] Fix crash with multifinger touch exploration
+  [DO NOT MERGE] Enable two-finger passthrough swipes.
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Media player attempts to dismiss notifications when players removed.
+  IdleMaint: run IdleMaint if battery is charging
+  Update javadoc for setLaunchDisplayId
+  DO NOT MERGE Revoke install permissions when the permission defining app is uninstalled.
+  Revoke install permissions when the permission defining app is uninstalled.
+  When logging ranking positions, use the number of displayed targets in calculating offset rather than the total number available.
+  Flip ENABLE_DYNAMIC_PERMISSIONS, attempt #7.
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  Ignore non test package events for AppStandbyControllerTests
+  Camera: Track native metadata allocations
+  Allow notfication vibrations in DND
+  RESTRICT AUTOMERGE Implement sendBroadcastAsUserMultiplePermissions in BridgeContext.
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  Notify AppOps when notifications are [un]blocked for an app.
+  Validate user-supplied tree URIs in DocumentsProvider calls
+  Fix storing the wrong value of mLockdown in setting
+  Use shared libdrmframeworkcommon.
+  [BACKPORT] Improve location checks in TelephonyRegistry
+  [DO NOT MERGE][BACKPORT]Improve location checks in TelephonyRegistry
+  Backport sendBroadcastAsUserMultiplePermissions to oc-dev
+  [RESTRICT AUTOMERGE] Fix VrDisplayTest failure
+  Backport sendBroadcastAsUserMultiplePermissions to oc-dev
+  Make WallpaperMS bind wallpaper component PendingIntent immutable.
+  Make WallpaperMS bind wallpaper component PendingIntent immutable.
+  Make WallpaperMS bind wallpaper component PendingIntent immutable.
+  Make WallpaperMS bind wallpaper component PendingIntent immutable.
+  Make WallpaperMS bind wallpaper component PendingIntent immutable.
+  Call DecorView.drawableChanged() in PhoneWindow.setBackgroungDrawable
+  Fix the issue provider can be wrong when requesting slice permission
+  Fix the issue provider can be wrong when requesting slice permission
+  Fix the issue provider can be wrong when requesting slice permission
+  Fix the issue provider can be wrong when requesting slice permission
+  Do not re-initialize synthetic password
+  Fix out of bound error of IncidentService
+  Enforce permission checks in getting app exit reasons
+  Validate user-supplied URIs in DocumentsProvider calls
+  Revoke the uri permission when the file is deleted
+  Revoke the uri permission when the file is deleted
+  Revoke the uri permission when the file is deleted
+  Revoke the uri permission when the file is deleted
+  Revoke the uri permission when the file is deleted
+  Protect bluetooth.device.action.ALIAS_CHANGED
+
+Conflicts:
+	core/java/com/android/internal/app/ChooserActivity.java
+	packages/SystemUI/src/com/android/systemui/statusbar/phone/EdgeBackGestureHandler.java
+	services/core/java/com/android/server/notification/NotificationManagerService.java
+
+Change-Id: I898282ae459c97f9341dbfa18216045c072a98e5",2021-03-06 04:07:34-07:00
+1,e388fe787e4400e4bc427b359b0d659746d34250,"Sharesheet: Set max ranked items to 8
+
+This change makes sharesheet way more useful by increasing
+amount of visible ranked apps in portrait mode from 4 to 8.
+
+Change-Id: Ic092f1d1784259c9f3c0870eda1dd1ae8544c697",2021-03-06 15:08:07+01:00
+2,b10457e10341b7813020e7d700abbcf66055c248,"Revert ""No need to 'addChild' when start 'FLAG_ACTIVITY_CLEAR_TOP' Activity.""
+
+ * Seems to cause an issue that activity cannot be found
+   after unlock for a short time.
+
+This reverts commit 1a417250dcfa4f4a64d44cef8bd459d14ff9e5a6.
+
+Change-Id: I9c55e0107eb730027c3c8c41afa4f582b6b65f5f",2021-03-14 00:49:18+01:00
+3,5ca4149777ba5401a49e72ecab26daeba72cd401,"SystemUI: AmbientTile: Don't hardcode display settings intent
+
+Change-Id: Ifaa69c2f235b85ae847524c81f0ba59e2a51cf01",2021-03-17 23:26:39+01:00
+4,810cac874dea92f4ce88ef15d1bb2a4ea2ca81f8,"SystemUI: AmbientTile: Use SecureSetting to change doze setting
+
+Change-Id: I7f004bcf45493130ad50faacb6e390cd640e53db",2021-03-17 23:26:40+01:00
+5,4d3d8db45aa07e8bb1f0a4c401031dd0d1f7a9db,"SystemUI: AmbientTile: Actually start using SecureSetting
+
+Change-Id: I5d94f6d2e596dbc6b44ae4f30f479d335a067661",2021-03-17 23:26:40+01:00
+6,e928b5d031267a912efbe9e9888d36c42a5a111d,"SystemUI: SecureSetting: Allow specifying a non-zero default
+
+* Some Setting while empty should be assumed to be
+  non-zero by default ( ex AmbientDisplay )
+
+Test: m
+Change-Id: I44e1c4296be4e1a1f549d52d4dc0f5b2b7cef855",2021-03-18 10:53:31+01:00
+7,d209b4106e3b48bcbb3ce3ed93f21f037a8f2195,"SystemUI: AmbientTile: Default the setting to 1
+
+Change-Id: Idea9dda702fdbaa0e2836e7a2573aa57cf24449e",2021-03-18 10:53:35+01:00
+8,d3943268592259421a5392bc0651161108530ca5,"Restore preferred activity filter if it not inside
+
+If the current preferred activity has been restored, it will not be added  when restoring preferred activity
+
+Bug: 170589675
+Change-Id: Ie5aab1c738343c3a61bb2ae8bd62e1afb9fb5d47
+(cherry picked from commit da90fd9871ee128a127e32280475279360c61f66)",2021-03-21 13:53:34+01:00
+9,3de49ba59cecc365badb2e7193d3dbc8924be4e7,"Revert ""Restore preferred activity filter if it not inside""
+
+This reverts commit da90fd9871ee128a127e32280475279360c61f66.
+
+Reason for revert:
+
+1-18 13:33:52.927  2356  2356 E System  : ******************************************
+11-18 13:33:52.927  2356  2356 E System  : ************ Failure starting system services
+11-18 13:33:52.927  2356  2356 E System  : java.lang.ArrayIndexOutOfBoundsException: length=2; index=2
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.pm.PreferredComponent.sameSet(PreferredComponent.java:266)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.pm.PreferredIntentResolver.shouldAddPreferredActivity(PreferredIntentResolver.java:63)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.pm.Settings.readPreferredActivitiesLPw(Settings.java:1315)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.pm.Settings.readPackageRestrictionsLPr(Settings.java:1686)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.pm.Settings.readLPw(Settings.java:3032)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.pm.PackageManagerService.<init>(PackageManagerService.java:3185)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.pm.PackageManagerService.main(PackageManagerService.java:2781)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.SystemServer.startBootstrapServices(SystemServer.java:970)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.SystemServer.run(SystemServer.java:704)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.server.SystemServer.main(SystemServer.java:444)
+11-18 13:33:52.927  2356  2356 E System  : 	at java.lang.reflect.Method.invoke(Native Method)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+11-18 13:33:52.927  2356  2356 E System  : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:946)
+11-18 13:33:52.927  2356  2356 D SystemServerTiming: StartPackageManagerService took to complete: 158ms
+11-18 13:33:52.927  2356  2356 E Zygote  : System zygote died with fatal exception
+11-18 13:33:52.927  2356  2356 E Zygote  : java.lang.ArrayIndexOutOfBoundsException: length=2; index=2
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.pm.PreferredComponent.sameSet(PreferredComponent.java:266)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.pm.PreferredIntentResolver.shouldAddPreferredActivity(PreferredIntentResolver.java:63)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.pm.Settings.readPreferredActivitiesLPw(Settings.java:1315)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.pm.Settings.readPackageRestrictionsLPr(Settings.java:1686)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.pm.Settings.readLPw(Settings.java:3032)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.pm.PackageManagerService.<init>(PackageManagerService.java:3185)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.pm.PackageManagerService.main(PackageManagerService.java:2781)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.SystemServer.startBootstrapServices(SystemServer.java:970)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.SystemServer.run(SystemServer.java:704)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.server.SystemServer.main(SystemServer.java:444)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at java.lang.reflect.Method.invoke(Native Method)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+11-18 13:33:52.927  2356  2356 E Zygote  : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:946)
+11-18 13:33:52.927  2356  2356 D AndroidRuntime: Shutting down VM
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: java.lang.ArrayIndexOutOfBoundsException: length=2; index=2
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.pm.PreferredComponent.sameSet(PreferredComponent.java:266)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.pm.PreferredIntentResolver.shouldAddPreferredActivity(PreferredIntentResolver.java:63)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.pm.Settings.readPreferredActivitiesLPw(Settings.java:1315)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.pm.Settings.readPackageRestrictionsLPr(Settings.java:1686)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.pm.Settings.readLPw(Settings.java:3032)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.<init>(PackageManagerService.java:3185)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.pm.PackageManagerService.main(PackageManagerService.java:2781)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.SystemServer.startBootstrapServices(SystemServer.java:970)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.SystemServer.run(SystemServer.java:704)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.server.SystemServer.main(SystemServer.java:444)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+11-18 13:33:52.927  2356  2356 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:946)
+11-18 13:33:52.928  2356  2356 E AndroidRuntime: Error reporting crash
+11-18 13:33:52.928  2356  2356 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke interface method 'void android.app.IActivityManager.handleApplicationCrash(android.os.IBinder, android.app.ApplicationErrorReport$ParcelableCrashInfo)' on a null object reference
+11-18 13:33:52.928  2356  2356 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$KillApplicationHandler.uncaughtException(RuntimeInit.java:156)
+11-18 13:33:52.928  2356  2356 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1073)
+11-18 13:33:52.928  2356  2356 E AndroidRuntime: 	at java.lang.ThreadGroup.uncaughtException(ThreadGroup.java:1068)
+11-18 13:33:52.928  2356  2356 E AndroidRuntime: 	at java.lang.Thread.dispatchUncaughtException(Thread.java:2191)
+
+Change-Id: I9c018f52c16dc6cf1a160db58e08fbeb42803af6",2021-03-21 13:53:34+01:00
+10,62da546cf8f4615cea39257aa4fca38331768952,"Revert ""Revert ""Restore preferred activity filter if it not inside""""
+
+This reverts commit fc93d732ae17f21338ce63dc1672082cc349a2e8.
+
+Reason for revert: re-uploading with fix
+
+BUG: 170589675
+Change-Id: Ica78710bfc40dfaac74152c7aec1985f6e19fd6c
+(cherry picked from commit 5b80d5022416ca4baa334bb60ca82013f8cfe41c)
+Merged-In: Ica78710bfc40dfaac74152c7aec1985f6e19fd6c",2021-03-21 13:53:34+01:00
+11,95fa7687295561b3d938165d38393cfd7d9cab66,"MediaCodecInfo: limit resolution to 4K for 32-bit processes
+
+Due to the limited virtual memory address space it is not practical
+to advertise support for more than 4K for 32-bit processes.
+
+Bug: 173488434
+Test: atest CtsMediaTestCases -- --module-arg CtsMediaTestCases:size:small
+Change-Id: Ibcd7f70f4efd8d696d831769bafe932207640830",2021-03-21 13:53:34+01:00
+12,6941cbf93f302eeaedb5ab984b33c09ed77dbbbc,"MediaCodecInfo: do not alter performance points for 32-bit processes
+
+Bug: 173488434
+Test: atest CtsMediaTestCases:MediaCodecListTest
+Merged-In: Ie40557dc0401411cc51650ea42c0fd75f90c67ce
+Change-Id: Ie40557dc0401411cc51650ea42c0fd75f90c67ce",2021-03-21 13:53:34+01:00
+13,6bd9c12ebe0566201bd727dd00513b11dbad8c5b,"perf: Support AIDL Lineage power HAL service
+
+ * Call the new AIDL HAL where available and fall back to the HIDL HAL
+   if not.
+ * Map existing HIDL hint call to AIDL HAL.
+
+TODO: Invoke the APIs directly from lineage sdk once killed HIDL.
+
+Change-Id: Ieffa8f5c13c59b901cb030b7bb8a190793cd8cee",2021-03-21 13:58:57+01:00
+14,401638a795b0c25097eb0561bb70f97d6a5bc556,"VolumeDialogImpl: Don't vibrate when volume dialog is not visible
+
+We shouldn't be playing volume dialog specific haptic feedback
+when the dialog is not visible.
+
+Test: Call am.setRingerModeInternal(AudioManager.RINGER_MODE_VIBRATE)
+      from external application, observe that there's no vibration.
+Change-Id: I10ad1e0259092c2297d96f083161395275467781",2021-03-23 10:31:59+01:00
+15,90a1fae619522e79d16799099de7525f0d6db0c5,"SystemUI: AODTile: Use SecureSetting to change doze setting
+
+Change-Id: Ic39d26ac8a37041b75862627a497274b24f3362c",2021-03-25 12:37:05+01:00
+16,bc36ac0dcbb62ad81f099087bb66b2ede59c3057,"SystemUI: AODTile: Actually start using SecureSetting
+
+Change-Id: I37f0194fcb54db1cf3cae221f7f702d398834ced",2021-03-25 12:37:05+01:00
+17,796d3a4c18092e0206936c4bf161e9e0b61154b4,"overlays: Fix background colouring for settings themed icons
+
+ * Settings dashboard icons use primary colour as background since https://github.com/LineageOS/android_packages_apps_Settings/commit/1c376a3a10db9db94c0719263d9018c6cf8749d3
+ * Google forgot to apply it in their themed icons, making them look odd
+
+Change-Id: I45ef6b8cd7ed1a89a811fac6066df7bcdbdf56a6
+Signed-off-by: Adithya R <gh0strider.2k18.reborn@gmail.com>",2021-03-31 17:43:43+02:00
+18,1f0ac7f71914449a6cbf5d4c63356e7105106392,"keyguard: Do not trigger a wake up when hiding lockscreen
+
+* This piece of code was introduced in commit:
+      Swipe up to unlock when pulsing
+      Change-Id: Ida5adb6a18f3ee992b1d154e10b35ba244f5b712
+  However, it appears to not be needed and instead causes the device
+  to wakeup right after dozing with no lockscreen set.
+
+* Remove it and test with:
+  adb shell am broadcast -a com.android.systemui.doze.pulse com.android.systemui
+  The device can still be unlocked from pulsing state.
+
+Change-Id: Ib5c2f930bd4de04cbf8f89f12d046f30c9b32a52",2021-04-01 00:21:01+02:00
+19,2269a328e8f3ce8742a083260055fe81c61be022,"SystemUI: global actions: fix icon position on multi-line action
+
+Some languages (such as Finnish) have reboot text over 2 lines.
+Set the top margin of the message to 0dp when there is more than
+1 line of text and to 14dp when there is only 1 line.
+Fixes issue where icon is not inline  with other icons on a tile
+with multi-line message.
+
+Test: verify icons are aligned on different dpi's in power menu.
+
+Signed-off-by: Timi Rautamäki <timi.rautamaki@gmail.com>
+Change-Id: I4320e46a14e671e1176da14f8210604c7c9470d2",2021-04-03 18:56:09+02:00
+20,a1775ac3a7f71d53ee7d8ade710f7d9d811c44db,"SystemUI: Fix status bar battery icon title
+
+The wrong string was being picked up which is not capitalized
+and not even localized. Use the already localized string
+from SystemUI package.
+
+Change-Id: I4be427c95a0fb98c77d450e0791bb8e3442ed3a1",2021-04-08 21:44:40+01:00
+21,21a64f309e0b6b43b6ddf913e9d31adba893158f,"SystemUI: tiles: Open display settings on long clicks for livedisplay tiles
+
+* Since commit ""LineageParts: Allow removing livedisplay pref screen with
+  config_enableLiveDisplay"" I17103ad116d1d26855fb47fdee1fa6cdc914e053 the
+  org.lineageos.lineageparts.LIVEDISPLAY_SETTINGS action does not exist
+  anymore and hence the long click was broken.
+
+* Instead open the display settings where the LiveDisplay settings can be
+  found easily.
+
+Change-Id: I5ddcf9f8877552f60adb5216d065ffdf93786a44",2021-04-09 10:09:36+02:00
+22,5960e54c09803b3b07f4274afb1dc6a205bf58cd,"SystemUI: Add anti flicker tile
+
+Change-Id: If2b23b509ff7f8c56abe427d8c35d27c453bd224",2021-04-09 10:09:36+02:00
+23,0de4290f6e6bb144d7407e63324689a0e6bc8981,"Merge tag 'android-11.0.0_r34' into staging/lineage-18.1_merge-android-11.0.0_r34
+
+Android 11.0.0 release 34
+
+* tag 'android-11.0.0_r34':
+  Revert ""Only allow BROWSABLE && DEFAULT Intents to be always opened""
+  Fix legacy APIs when VPN switches to suspended underlying network.
+  Backport test coverage from aosp/1547496.
+  Backport some helpers in ConnectivityServiceTest.
+  Test for bugs with suspended VPN underlying networks.
+  Add a test for getDefaultNetworkCapabilitiesForUser.
+  Improve testing of CONNECTIVITY_ACTION broadcasts.
+  Test passing an underlying network array with null network in it.
+  Make testVpnNetworkActive more deterministic.
+  Make MockVpn more realistic and easier to use.
+  Increase test coverage for VPN info sent to NetworkStatsService.
+  Simplify MockVpn.
+  Test a VPN with an underlying network that does not yet exist.
+  Get ApplicationInfo using usr id
+  [DO NOT MERGE] Close screenshot process on user switched
+  RESTRICT AUTOMERGE Allow CDM to hide overlays
+  RESTRICT AUTOMERGE Prevent non-system overlays from showing over CDM UI
+  Fix thread safety issue on clearing cache
+  [SettingsProvider] extend font size scale range
+  [RESTRICT AUTOMERGE] Fix potential out of bounds writes in LogEvent.
+  Only update native InputApplicationHandle once
+  Only allow BROWSABLE && DEFAULT Intents to be always opened
+  DO NOT MERGE: Do not inject mock location to chipset
+  Check mode/boost index before accessing cached support value
+
+Change-Id: I4cfee8d810d011847bd4835b4922f878e4a5bae2",2021-04-10 13:28:06-06:00
+24,46712ee2e10a2e714edde5664354b132cb651d43,"SystemUI: Make center clock layout safe insets aware
+
+This effectively fixes wrongly centered clock layout on
+devices with side notch / hole punch.
+
+Change-Id: I7cb8cbbe628397c50d37e23ba1853368e61a1fc9",2021-04-13 22:01:15+02:00
+25,5a28ff769b487f003dc72cbd0ede6e8da4e605b3,"SystemUI: Move network traffic monitor under same layout as clock
+
+This effectively fixes wrongly network monitor layout on
+devices with side notch / hole punch.
+
+Change-Id: I217b886d8da75eab7636066f4822f5fd6dbc9aff",2021-04-13 22:01:15+02:00
+26,84c0117f46816f2d591e593856d430877eb5aee7,"SystemUI: Hide centered_area when showing heads up
+
+Needed for network traffic monitor.
+
+Change-Id: Ib96a75a936cf4d71e23a575e012741b812ed2aa1",2021-04-13 22:01:15+02:00
+27,70af95c7b26e3d2dcbab3a4bf1e41336e91ea1cf,"SystemUI: Pass lock pattern size to biometrics auth
+
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/3344
+Change-Id: I6f1c6dbd1abc583dedc8206218903f706fefd6fd",2021-04-17 00:00:22+02:00
+28,01b994ac7c5624c1efa8fba1c3fa84d586c164da,"[SQUASH]base: Revert secondary home handle
+
+So following navbar mess for hours and thinking how did AOSP messed it this bad.
+Apparently they draw a fake navbar for landscape orientation.
+The code is broken, I don't know why or how it even got pushed.
+
+These reverts solve ""navbar"" being drawn in random places on the screen
+when activity resumed from recents on landscape, stealing touches while
+doing nothing really.
+
+Revert ""Show secondary home handle in immersive apps""
+
+This reverts commit 9c84ea1ff0d93354b6eb378957b2e2f869537664.
+
+Revert ""Draw a fake home handle during QuickSwitch""
+
+This reverts commit 63e92bc00bdfef5cb5f8a8e086fc54e7e6a8d864.
+
+Change-Id: I6223247fa2f24466f4497855f80be0faf46dd242",2021-04-22 09:43:12+02:00
+29,6cd9135c9cbfe3b423825a67f600b3cb06fa0717,"Keyguard: Fix mapping mismatch between KeyEvent and NumPadKey
+
+Change-Id: Ida28a4f037c2f3fa843ac136779e026020d711db",2021-04-24 19:42:51+01:00
+30,be00ba5a03fe0aefa1a6ec61158504ede7f444bf,"SystemUI: Apply system_icons_keyguard_padding_end to parent view
+
+* This fixes ugly padding when multiuser switch is visible
+  and system_icons_keyguard_padding_end is overlayed to some
+  custom value.
+
+Change-Id: If5a1facac7f3b4c1569129ad9574e3c148323e10",2021-04-27 13:42:46+02:00
+31,2807f50ea5f5263bb23039c42fa0c9dc1d736bf6,"SystemUI: allow to limit the max framerate of built-in screen recorder
+
+Some devices seem to have problems when running the screen recorder at
+native resolution @ max fps (I'm looking at you surya). The symptoms may
+include severe lagging in the recording or stuff like crashes when
+stopping in a landscape orientation. Allow limiting the recorder fps to
+fix these issues.
+
+Test: record screen on surya with config_screenRecorderMaxFramerate==90
+while screen is running @ 120Hz, observe a smooth video. Stop the
+recording while in full screen landscape youtube video, observe no crash
+
+Signed-off-by: Kuba Wojciechowski <nullbytepl@gmail.com>
+Change-Id: I361c7ae4bf74f2dd67b86e960f8d2d6ef63f5b8f",2021-04-28 06:43:36+02:00
+32,8f854f406f83a570f2ea0c262281ee9f2edc1d99,"[DO NOT MERGE] Use loadDrawableAsUser in MediaDataManager
+
+This fixes a SystemUI loopcrash when casting as a guest user.
+
+Bug: 173026465
+Test: Manual - install media app that can cast on guest user only,
+      then cast from guest user.  SystemUI should not crash.
+Test: atest com.android.systemui.media
+Change-Id: I70f5de89a813c54a616eb701a02aa43272754580",2021-04-28 17:15:14+02:00
+33,b6f3f9833f563fb9c4f5a1813104bd7d10462435,"SystemUI: Update carrier label margin right after setting the padding
+
+This change addresses the two following issues:
+
+* When restarting SystemUI using `pkill -9 systemui`, carrier label's
+  margin start would not get initialized since onConfigurationChanged()
+  didn't get called.
+
+* onConfigurationChanged() was being called before onApplyWindowInsets()
+  resulting in invalid mPadding.first being used.
+
+Change-Id: I076d1e9cd7a2a011512f5dbd5de4a9a991f28042",2021-05-01 17:13:54+02:00
+34,9bf606b9a614ce1de6a9d75af2c75b5d4d4f1f9b,"PhoneWindowManager: Add support for back key long press customization
+
+Change-Id: I28762c88d4777f8dbc8f213a2522875c3428fdab",2021-05-03 23:30:02+02:00
+35,773c39a5871868044a07201e6b31f051b6eb8eba,"PhoneWindowManager: Forward port long press back to kill app
+
+Change-Id: If3ed27e8408cdf383653c7d18988112c13f8bcea",2021-05-04 13:02:53+02:00
+36,029edb38dc90614d263da266ef6f8a3930038de1,"SystemUI: Force left-to-right for network traffic monitor holder
+
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/3445
+Change-Id: I19ea852cedfd2a69a47006977f1b74a172008058",2021-05-06 13:51:51+02:00
+37,653674cdb1f24976cdafe755df92da12d4646094,"Merge tag 'android-11.0.0_r37' into staging/lineage-18.1_merge-android-11.0.0_r37
+
+Android 11.0.0 Release 37 (RQ2A.210505.003)
+
+* tag 'android-11.0.0_r37':
+  Revert ""Limit maximum allowed size for a status bar icon""
+  [DO NOT MERGE] Make screenshot error notification PendingIntent immutable
+  Revoke storage on SDK downgrade or new full storage request
+  Restrict the overridden min size for PiP
+  Limit maximum allowed size for a status bar icon
+  [RESTRICT AUTOMERGE] Use userId instead of USER_CURRENT in shouldLockKeyguard.
+  Add pkg target to snoozing alarm
+
+Change-Id: I44ec31f8a08abbe4fa1cc1cc1e2c44f8196b44f8",2021-05-07 18:14:34-06:00
+38,e97818f314866868b1995ddb5ee9fe28e41ec790,"WifiManager: Add StaState API [1/2]
+
+Wifi stastate callback functions are refrenced by mediatek ims blobs when they init to register ims-service.
+
+test: IMS services (voLTE and voWIFI) works fine on mtk67xx (begonia) and crashes due to missing stastate callback functions is no more.
+
+- Reversed out from miui_BEGONIAININGlobal_V11.0.2.0.QGGINXM_7e11a54a70_10.0
+
+Change-Id: I7309906d775f45c7ea42b3324679a0f7b776a1c9",2021-05-10 02:11:42+02:00
+39,c3805604ef5323aa349e2f8c89abc8e32cf0941d,"VolumeDialogImpl: Reschedule the timeout on clicks on captions
+
+Change-Id: Ie98813a91396f3c3a84aeac8a609071c5cc315f6",2021-05-14 11:48:42+02:00
+40,678a06b709f35c37faa2c4a3c500c2eb4c0d6232,"VolumeDialogImpl: Remove insets listener on dismiss
+
+Signed-off-by: Arian <arian.kulmer@web.de>
+Change-Id: I880bfcedad40f2cd4f602709f2ba963aad5ac4cb",2021-05-14 11:49:43+02:00
+41,b0675cecd76f907284d7dfb0a266fcd663f4fa6f,"VolumeDialogImpl: Get the location in window instead of on screen
+
+* This fixes the location on devices with display cutouts.
+
+Signed-off-by: Arian <arian.kulmer@web.de>
+Change-Id: I38b84d227a36081d94d04d9985e73dc682effbda",2021-05-14 11:49:46+02:00
+42,5921a436984295af3491037de42c406e26193d62,"ReadingModeTile: Drop dependency on wellbeing app
+
+Google's wellbeing app used to provide Wind Down feature along with
+a grayscale option and a tile for it. It is no longer the case,
+so bring back our tile unconditionally.
+
+Change-Id: I5a29d4f8f86dfe0361064842da8c9a3b2ce33d47",2021-05-14 23:21:05+01:00
+43,ff120e6ff029b45bc9bf500b206387ab7a13512d,"Automatic translation import
+
+Change-Id: I47c5dd47ca4ba5360258b4d96a751a3b530fd3e8",2021-05-15 21:14:00+02:00
+44,de06a3c7cc67bb116f321a8e0c192585eb1e6c9e,"FODCircleView: Hide fod when screen is off
+
+It seems that onHideFODView() will not be called when
+the screen goes off by timeout under ambient display.
+
+Obviously, this case cannot be handled by checking
+doze status. Move to onScreenTurnedOff instead.
+
+Test: reproduce this issue on OnePlus 7 Pro
+      and see if notify_dim is set to 0
+
+Signed-off-by: alk3pInjection <webmaster@raspii.tech>
+Change-Id: Ib47f90eab806ffa7ad67b650fce3a4382b9d82e4",2021-05-16 12:49:18+02:00
+45,600d04c1e5822d3cadeb752b142a80553b424582,"Make isUidIsolated public
+
+Change-Id: I5a646690ff8de4ccf0802c6159e20520efa40185",2021-05-21 16:20:00+02:00
+46,b5632e3ae323675db4243c451f91ec63f88339d5,"frameworks: Power menu customizations for R
+
+* Forward-port the rest of power menu customizations to R (airplane mode, screenshot, lockdown, bugreport, user switcher).
+* Screenshot option will always show by default and can be turned off in Settings.
+* Cleanup some no-longer-necessary variables.
+* Move constants back to the SDK.
+* Use the new LineageGlobalActionsService to get user's configuration
+
+Includes the commit below:
+Author: Michael Bestas <mikeioannina@gmail.com>
+Date:   Sat Jan 31 06:06:38 2015 +0200
+
+    GlobalActions: Use circular user avatars
+
+    * Use circular & smaller avatars, logic copied from SystemUI
+    * Improve current user indication (thanks to maxwen)
+
+    Change-Id: I81e6c4afd604f5cb8b22e2c4db9b174bbe7fb3f0
+    Ticket-Id: OPO-456, CYNGNOS-1901
+
+Signed-off-by: Gegham Zakaryan <zakaryan.2004@outlook.com>
+Change-Id: Id0ea8ef3009e8e028ddf47698af94663cb33d49a",2021-05-23 15:17:05+02:00
+47,2ca394b51030666edbab57775e1b7c30ae9c334b,"frameworks: Add tunable for GlobalActions configuration
+
+Before, the power menu may have not updated when switching users. With tunables, we can be sure each user will only see their own settings.
+
+Remove the ACTION_UPDATE_POWER_MENU broadcast as well.
+
+Signed-off-by: Gegham Zakaryan <zakaryan.2004@outlook.com>
+Change-Id: I1d7dbe1eac41a83910c9c6db28162212971b42fb",2021-05-23 15:17:05+02:00
+48,d68b0efb442a405e4c7aa6cb574cf2d085ff2d45,"frameworks: New Users dialog for GlobalActions
+
+Take advantage of the new R-style dialog used in PowerOptions for showing the user switcher. All of the previous functionality has been retained.
+
+Signed-off-by: Gegham Zakaryan <zakaryan.2004@outlook.com>
+Change-Id: Ib8ba9276d85b0ddcb3a188e72235eb77a4c70a82",2021-05-23 15:17:05+02:00
+49,5ce924dca11eec89dbdb59f4bf8b56407beced49,"GlobalActionsDialog: Remove broken PhoneStateListener for airplane mode toggle
+
+The Airplane Mode toggle in GlobalActions is completely broken,
+being stuck in TurningOn transition state when pressing it when
+Airplane Mode is off. This happens because the PhoneStateListener
+doesn't trigger onServiceStateChanged when Airplane Mode turns on.
+This commit removes the redundant PhoneStateListener and makes the
+logic work for Telephony and non-Telephony devices pretty much the
+same way by allowing onAirplaneModeChanged() to handle both cases.
+
+Change-Id: Ifd1e06ff144addf8dd2c8494769b2d646599ae0a
+Signed-off-by: Gegham Zakaryan <zakaryan.2004@outlook.com>",2021-05-23 15:17:05+02:00
+50,b1a93f058c54bdda880bbaf4fada024d69672c8a,"Explicitly make SBC Dual Channel an optional (HD) codec
+
+Change-Id: I92f9c0bde560075bb887afff3095ff284fa6f5ce",2021-05-27 22:11:29+02:00
+51,c0d43e091d215da337b72ec178663f0641117ac2,"SystemUI: Remove unused resources
+
+These have been moved to CarSystemUI
+
+Change-Id: Ifb0e79c429ff2ed4666e2ba5b64efd334db10fd3",2021-05-28 18:11:31+02:00
+52,1d36f44fdef026dcc8c56d77e6afaeacde0595d7,"SystemUI: QS: minimize detail view to middle of the button
+
+Test: visual observation
+Signed-off-by: Timi Rautamäki <timi.rautamaki@gmail.com>
+Change-Id: I46b9be454ee5a699833ce0d8608df2e545e0f905",2021-05-31 00:58:40+02:00
+53,81aec884244b5c535570d3c664a8c2c28e8cfd05,"SystemUI: avoid double ripple in QS detail view
+
+ * Remove the style attribute of the imageview
+   in order to remove background ripple for this
+   view that was displayed in addition to the
+   ripple of the whole layout.
+
+Test: visual observation
+Signed-off-by: Timi Rautamäki <timi.rautamaki@gmail.com>
+Change-Id: I964a86bb1f4ff1539630f8f5e8fcec67e55a8a11",2021-05-31 00:58:50+02:00
+54,dcb96947fe0d5bb8160ae9dc6670beee073f56ff,"SystemUI: use matching padding on both sides of QS detail title
+
+ * Add a paddingEnd for the title switch for
+   left-to-right symmetry.
+
+Test: visual observation
+Change-Id: Ida3d238ffdf54bf1e6fa12e9a4b0a18168fb5aec
+Signed-off-by: Timi Rautamäki <timi.rautamaki@gmail.com>",2021-05-31 00:59:17+02:00
+55,045f7580f787f5a3434667f59cd46cc5d9695439,"DozeSensors: only use proximity sensor if supported
+
+On msm-4.14 devices, when the proximity sensor is in use,
+the smp2p-sleepstate IRQ is fired multiple times a second,
+with each one holding a 200ms wakelock.
+This is probably a bug in the DSP firmware.
+To fix this, avoid using the proximity sensor in doze mode,
+because sleep is preferred to turning off the screen.
+
+Change-Id: I57750afd77267abdc49780f70636626d20e666ad",2021-06-03 16:35:27+02:00
+56,f5c3b65a32066d3c314b6b30849724a7f043740f,"IconPack{Sam,Victor}: Inverse vol collapse/expand anim path data
+
+- This commit aligns the volume bar collapse/expand icon animations
+  behaviour of Sam and victor with other themes and also reformat
+  the code.
+
+- Fixes wrong expand/collapse icon in volume bar.
+
+Change-Id: I30d9cb88e89f2452ce013cdf7d882dee93a34fed",2021-06-12 06:02:30+02:00
+57,14ea33f8e87874069612cb26912bf33bfd0e0be0,"Revert ""DO NOT MERGE Revert ""Set fixed fps when ambient or display brightness is high""""
+
+This reverts commit 62a3a8387ef5889ba4598f561bfc4a7a29d58266.",2021-06-14 07:03:44-06:00
+58,b80ca7e2abedc724fd31d6dfac0798f52ba2e6e3,"Revert ""DO NOT MERGE Revert ""Allow DeviceConfig to change display settings for high zone""""
+
+This reverts commit 364ecec0779d28ef68bcc9601789a1fe0986af0e.",2021-06-14 07:03:44-06:00
+59,0d56322831621c44d8d3f30d777f0893216ad09c,"Merge tag 'android-11.0.0_r38' into staging/lineage-18.1_merge-android-11.0.0_r38
+
+Android 11.0.0 Release 38 (RQ3A.210605.005)
+
+* tag 'android-11.0.0_r38':
+  Prevent apk-in-apex from being registered under wrong apex
+  Mark intents as immutable
+  Restrict alarm broadcast
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  getCameraIdListNoLazy : remove system cameras from mTorchStatus as well.
+  DO NOT MERGE Set focus to PasswordTextView by default.
+  Update carrier privilege check in enforceSubscriptionPlanAccess
+  Increase maximum allowed size for status bar icons
+  Increase maximum allowed size for status bar icons
+  Rebind InstallSuccess UI on resume
+  Revert ""DO NOT MERGE Remove focus on PasswordTextView""
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE Fix bubbles for workprofile
+  Camera: Fix a removal-while-iterate bug
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE Reset top focused root task when task hidden
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Bluetooth airplane listener: Check for null
+  [DO NOT MERGE] Make PendingIntents in screenshots immutable
+  [DO NOT MERGE] Make PendingIntents in screenshots immutable
+  Import translations. DO NOT MERGE ANYWHERE
+  BG-FGS while-in-use restriction uses the same grace period mechanism as BG-Activity-Launch.
+  Allow FGS started from MediaButtonReceiver to have while-in-use permissions.
+  Ensure the next activity of non-focusable task to be visible
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE: Don't take the AM lock in cached app compaction handler
+  RESTRICT AUTOMERGE Handling removing <original-package> tag
+  RESTRICT AUTOMERGE Revert ""Handling removing <original-package> tag""
+  Dump warning logs to prevent app crash while no top-resumed changes
+  DO NOT MERGE - Disallow deletion of channels with FGS notifications
+  Prevent caching unexpected IME shown state for legacy split
+  DO NOT MERGE - Disallow deletion of channels with FGS notifications
+  DO NOT MERGE Inflate NotificationPanel on instantiation
+  TelephonyRegistry: Pass featureId to LocationAccessPolicy
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE Remove superfluous resetting of Keyguard on unocclusion.
+  Vibrate as system instead of as an app
+  Import translations. DO NOT MERGE ANYWHERE
+  Fix an NPE in BatteryService
+  Override isRestricted for preventing unexpected resource loading
+  DO NOT MERGE Delete superfluous call of mInsetsController.onControlsChanged.
+  Make sure to hide IME adjust dims when exiting split mode
+  Import translations. DO NOT MERGE ANYWHERE
+  Sanitize text fields
+  Import translations. DO NOT MERGE ANYWHERE
+  wifidisplay: restrict broadcast by the proper permission
+  wifidisplay: restrict broadcast by the proper permission
+  Import translations. DO NOT MERGE ANYWHERE
+  Revert ""Only allow BROWSABLE && DEFAULT Intents to be always opened""
+  Revert ""Only allow BROWSABLE && DEFAULT Intents to be always opened""
+  DO NOT MERGE Remove focus on PasswordTextView
+  Ensure that ML model results are still bounded by the gesture insets
+  Include whether in touch mode for WindowlessWindowManager
+  Return copy of pending token list
+  DO NOT MERGE Do not reinflate the layout if it has not been already inflated.
+  Use futures for binding and talking to the ExternalStorageService.
+  Import translations. DO NOT MERGE ANYWHERE
+  [RESTRICT AUTOMERGE]Fix launching app from work profile cannot show splash screen.
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Move posting logic from PerDisplay to DisplayWIndowInsetsControllerImpl.
+  DO NOT MERGE Add generic rotary support for sysui overlay window
+  Configure privapp perms for rotary service
+  Import translations. DO NOT MERGE ANYWHERE
+  Fix nine-patches to always filter
+  Restrict the overridden min size for PiP
+  [Fix] Bluetooth device ordering
+  DO NOT MERGE Allow the Car Setup Wizard appl to send CAR_INFORMATION notifications
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Configure Bluetooth profiles displayed in settings
+  DO NOT MERGE Intercept back button on user switcher screen
+  Avoid TransferPipe for local dumpCacheInfo calls
+  Configure privapp perms for car activity resolver
+  Stop keeping freeform activities visible.
+  Add immutability flag to PendingIntents
+  Add Emergency callback mode shell command
+  Import translations. DO NOT MERGE ANYWHERE
+  Disable resetting WRITE_MEDIA_IMAGES and WRITE_MEDIA_VIDEO appops
+  Make two broadcasts protected
+  Add pkg target to snoozing alarm
+  Add pkg target to snoozing alarm
+  Import translations. DO NOT MERGE ANYWHERE
+  Fix possible NPE when matching accessory version
+  Make isAppBad() lock-free
+  DO NOT MERGE Chk QUERY_ALL_PACKAGES when resolving
+  Notify client to clear intermediate rotated adjustments
+  Import translations. DO NOT MERGE ANYWHERE
+  Adds caller check to getAllPackages()
+  Adds caller check to getAllPackages()
+  [DO NOT MERGE] Catch RuntimeException from DisplayManager
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Allow empty tokens in strict grammar
+  Allow empty tokens in strict grammar
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE Disable privacy indicators
+  Parcel queriesProviders in ParsingPackageImpl
+  Do not keep the input array with CPU times
+  Apply split-screen resize on sync queue
+  CachedAppOptimizer: don't take AM lock when freezer is not enabled
+  Revoke storage on SDK downgrade or new full storage request
+  freezer: handle exception in locks file format
+  Stop passing in statsFile fds as they will be leaked when returned to the caller.
+  Fix the the proto definition for app startup and fully drawn events.
+  [DO NOT MERGE] Make screenshot error notification PendingIntent immutable
+  [DO NOT MERGE] Make screenshot error notification PendingIntent immutable
+  Import translations. DO NOT MERGE ANYWHERE
+  Handle cancelled Insets animation
+  [RESTRICT AUTOMERGE] Revert ""[RESTRICT AUTOMERGE] Remove DPMS#getProfileOwner in favor of getProfileOwnerAsUser""
+  Create ux restricted customizations for DeviceDefault buttons and switches
+  DO NOT MERGE: Associate notif cancels with notif posts
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  [DO NOT MERGE] Close screenshot process on user switched
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  RESTRICT AUTOMERGE Prevent non-system overlays from showing over CDM UI
+  RESTRICT AUTOMERGE Allow CDM to hide overlays
+  Import translations. DO NOT MERGE ANYWHERE
+  [RESTRICT AUTOMERGE] Use userId instead of USER_CURRENT in shouldLockKeyguard.
+  [DO NOT MERGE] DisplayImeController: fix out-of-sync IME visibility
+  DO NOT MERGE Dont restore focus on new HUN window
+  [RESTRICT AUTOMERGE] Use userId instead of USER_CURRENT in shouldLockKeyguard.
+  Fix ambient information which did not get for locking refresh rate
+  Added to enable/disable log for DisplayModeDirector
+  Import translations. DO NOT MERGE ANYWHERE
+  Change setPrimaryStorageUuid to handle it for the current user
+  [DO NOT MERGE] Close screenshot process on user switched
+  Fix legacy APIs when VPN switches to suspended underlying network.
+  Backport test coverage from aosp/1547496.
+  Backport some helpers in ConnectivityServiceTest.
+  Test for bugs with suspended VPN underlying networks.
+  Add a test for getDefaultNetworkCapabilitiesForUser.
+  Improve testing of CONNECTIVITY_ACTION broadcasts.
+  Test passing an underlying network array with null network in it.
+  Make testVpnNetworkActive more deterministic.
+  Make MockVpn more realistic and easier to use.
+  Increase test coverage for VPN info sent to NetworkStatsService.
+  Simplify MockVpn.
+  Test a VPN with an underlying network that does not yet exist.
+  Limit maximum allowed size for a status bar icon
+  Limit maximum allowed size for a status bar icon
+  [DO NOT MERGE] Close screenshot process on user switched
+  [DO NOT MERGE] Close screenshot process on user switched
+  [DO NOT MERGE] Close screenshot process on user switched
+  Fix legacy APIs when VPN switches to suspended underlying network.
+  Backport test coverage from aosp/1547496.
+  Backport some helpers in ConnectivityServiceTest.
+  Test for bugs with suspended VPN underlying networks.
+  Add a test for getDefaultNetworkCapabilitiesForUser.
+  Improve testing of CONNECTIVITY_ACTION broadcasts.
+  Test passing an underlying network array with null network in it.
+  Make testVpnNetworkActive more deterministic.
+  Make MockVpn more realistic and easier to use.
+  Increase test coverage for VPN info sent to NetworkStatsService.
+  Simplify MockVpn.
+  Test a VPN with an underlying network that does not yet exist.
+  [DO NOT MERGE] Close screenshot process on user switched
+  DO NOT MERGE Handle back button for notification panel
+  Add IMMUTABLE flag to AccountManager pending intents.
+  ActivityManagerService: all users can handle freezer state in debug builds
+  Allow carriers to configure RTT while roaming
+  DO NOT MERGE: Do not inject mock location to chipset
+  Remove bundled CompanionDeviceSupport permissions
+  freezer: increase timeout to 5 mins
+  DO NOT MERGE Do not update bar control target when application is starting
+  Enabled TEMP_NOT_METERED support for carriers
+  add Shell-package-library to allow product type level update
+  Change target package for com.android.car.shell
+  Fix thread safety issue on clearing cache
+  Fix thread safety issue on clearing cache
+  ActivityManager: don't freeze processes holding file locks
+  [SettingsProvider] extend font size scale range
+  [SettingsProvider] extend font size scale range
+  [SettingsProvider] extend font size scale range
+  [SettingsProvider] extend font size scale range
+  Don't release WakeLock w/o active client
+  Fix fingerprint dialog color contrast for dark theme
+  DO NOT MERGE: Do not inject mock location to chipset
+  DO NOT MERGE: Do not inject mock location to chipset
+  Prevent multiple calls of ActivityThread.systemMain()
+  DO NOT MERGE ""Fix the ambient lux which did not update for blocking zone""
+  DO NOT MERGE ""Allow DeviceConfig to change display settings for high zone""
+  DO NOT MERGE ""Set fixed fps when ambient or display brightness is high""
+  Add a new reason code for IMS call failed due to network congestion
+  DO NOT MERGE: Do not inject mock location to chipset
+  DO NOT MERGE: Do not inject mock location to chipset
+  [RESTRICT AUTOMERGE] Fix potential out of bounds writes in LogEvent.
+  Temporary fix to prevent TEMPORARILY_NOT_METERED leak
+  Allow CBR when device owners is set up
+  Do not abort launch logger by invisible drawn activity
+  DO NOT MERGE Remove floating cards launcher
+  Get ApplicationInfo using usr id
+  Import translations. DO NOT MERGE ANYWHERE
+  DO NOT MERGE Revert ""Set fixed fps when ambient or display brightness is high""
+  DO NOT MERGE Revert ""Allow DeviceConfig to change display settings for high zone""
+  DO NOT MERGE Revert ""Fix the ambient lux which did not update for blocking zone""
+  Import translations. DO NOT MERGE ANYWHERE
+  Only allow BROWSABLE && DEFAULT Intents to be always opened
+  Only allow BROWSABLE && DEFAULT Intents to be always opened
+  Only allow BROWSABLE && DEFAULT Intents to be always opened
+  Only allow BROWSABLE && DEFAULT Intents to be always opened
+  Only allow BROWSABLE && DEFAULT Intents to be always opened
+  Only allow BROWSABLE && DEFAULT Intents to be always opened
+  Fix the ambient lux which did not update for blocking zone
+  Add method to clear out SubscriptionInfo#getCardString
+  Whitelist READ_PRIVILEGED_PHONE_STATE for the contacts provider
+  Update the getIccId docs to reflect access requirements
+  Pass interaction type to FalsingManager.isFalse
+  Check mode/boost index before accessing cached support value
+  Check mode/boost index before accessing cached support value
+  Fix renaming file and moving file issue in MTP
+  Ensure OK/Cancel buttons always shown
+  Import translations. DO NOT MERGE ANYWHERE
+  Notify visibility change if source visibility is changed
+  [RESTRICT AUTOMERGE] Make WPMS look for DOs and POs in the correct calling user
+  Clean up dead code in NetInitiatedActivity
+  DO NOT MERGE Focus clock by default
+  DO NOT MERGE: Disable StrictMode VM Policy check.
+  Use default color when artwork is too small
+  Nfc adapter randomly returns null on devices having Nfc
+  RESTRICT AUTOMERGE: Set mAllowWhileInUsePermissionInFgs correctly when bindService() from background.
+  Unregister Touch Sensors for DOZE_AOD_DOCKED
+  DO NOT MERGE: WM: Only allow system to use NO_INPUT_CHANNEL.
+  DO NOT MERGE: WM: Only allow system to use NO_INPUT_CHANNEL.
+  DO NOT MERGE: WM: Only allow system to use NO_INPUT_CHANNEL.
+  DO NOT MERGE: WM: Only allow system to use NO_INPUT_CHANNEL.
+  Protect account chooser activities against overlay.
+  Protect account chooser activities against overlay.
+  Only update native InputApplicationHandle once
+  Listen for EXTRA_PRESENT changes
+  Fix DevicePolicyManager.isBackupServiceEnabled() breakage.
+  BackupManagerService: Make new behavior conditional on ChangeId.
+  Enforce BACKUP permission on Service end.
+  RESTRICT AUTOMERGE Allow CDM to hide overlays
+  RESTRICT AUTOMERGE Prevent non-system overlays from showing over CDM UI
+  RESTRICT AUTOMERGE Allow CDM to hide overlays
+  RESTRICT AUTOMERGE Prevent non-system overlays from showing over CDM UI
+  RESTRICT AUTOMERGE Allow CDM to hide overlays
+  RESTRICT AUTOMERGE Prevent non-system overlays from showing over CDM UI
+  Allow CDM to hide overlays
+  Prevent non-system overlays from showing over CDM UI
+  Protect DeviceAdminReceiver intents
+  [RESTRICT AUTOMERGE] Remove DPMS#getProfileOwner in favor of getProfileOwnerAsUser
+  Revoke storage on SDK downgrade or new full storage request
+  docs: Remove error in requestPermissions doc
+
+Conflicts:
+	packages/SystemUI/src/com/android/systemui/BatteryMeterView.java
+	packages/SystemUI/src/com/android/systemui/doze/DozeSensors.java
+	packages/SystemUI/src/com/android/systemui/statusbar/KeyguardIndicationController.java
+
+Change-Id: I9e9651e436f43aca02b424d453a4c76e32a79d7d",2021-06-14 07:05:26-06:00
+60,429d0f2268b8d6a54fa8a9dd917cacd5a268aeb4,"Revert ""DO NOT MERGE Disable privacy indicators""
+
+This reverts commit 2628cf48a15acf1f1126d15ba9d1b3c43d934967.
+
+Change-Id: I11859a0d9189f85468904aebbeef3fab459456d6",2021-06-15 22:09:16+02:00
+61,d24d25db774b4b6a67029e122191da810970a9a6,"Periodic Advertisment Sync Transfer feature support
+
+CRs-fixed: 2814447
+Change-Id: Ic77e8ddbe57e415f7fd9c11943da50e4d86230d2",2021-06-15 23:38:14+02:00
+62,4d3f23e48452eaae2f82c3e17a4c2cf8bb44c480,"Enhanced Attribute protocol support
+
+GATT client and server SDK APIs support for Enhanced
+Attribute protocol.
+
+CRs-Fixed: 2803585
+Change-Id: I900e8829866323f57b9b5d9bcf93601e5f10a80e",2021-06-15 23:38:14+02:00
+63,69f29b96ef5108ea4a2421aba9fb7336fc0572bb,"Bluetooth: Add BC profile entry
+
+Add  BC profile entry and override constructor for CachedBluetoothDevice
+
+CRs-fixed: 2853618
+
+Change-Id: I750139a482280ce3409989582ffad50aed20e081",2021-06-15 23:38:14+02:00
+64,99e87bb3ef8772a5833fb5ffbe730f5e1c4fd2c2,"Add broadcast profile id
+
+- Add broadcast profile id
+- Add support for broadcast api
+
+CRs-fixed: 2856233
+Change-Id: If229688ecd0ad4c2ca3d058b4ebf69b19dede6b2",2021-06-15 23:38:14+02:00
+65,e3bb0af57c413f047b398c246854ba084b082a91,"SystemUI: Expose location icon to Tuner
+
+Specially for devices with very wide notches, it can be particularly
+useful for example to be able to disable location icon because it avoids
+missing the sight of wifi and network signal when GPS apps are in use.
+
+Change-Id: I6abfa881fdd5afd523242dfb1e1178e6ac25cd45",2021-06-19 12:08:41+02:00
+66,c230fe4a4bcb56b7d909b800575ff1581bef7dd2,"Allow screen unpinning on devices without navbar
+
+Change-Id: Iedfc08f4d95bbee3c8578c0d2450b90739e63603
+
+Screen Pinning: Show correct text for on screen nav.
+
+  Similar to I09c2ef661bff272cb4f7ca43bac0e45f4b20a4d4,
+  we're not getting an instance of PhoneWindowManager which
+  we can rely on to update dynamically.
+
+  TICKET: OPO-393
+
+Change-Id: Iacf8221066461fb6940dd88432e665812545c3ff",2021-06-19 12:41:43+02:00
+67,b1208e645f04ac2ec4a6b9fba166f9553194eb08,"IconPack{Kai,Victor}: Fix clock icon
+
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/3366
+Change-Id: I0ad71c5e10f7c1191f51f3b287d52ec9e344277c",2021-06-24 10:14:04+02:00
+68,0c29b0278b722cf531a55795de78dcad969c1b8a,"SystemUI: Don't enable FOD when strong auth is required
+
+Change-Id: Ie227aee88fea4945a7618fe606c1094ae812ebe0",2021-07-02 23:42:44-07:00
+69,75137cdbf4d1b39bbf42c4239a51988efc79df7a,"CarSystemUI: Pass FODCircleView to StatusBar constructor
+
+Fixes build after I407d7dff6398bc7c6ecc4bfda7b9cb31af90bfd4.
+
+Change-Id: I9aa8bb66dacb647f43f94ef7ccdde9659428e842",2021-07-05 20:24:32+02:00
+70,4df37d4cf3e325a6e01351c379af7275196e70c7,"Merge tag 'android-11.0.0_r39' into staging/lineage-18.1_merge-android-11.0.0_r39
+
+Android 11.0.0 release 39
+
+* tag 'android-11.0.0_r39':
+  Backport of ag/14170751 and ag/14170752.
+  Detects all activities for whether showing work challenge
+  Ensure storage permission revoke happens for all users
+  Remove sendNetworkConditionsBroadcast
+
+Change-Id: I4dcde8b52621317c226a3f32aa81273fc26066cb",2021-07-07 19:56:06-06:00
+71,e6ffa411f095906d5fe9d99bf422d6a04afa17d5,"BiometricPrompt: Automatically add padding to incorporate FOD
+
+This effectively hides the default icon in the traditional
+biometrics prompt, so that only FOD icon is displayed.
+
+Signed-off-by: Rituj Beniwal <ritujbeniwal@gmail.com>
+Change-Id: I20b250ac59f0631e77356986a2d935d97842f9bb",2021-07-12 15:13:35+02:00
+72,f43431ed138d0fa9c6cb1ceacf06ae37d4964f6c,"CarSystemUI: Exclude FODCircleViewImpl from UI components
+
+Copies the change in I52beaf6492b9daa012b5d42b858d552d1e378a2c which
+made the same alteration to the non-car SystemUI.
+
+Change-Id: I2f167a0f858cc12edf09c10156742df8b0b3cc9e",2021-07-14 11:30:59+02:00
+73,3ad13ef1b01126a7e0ecfe16f5073b63ab8b8b6f,"SystemUI: VolumeDialogImpl: Fix volume panel permanently visible
+
+* The Volume Panel is permanently visible when changing the panel side while the panel is open until SystemUI is restarted
+* This change removes the Panel View when changing the panel side
+
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/3482
+
+Change-Id: Ic3ca5a196315e96024121c995cc6282fb74f6e4c",2021-07-14 14:54:35+02:00
+74,9d52e2bc60812a7301f0cd9ea644cf54e77e7213,"SystemUI: Expose camera and microphone icons to Tuner
+
+Specially for devices with very wide notches, it can be particularly
+useful for example to be able to disable location icon because it avoids
+missing the sight of wifi and network signal when GPS apps are in use.
+
+Original-Change-Id: I6abfa881fdd5afd523242dfb1e1178e6ac25cd45
+Change-Id: I4583962acb7aaea7ee95218da5c0ff3039e1c55e",2021-07-18 15:44:20+02:00
+75,8cee4033510acf237ec15a80441c13b160c1713e,"InputManagerService: Flag when an injected event is a real input
+
+* Define new flag FLAG_INJECTED_IS_UNCHANGED
+
+* Check and set when a real input event has passed through a filter and
+  not been modified.
+
+* Flag is used by inputflinger to determine whether or not to trust the
+  injected event device id.
+
+Change-Id: I146ef94da347ad066d359b7faa83f43e2cf0d074",2021-07-23 18:19:40+02:00
+76,751fb2d24ef1504c0bdcfa7c14ac9112adac28dd,"fixup! InputManagerService: Flag when an injected event is a real input
+
+Fixes apicheck error due to wrong comment style around @hide.
+
+Change-Id: Iacefb6f61af7982bfd2f29aabe25750b333f25d2",2021-07-26 13:29:40+02:00
+77,fa60142543972f8ec4cc251e5877acca786dafed,"BACKPORT: Fix initialization of USER_ROTATION setting.
+
+Until now, def_user_rotation was effectively a dead default:
+- added missing def_user_rotation -> USER_ROTATION first-run initialization
+- corrected the setting type when upgrading database
+
+Bug: 178000973
+Test: set def_user_rotation to 1 in default.xml and flash Pixel 3a
+Change-Id: If2aa9665a0167f696f6b16a16be48ac473271631",2021-07-27 12:02:55+01:00
+78,dda6759718d03ae48b24cc55a85114bc1a862501,"Revert ""InputManagerService: Flag when an injected event is a real input""
+
+This is causing input lag on some devices with active accessibility filters.
+
+Squash of:
+  Revert ""fixup! InputManagerService: Flag when an injected event is a real input""
+  This reverts commit 751fb2d24ef1504c0bdcfa7c14ac9112adac28dd.
+
+  Revert ""InputManagerService: Flag when an injected event is a real input""
+  This reverts commit 8cee4033510acf237ec15a80441c13b160c1713e.
+
+Change-Id: I2bab370c01e60d40f3c948d4b6b9c09ddcf39112",2021-07-29 23:05:55+02:00
+79,ff0dd629c4cd634c4917ef96ec0169a9884e57d5,"Merge tag 'android-11.0.0_r40' into staging/lineage-18.1_merge-android-11.0.0_r40
+
+Android 11.0.0 Release 40 (RQ3A.210805.001.A1)
+
+* tag 'android-11.0.0_r40':
+  Revert ""Detects all activities for whether showing work challenge""
+  Validate the ServiceRecord state while handling misbehaving FGS
+  Block SAF directory access to /sdcard/Android
+  [RESTRICT AUTOMERGE] Fix OOB write in noteAtomLogged
+  [security] SubscriptionGroup is exposed to unprivileged callers
+  Added nullptr check to pullFaceSettingsLocked
+
+Change-Id: I69b745b87b25b27f560dee3bf70b5ba56c7b461f",2021-08-03 07:46:28-06:00
+80,8a27e35325bf9131020993364645b74d8a9786fc,"Automatic translation import
+
+Change-Id: I32f53e719e6c274a78cfdafe71efb4a18d3f9f21",2021-08-21 04:06:23+03:00
+81,00712220684bdb143e3a43fc1afe8dd722a1c054,"AutoBrightness: Add support for one shot auto-brightness:
+
+- Only update auto brightness one time when screen is turned on.
+- Can be useful on devices where sensor is not accurate.
+
+Change-Id: I5187fdb7765550d4eaa999317ab95f487d44c8d8",2021-08-23 18:11:53+02:00
+82,a5459eb9718f55e1195bd360edb533267942db9c,"Make battery clickable again in quick QS status
+
+Change-Id: I944b1122739754cc704f65039319fb260fcdbf1d",2021-09-01 20:58:46+02:00
+83,0f312543ee63b520763b73e8662c85a21b2e6785,"fixup! AutoBrightness: Add support for one shot auto-brightness:
+
+* Remove unnecessary newlines
+* Fix incorrect indentation
+* Fix typo in comments
+
+Change-Id: I7d6071f4344605b3dcc3f1c33ac4390f1020e03f",2021-09-03 19:53:45+02:00
+84,422769ab9aaeea94693c2c8e394be47979bdaf18,"fixup! SystemUI: Show bluetooth battery level when available
+
+The current update method is triggered in 2 cases:
+  the SystemUI bluetooth controller changes device state
+  the battery level changed intent is sent
+
+Sadly the current SysUI controller doesn't handle battery level
+changes, and is instead triggered in a few other cases ( ex audio
+state changed ).
+And since we use the data from SysUI controller for battery level
+from changes in the global bt controller we may have 2 different
+set of devices to work on. This could ( and does ) trigger
+race conditions.
+
+Instead add support battery level state changes within the SystemUI
+controller to work on the same data set.
+
+Change-Id: Ib57096fc2ebe151ac3860277a4db2319f230b514",2021-09-07 12:11:27+02:00
+85,5d4222ae0575a5393077f45a6f898bc76124fbdf,"Fixed a crash in settings in tts engine selection screen.
+
+The crash happens when you try to uninstall current tts
+engine and install a different one and then engine name
+may be null.
+
+If engine name is null then you can't select new engine
+because of that crash, so that whole tts feature becomes
+unusable.
+
+Change-Id: Ie31a947eb6444242e8536db2dae1452ef74cc1ce",2021-09-07 21:51:13+02:00
+86,6945498aec5d820db04bee203eb01425014d6d6a,"Disallow click to partial screenshot right after screenshot is taken
+
+This change prevents triggering partial screenshot when trying to take
+full screenshot of protected window.
+
+Change-Id: I42a67ed1ee34edffccc6dacd17ba1dffc8d194b3",2021-09-12 16:41:44+02:00
+87,1bbd56683d797f8758cd109be45e058a712a5435,"Revert ""Revert ""Detects all activities for whether showing work challenge""""
+
+This reverts commit 2992a1dac025074726364d522cf9eac586f3d2c3.
+
+* This commit is present in android-11.0.0_r40, but not in
+  android-11.0.0_r43 since that's on top of android-11.0.0_r39
+* Just revert this to match what's shipping in r43
+
+Change-Id: I8fe467db3bbf5aa40c10c4e1311829a733373279",2021-09-12 08:57:34-06:00
+88,74544b9e39b174025fcb91cc194ca920b12e8683,"Merge tag 'android-11.0.0_r43' into staging/lineage-18.1_merge-android-11.0.0_r43
+
+Android 11.0.0 release 43
+
+* tag 'android-11.0.0_r43':
+  Use IntentFilter CREATOR directly for serializing ParsedIntentInfo
+  Don't export HeapDumpProvider.
+  Don't attach private Notification to A11yEvent when user locked
+  Merge ""BG-FGS-start while-in-use permission restriction improvement."" into rvc-dev am: e51f884f6a
+  Avoid locking profile task when it is already lock
+  Improve ellipsize performance
+  Fix side effects of trace-ipc and dumpheap commands
+  DO NOT MERGE Add cross-user check for getDefaultSmsPackage().
+  Remove ParsedIntentInfo CREATOR
+  Fix race condition between lockNow() and updateLockscreenTimeout
+
+Conflicts:
+	services/core/java/com/android/server/policy/PhoneWindowManager.java
+
+Change-Id: I6a9a3e341be1fccaa568b875d4d9959d8f068794",2021-09-12 08:58:28-06:00
+89,b8404be70d59c2ba60436cbc36d76780eb38deaa,"SystemUI: Unblock gestural navigation on clearScreenshot()
+
+If user powers screen off when partial screenshot UI is visible,
+it will hide the UI but leave gestural navigation disabled.
+Also the partial screenshot UI would be visible when taking a
+new (normal) screenshot.
+
+Change-Id: Ie8138bb0b771ec0e21ceb48e52872c05c946d3b4",2021-09-12 20:26:54+02:00
+90,3b46ef1258c25467a7db4675387577fe27b5d50c,"One more Build.FINGERPRINT to Build.DATE change
+
+Change-Id: I13dbf3d7f6587d3fcd6591cc0f861b34b6d5561c",2021-09-22 22:53:59+02:00
+91,118931188c9c131bea15241109c4e7025c60b41f,"LockPatternView: Fix a11y+BiometricPrompt related OOB exception
+
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/4007
+Change-Id: Ifcae0a46430915c93b9e65ad968ca7e90504a9fb",2021-09-27 18:08:48+02:00
+92,6cdc54bee9d86d3b2de929a99e13da42d088a3fb,"SystemUI: fix volume dialog position on TV
+
+Expanded volume panel didn't respect the TV dimensions.
+Bring them back conditionally.
+
+Change-Id: I1d0c884726b74cc38fb825aebdff2484285789c2",2021-09-29 17:52:40+02:00
+93,cf0606c2f73d42e8fd9081f7b635e10b575a0b0c,"[1/2] Add battery info to tvsettings device info
+
+Change-Id: I98abe338d77b56f2a851e0f093a44d6911b9009b
+(cherry picked from commit 5cd43b356ebfe1b4018fbf9fbe5dd551e9a82b78)
+(cherry picked from commit cceffef44a297cafc671590fb541f5c5171d6ee6)",2021-09-29 20:18:54+02:00
+94,7f7fc2562a95be630dbe609e8fb70383dcfada4f,"Merge tag 'android-11.0.0_r46' into staging/lineage-18.1_merge-android-11.0.0_r46
+
+Android 11.0.0 Release 46 (RQ3A.211001.001)
+
+* tag 'android-11.0.0_r46':
+  Make sure that only the owner can call stopVpnProfile()
+  DO NOT MERGE Apply a maximum char count to the load label api
+  Send targeted broadcasts to prevent other apps from receiving them.
+  Guard DISABLE_PLUGIN with PLUGIN permission.
+  Fix a potential thread safety issue in VectorDrawable
+  Fix background bypass via notifications
+  Change ownership of the account request notification.
+
+Change-Id: I30615811a1c2ee4d670c643d892d1a9f275e2a9c",2021-10-05 06:50:48-06:00
+95,2e9288e003a7c0a4403a43fe70e7160497fe66da,"SystemUI: Don't use horizontal quick settings on large screens
+
+On large screens such as tablets, the horizontal quick settings isn't necessary as we have enough room for the normal quick settings and media player.
+It also seems to have issues on large screens, on my v1awifi I can't swipe to a different quick settings page and the media player album art overlaps the media controls.
+
+Change-Id: I6e1a61b9280ed566b2348ecf06c47b789d1e0e3c",2021-10-16 03:12:00+02:00
+96,161e8a70fa041d3cdce7dbe52eccae9f186771b2,"camera2: Add methods for backward compatibility
+
+libmcf-jni.so library (which is proprietary blob required
+for MotCamera2) looks for methods with these exact signatures,
+but signatures of these methods was changed in Android 11.
+
+This change returns these methods that makes MotCamera2
+fully-functional on Android 11.
+
+Change-Id: Ib9a701f6d8ebb783c52666e34e7539faba5cb99f
+Signed-off-by: Ihor Ivanov <toulmee@gmail.com>",2021-10-18 01:27:56+02:00
+97,f24635e345fd65efb9f06d767c77aa0a9d911778,"Automatic translation import
+
+Change-Id: I229a69231983ff5adc1cfb115b2a9cef8530e34a",2021-10-26 20:47:12+02:00
+98,617f1aaaa25fabf89a392460136fbe1031d963cd,"Merge tag 'android-security-11.0.0_r49' into staging/lineage-18.1_merge-android-security-11.0.0_r49
+
+Android security 11.0.0 release 49
+
+* tag 'android-security-11.0.0_r49':
+  Changed INTERACT_ACROSS_PROFILES appop to be set per UID
+  TIF: fix issue of using caller-aware methods after clearCallingIdentity()
+  Backporting the change of ag/15629060 to rvc-dev
+  Bluetooth: Fix formatting in getAlias()
+  Fix parsing code parcelling errors
+  camera2: Fix exception swallowing in params classes createFromParcel
+  Revert ""BG-FGS-start while-in-use permission restriction improve...""
+  Make sure that only the owner can call stopVpnProfile()
+  DO NOT MERGE Apply a maximum char count to the load label api
+  Send targeted broadcasts to prevent other apps from receiving them.
+  Guard DISABLE_PLUGIN with PLUGIN permission.
+  Fix a potential thread safety issue in VectorDrawable
+  Fix background bypass via notifications
+  Change ownership of the account request notification.
+  Revert ""wifidisplay: restrict broadcast by the proper permission""
+  Use IntentFilter CREATOR directly for serializing ParsedIntentInfo
+  Don't export HeapDumpProvider.
+  Don't attach private Notification to A11yEvent when user locked
+  Avoid locking profile task when it is already lock
+  Improve ellipsize performance
+  Fix side effects of trace-ipc and dumpheap commands
+  DO NOT MERGE Add cross-user check for getDefaultSmsPackage().
+  BG-FGS-start while-in-use permission restriction improvement.
+  Remove ParsedIntentInfo CREATOR
+  Fix race condition between lockNow() and updateLockscreenTimeout
+  [security] SubscriptionGroup is exposed to unprivileged callers
+  Block SAF directory access to /sdcard/Android
+  [RESTRICT AUTOMERGE] Fix OOB write in noteAtomLogged
+  Remove sendNetworkConditionsBroadcast
+  Ensure storage permission revoke happens for all users
+  Restrict alarm broadcast
+  Detects all activities for whether showing work challenge
+  DO NOT MERGE - Disallow deletion of channels with FGS notifications
+  Increase maximum allowed size for status bar icons
+  [DO NOT MERGE] Make PendingIntents in screenshots immutable
+  wifidisplay: restrict broadcast by the proper permission
+  Fix legacy APIs when VPN switches to suspended underlying network.
+  Backport test coverage from aosp/1547496.
+  Backport some helpers in ConnectivityServiceTest.
+  Test for bugs with suspended VPN underlying networks.
+  Add a test for getDefaultNetworkCapabilitiesForUser.
+  Improve testing of CONNECTIVITY_ACTION broadcasts.
+  Test passing an underlying network array with null network in it.
+  Make testVpnNetworkActive more deterministic.
+  Make MockVpn more realistic and easier to use.
+  Increase test coverage for VPN info sent to NetworkStatsService.
+  Simplify MockVpn.
+  Test a VPN with an underlying network that does not yet exist.
+  Limit maximum allowed size for a status bar icon
+  Adds caller check to getAllPackages()
+  Restrict the overridden min size for PiP
+  Add pkg target to snoozing alarm
+  Allow empty tokens in strict grammar
+  Allow empty tokens in strict grammar
+  [DO NOT MERGE] Make screenshot error notification PendingIntent immutable
+  DO NOT MERGE: Associate notif cancels with notif posts
+  [RESTRICT AUTOMERGE] Use userId instead of USER_CURRENT in shouldLockKeyguard.
+  Revoke storage on SDK downgrade or new full storage request
+  [DO NOT MERGE] Close screenshot process on user switched
+  Fix thread safety issue on clearing cache
+  [SettingsProvider] extend font size scale range
+  DO NOT MERGE: Do not inject mock location to chipset
+  [RESTRICT AUTOMERGE] Fix potential out of bounds writes in LogEvent.
+  Check mode/boost index before accessing cached support value
+  Only update native InputApplicationHandle once
+  Allow CDM to hide overlays
+  Prevent non-system overlays from showing over CDM UI
+  RESTRICT AUTOMERGE: Set mAllowWhileInUsePermissionInFgs correctly when bindService() from background.
+  Protect account chooser activities against overlay.
+  [SettingsProvider] fix font size scale validator
+  Ensure caller identity is restored in CP quick-path.
+  Remove updateIntentVerificationStatusAsUser from ResolverActivity
+  Revoke the uri permission when the file is deleted
+  Ignore GrantCredentials call with unexpected calling uid.
+  Protect GrantCredentialsPermissionActivity against overlay.
+  Revoke permission on non-runtime -> runtime upgrade
+  Ensure permissions are revoked on state changes
+  Hide overlays over uninstall confirm dialog
+  RESTRICT AUTOMERGE Fix CDM package check
+  remove sensitive pii from safetynet logging
+  Revoke install permissions when the permission defining app is uninstalled.
+  DO NOT MERGE Check fingerprint client against top activity in auth callback
+  Fix the issue provider can be wrong when requesting slice permission
+  Enforce permission checks in getting app exit reasons
+  Fix storing the wrong value of mLockdown in setting
+  [BACKPORT] Improve location checks in TelephonyRegistry
+  Do not re-initialize synthetic password
+  Fix VrDisplayTest failure
+  Require permission to create trusted displays
+  Accept repeated locale as an input of LocaleList construction.
+  Sanitize more of the notification text fields
+  DO NOT MERGE Fix NPE in executeDeletePackageLIF.
+  DO NOT MERGE Don't allow non-instant permissions for instant apps.
+  Mark implicit PendingIntents as immutable
+  Add missing isShellUser check
+  Decouple FUSE mount from main thread for demo user
+  Set the NetworkInfo subtype to 0.
+  Reduce demo user FUSE volume mount timeout
+  Propagate AudioAttributes flags to VibrationAttributes
+  Allow network stack UID caller to retrieve cell identity
+  Ignore GONE views in shade when processing sections
+  Fix unintended preferred activity reset
+  Skip bg PSS collection for apps using a camera
+  Fix missing IME switcher icon (w/ a hardware keyboard)
+  Java docs update: Advise not to include PII in setProcessStateSummary
+  Grant visibility even when not granting URI perm
+  Fix NavigationBarColorTest
+  Prevent exception when surrounding text retrieval
+  Resume-on-Reboot: remove special string
+  Wait for remote animation to stop freezing display
+  Remove incorrect optimization in visibility cache
+  Early exit when target app ID < FIRST_APP_UID
+  Fixes broadcast filtering for multi-user sys apps
+  Repopulate cache with sibling visibility on remove
+  Revert ""Hide bubbles' IME after screenshot is taken.""
+  Ensure we always bind to overview service when starting up
+  Fix missing icon for one-to-one convos
+  Fix missing icon for one-to-one convos
+  Revert ""Exception if receive move withouth down""
+  Revert ""Consolidating MODIFY_AUDIO_SETTINGS permission checks""
+  Revert ""Flip ENABLE_DYNAMIC_PERMISSIONS, attempt #5.""
+  Revert ""Flip ENABLE_DYNAMIC_PERMISSIONS, attempt #4.""
+  Revert ""Flip ENABLE_DYNAMIC_PERMISSIONS.""
+  Revert ""Flip ENABLE_DYNAMIC_PERMISSIONS.""
+  Revert ""System Bars animation for fixed rotation transform""
+  Revert ""Don't readd pending notifs to NEM's allNotifs list""
+  Fixed a bug where the brighness mirror would make everything invisible
+  Fix crash caused by unhandled bucket
+  Adding UiModeManager Custom Tests
+  Revert ""Fix missing animation when launch activity from notification.""
+  Revert ""Prevent NPE in PulseExpansionHandler""
+  Revert ""Fix missing animation when launch activity from notification.""
+  Revert ""Prevent NPE in PulseExpansionHandler""
+  Revert ""Fix missing animation when launch activity from notification.""
+  Check URI is valid for loading images
+  Add READ_PHONE_STATE back to pregranted phone permissions
+  Add delay between quota check alarms.
+  Add READ_PHONE_STATE back to pregranted phone permissions
+  Add READ_PHONE_STATE back to pregranted phone permissions
+  Fix Ime consumer isRequestedVisible
+  Disable overflow menu on lock screen.
+  Ensure power menu overflow dismissed when dialog dismissed.
+  Fix NPE when ranking update causes reinflation
+  Only give DisplayInsetsController control over IME in split-screen
+  Re-send the IME control after IME is re-created
+  Update destination bounds if rotation finishes first
+  Reboot the soundtrigger HAL on failure
+  Add /apex to the list of allowed SystemServer paths
+  Revert ""Fix exception handling in getState() binder cache""
+  Only use the IME target from IMMS to update the IME control target
+  WindowInsetsAnimation: Fix app driven closing of IME
+  WindowInsetsAnimation: Synchronously dispatch window insets animation callbacks
+  WindowInsets: Ignore consumeStableInsets()
+  Request fit system windows if soft input mode updates
+  Update insets state for each window if its mBehindIme is changed
+  Fixes NPE and adds @Nullable to PackageSetting.pkg
+  startop: Fix a string format bug in EventSequenceValidator.
+  Work around for display info mismatch during the PiP transition
+  Work around for display info mismatch during the PiP transition
+  Give tethering bluetooth privilege permission
+  Make canBeImeTarget be compatible with legacy behavior
+  Give tethering bluetooth privilege permission
+  Revert ""Don't override activity display adjustments with app config""
+  Make canBeImeTarget be compatible with legacy behavior
+  fix enrollment application permission check
+  add KEYPHRASE_ENROLLMENT_APPLICATION permission
+  Make canBeImeTarget be compatible with legacy behavior
+  Fixes query logic when not instant
+  Fixes query logic when not instant
+  Make canBeImeTarget be compatible with legacy behavior
+  Call setAdapter from handleLayoutChanged.
+  Use BIND_INCLUDE_CAPABILITIES for SoundTriggerService
+  Assign a BluetoothAdapter on creation of LMM
+  Use the bounds received in taskAppeared
+  Assign a BluetoothAdapter on creation of LMM
+  Revert ""Do not block autofill on waiting for the IME response""
+  Revert ""Fix bouncer race condition""
+  Null-check notif chan when ident people notifs
+  Don't apply ime adjustments/dims if split is not active
+  Restores PiP to its original app bounds
+  Revert ""media: lazy MediaCodec.release()""
+  Some clean-up of divider code in preparation for bugfixes
+  Revert ""Some clean-up of divider code in preparation for bugfixes""
+  Revert ""Don't apply ime adjustments/dims if split is not active""
+  Don't apply ime adjustments/dims if split is not active
+  Some clean-up of divider code in preparation for bugfixes
+  Revert ""media: lazy MediaCodec.release()""
+  InsetController: Release leashes from RenderThread
+  Fix instances of ContentObserver#onChange in SystemUI
+  Adjust users of hidden APIs.
+  Revert ""Turn on QS media player by default""
+  Dark theme upgrade broken
+  Change animation-leash to be a container layer
+  Dark theme upgrade broken
+  Reset controls when playback state is NONE
+  Relax permission checks in sound trigger middleware
+  Revert ""Turn on QS media player by default""
+  Dark theme not working bug
+  Dark theme not working bug
+  Revert ""Fix permission check for get/setSmscAddress.""
+  Ignore unchecked IME show/hide when no root
+  Initialize PackageManagerService ApplicationInfo instances to system user
+  Ensures display rotation triggers PiP re-position
+  DO NOT MERGE: Fix FLAG_NOT_FOCUSABLE ime target
+  Revert ""Avoid creating new instance on top when started for resu...""
+  Don't crash if NSSL gets incomplete gesture
+  DO NOT MERGE: Fix FLAG_NOT_FOCUSABLE ime target
+  Revert ""Avoid creating new instance on top when started for resu...""
+  Don't crash if NSSL gets incomplete gesture
+  Revert ""Avoid creating new instance on top when started for resu...""
+  Don't crash if NSSL gets incomplete gesture
+  Fix PackageSetting isUpdatedSystemApp and SYSTEM_EXT rescan
+  Revert ""Avoid creating new instance on top when started for resu...""
+  Do not attempt to special case uncompressed font assets.
+  Fix crash during SysUI dumpsys
+  Re-add compile_multilib to statsd apex
+  Revert ""Limit metricslogger call into statsdw for events""
+  Revert ""Remove libstats_jni from the platform""
+  Revert ""Move libstatspull to the apex""
+  Revert ""Require user pass in a non-null BluetoothDevice to all B...""
+  Fail silently on MediaScannerConnection#onScanCompleted
+  Revert ""Prevents an NPE when content provider is slow to start""
+  Fix content views not updating
+  Fix content views not updating
+  Fix the NPE when reading the call log or SMS if a device has multiple user profiles
+  Fix Keyboard won't display when RemoteInput active
+  Revert ""Add permissions for using PlatformCompat methods""
+  Revert ""API for Inline Presentation Renderer in ExtServices.""
+  Fixup SDCARD_RW GID for multi-user.
+  Revert ""Move text toast creation to system UI""
+  MediaSessionRecord: fix volume stream query
+  Always set NetworkInfo objects to available.
+  Fix emergency button overlap with nav bar
+  Revert ""Convert NotificationContentInflater to singleton""
+  Revert ""Move a bunch of row setters into an init method.""
+  Remove resource overlayable configuration
+  AudioService: log result of AudioSystem calls for A2DP devices
+  AudioService: fix A2DP disconnection / reconnection
+  AudioService: fix A2DP disconnection / reconnection
+  Revert ""Rmove @UnsupportedAppUsage""
+  Revert ""Merge ""switch to new SkPathDirection enum""""
+  RecoverySystem: do not check if socket is closed
+  Fix swiping down on the notch.
+  Add synchronization for PermissionData.
+  Revert ""Replace framework-annotation-proc java lib with framework-all""
+  Freeup lock when IME is set inactive and unbound
+  Revert submission
+  Revert ""Clean up visibility related flags in ActivityRecord""
+  Revert ""Clean up visibility related flags in WindowToken""
+  Revert ""Clean up visibility related flags in ActivityRecord""
+  Call appOps changed from main thread
+  Revert ""Create unit tests for GnssManagerService""
+  Initialize AppCompatCallbacks in system server
+  Prevent crash when invoking GNSS apis
+  Return resume result in resumeFocusedStacksTopActivities
+  Prevent crash when invoking GNSS apis
+  Return resume result in resumeFocusedStacksTopActivities
+  Return resume result in resumeFocusedStacksTopActivities
+  Revert ""Move DozeServiceHost out of StatusBar.""
+  Ensure next home activity is ready before finish FallbackHome
+  Temporarily do not remove biometric view when animating to credential
+  Revert ""Move DozeServiceHost out of StatusBar.""
+  Ensure next home activity is ready before finish FallbackHome
+  Mark BiometricUnlockController as @Singleton
+  Add userId to the package name API.
+  Revert ""Example for disabling changes at test time""
+  Revert ""Drop all caches in UI_HIDDEN""
+  Make KeyguardUpdateMonitor a singleton
+  Ensure that view is initialized properlly upon inflation.
+  Revert ""Remove many (most) of the calls to Dependency.get() from StatusBar.""
+  Fix NavigationBarController NPE
+  Fix NavigationBarController NPE
+  SurfaceView: Release Surfaces where SurfaceControl are released.
+  Breaks isInstantApp into public and internal
+  Clears calling identity when calling isInstantApp
+  Workaround multiple instance of AppComponentFactory.
+  Ensure that the Application is constructed before any Service.
+  Remove KeyguardUpdateMonitor.getInstance().
+  Fixes regression caused by ag/9259064
+  Fix regression in updating gesture exclusion rects
+  Fix regression in updating gesture exclusion rects
+  Fix regression in updating gesture exclusion rects
+  Fix regression in updating gesture exclusion rects
+  Clear calling identity as broadcast needs permission
+  WifiManager: Return dummy values when wifi service is not up
+  Adding null checks
+  Revert SurfaceView back to Q's version
+  Revert ""Use the SubId in the TM.getNetworkType if Valid""
+  Retire unused android::nio_{get,release}Buffer functions
+  Skip idmap1 generation if target defines overlayable
+  Ensure all fields of AutoBufferPointer are initialized
+
+Change-Id: I4838416fa76f01643eccb8c6689c10499f5862d4",2021-11-03 07:07:08-06:00
+99,b64352d7c66e93ddc2b448f556e265178309d730,"Revert ""Revert ""BG-FGS-start while-in-use permission restriction improve...""""
+
+* Change ebfad50cc1450 (""Allow FGS started from MediaButtonReceiver to
+  have while-in-use permissions."") make use of
+  canAllowWhileInUsePermissionInFgsLocked, which the noted change
+  removes.
+
+This reverts commit a95cfc3ed8cfe22fbc1a25f419dd2dce1c4f5bcb.
+
+Change-Id: If516d7e8c775f527484cfef4d69b0bef6b4397ff",2021-11-03 07:07:22-06:00
+100,ab34bda4df1702d5874af2520dcd72096eec47df,"Fix missing glyph in Javanese font
+
+As per 0806acaf0cad62f81ac0614d62a3152efc162276,javanese font was
+replace with otf. Then rename it as well in fonts.xml
+
+Change-Id: Ie62eeba70b5fbca600f9ccb5597284f928a6180c",2021-11-09 10:29:59+01:00
+101,14749db61674efa5030fcb5bb96b23410d582200,"Use custom flag for edge long swipe gesture
+
+Previously we were using same flags that'd be used for regular back key
+long press thus being unable to determine whether the event was sent
+from EdgeBackGestureHandle or not.
+
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/4194
+Change-Id: I5c4fd455f581ac5c9c5e3a146095be33e82e8d6e",2021-11-25 17:39:29+01:00
+102,bc5ee9558c5ea3e3dcaf51e8405d829258d589ff,"SystemUI: Use accent color for WiFi progress bar
+
+* Use accent color for WIFi progress bar to avoid violet color when
+  animated
+* Since we now don't use different colors for night/day, we can also
+  remove the file in color-night
+
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/3654
+Co-authored-by: Michael W. <baddaemon87@gmail.com>
+Change-Id: Iaf256c16dc97ba9c5dca6875d5ce847d245b557a",2021-11-27 21:30:51+01:00
+103,255c6ea6a8be49084c5ffd5a850e476a4368f422,"Fix SystemUI not using appropriate horizontal settings on devices
+
+This is a correction to I6e1a61b9280ed566b2348ecf06c47b789d1e0e3c
+which meant to fix tablet's horizontal settings but ruin it for
+other devices.
+
+Modern phones, specifically phablets, are now having more than
+800dp screen width on landscape so please use screen height
+instead.
+
+Change-Id: I2d09c6776f96efb4ccb98a40b839eb684d3e1c9f",2021-11-30 18:21:29+01:00
+104,7ba7894a364e69cafe9a083b7e33af1bf45fe3d1,"VolumeDialog: fix an NPE on TV dialog
+
+TV doesn't have multiple rows on volume dialog.
+
+Change-Id: I5f404ec8a8d142e96d2785f3b313b97568f45729",2021-12-01 15:44:20+00:00
+105,899621a53b404a55baff1e7d4ac3505a0d191c89,"Avoid sending duplicate MSG_BACK_LONG_PRESS messages
+
+Now that KEYCODE_BACK is sending proper repeat events, we must ignore
+additional KeyEvents in interceptBackKeyDown().
+
+Change-Id: Ib8e4da21ddadc181ab96c1f8cc02553a99cc14c3
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/4241",2021-12-12 13:59:13+01:00
+106,f876646c54ec5072412ebb1dfcd6e57956ea7d98,"Don't pass repeated back key events to app if custom action is set up
+
+Some apps may react to back key long press and it doesn't make sense to
+allow them to do that if 'Back long press action' is set to anything
+other than 'No action'.
+
+Change-Id: Iacac909d6a288cacf964c89d9586d572d14d1871",2021-12-12 15:16:16+01:00
+107,8eb0d78a9400ca9d65dddb7824a5bd6b29a4d25d,"Merge tag 'android-security-11.0.0_r50' into staging/lineage-18.1_merge-android-security-11.0.0_r50
+
+Android security 11.0.0 release 50
+
+* tag 'android-security-11.0.0_r50':
+  Import translations. DO NOT MERGE ANYWHERE
+  Disallow overlays for ResolverActivity
+  DO NOT MERGE KeyStore ChunkedStreamer must tolerate update consuming 0 bytes.
+  Do not show the notification footer until the user is set up.
+  Fix serialization bug in GpsNavigationMessage
+  Fix NPE on getTitle()
+
+Change-Id: Ib022ba7607865d61c4f7837a172e86b350bed319",2021-12-13 19:29:09-07:00
+108,22ad5e7d8240c949a8a1bd8a7de459582a40bbb5,"Split network policy XML parsing into read/write helper functions
+
+Change-Id: I360bfad4c549c24f56201164442056f842708124",2021-12-30 11:35:05+02:00
+109,61fac218e22a876eb3506f49b7f375c2d1668983,"Implement backup/restore for network policy
+
+Modify network policy XML parser helper functions for backup/restore scenarios
+
+Issue: calyxos#384
+Change-Id: I77158b344a47138a17fbce72d3ecb3be6927b870
+(cherry picked from commit 9ac27e3b850921a83c52aaa0da798320517b0d5e)",2021-12-30 11:36:46+02:00
+110,d2ecc3d161a609cc705413ced4bd34cb0241fe14,"power: Explicitly check for silent ringtone
+
+Change-Id: I6d7d9c8eefc04589a85cdf5ad33f5d342b315538",2021-12-31 15:04:49+01:00
+111,861cd0dd435817857bfd9e2f797954f4452a2193,"power: Respect global vibration setting for charging sounds
+
+* Don't vibrate when in silent mode
+
+Change-Id: Ife14105e74a28856d74a4c153637344124686e1b",2021-12-31 15:05:10+01:00
+112,5634493a5a3aab4d11bb063bbedc71e1e5d60a99,"power: Keep file scheme when not using content URI
+
+ * Settings.Global.CHARGING_STARTED_SOUND and
+   Settings.Global.WIRELESS_CHARGING_STARTED_SOUND are
+   in old format and do not use content URI.
+
+   Therefore, we should preserve AOSP logic and prefix sound URI path
+   with ""file://"" or there will be warnings like this:
+
+     W MediaPlayer: java.io.FileNotFoundException: No content provider: /system/product/media/audio/ui/WirelessChargingStarted.ogg
+
+   If users have changed charging sound at some point, then it is fine,
+   because we have switched to content URI.
+
+Change-Id: I63bdbe1003390310facbb50175e961129ecb3118",2021-12-31 15:06:04+01:00
+113,e85caa8d6699d3f54670deaa341a0e641c97e697,"power: Extend custom charging sounds
+
+Handle also the cases where the device gets disconnected from power sources.
+
+Change-Id: I36ae79f0709846784b4b3d313ff97ebadebc06c5",2021-12-31 15:06:17+01:00
+114,4328a0c5c11b7b6c7bfe27d67cc3b7062965f6b0,"Check ACCELEROMETER_ROTATION_ANGLES for current user
+
+Fixes a bug where secondary users get the rotation angle settings from user0 instead of their own settings.
+
+Change-Id: I5e76d000a28756b70efc1ab3723edaec4d3714dc",2022-01-04 17:00:54+01:00
+115,dc0b1cab5d7d79aa500ace0d618ed523cdfbc41a,"SystemUI: Read PIN scramble setting from current user
+
+* Fixes a bug where secondary users get the PIN scrambled from user0
+  settings instead of their own settings.
+
+Change-Id: I8f8034f7950c9bd89504c41f12ff57707f6e0790",2022-01-04 17:00:54+01:00
+116,e68894cd604b9c2ac01a3dce16c97b1816b1c006,"SystemUI: Set brightness slider view restriction from the right thread
+
+The brightness slider view can only be safely touched from the main
+handler, not the background handler.
+
+This fixes the following crash:
+E AndroidRuntime: FATAL EXCEPTION: SysUiBg
+E AndroidRuntime: Process: com.android.systemui, PID: 4217
+E AndroidRuntime: android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+E AndroidRuntime: 	at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:8804)
+E AndroidRuntime: 	at android.view.ViewRootImpl.focusableViewAvailable(ViewRootImpl.java:4612)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.ViewGroup.focusableViewAvailable(ViewGroup.java:962)
+E AndroidRuntime: 	at android.view.View.setFlags(View.java:16122)
+E AndroidRuntime: 	at android.view.View.setEnabled(View.java:11744)
+E AndroidRuntime: 	at com.android.systemui.settings.ToggleSliderView.setEnforcedAdmin(ToggleSliderView.java:101)
+E AndroidRuntime: 	at com.android.systemui.settings.BrightnessController$10.run(BrightnessController.java:432)
+E AndroidRuntime: 	at android.os.Handler.handleCallback(Handler.java:938)
+E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:223)
+E AndroidRuntime: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+
+Change-Id: Iac48d0b652f148411c5d7a48b19d7ba0c9c24fca",2022-01-04 19:30:20+01:00
+117,898ecaa0899aac72cd8e99a201a0ff6c06224dcd,"Revert ""Remove dependency on IME subtype from TSMS""
+
+Since the upgrade from Android 9 to 10 spell checking
+has stopped working for any language other than English.
+Reverting this commit makes the spell checker recognize
+the currently active input language again.
+
+Thanks to ClearlyClaire for figuring this out.
+Fixes: https://gitlab.com/LineageOS/issues/android/-/issues/1723
+This reverts commit bb0a2247147139e7f01b66366e4552858b5747a4.
+
+Change-Id: I3532f93d25d7ef30a3a070daaaf6d2209d4f2ec8",2022-01-13 01:53:09+01:00
+118,ce87f77e2ac9edfb8cce11ea072c53401f7018d8,"Merge tag 'android-security-11.0.0_r51' into staging/lineage-18.1_merge-android-security-11.0.0_r51
+
+Android security 11.0.0 release 51
+
+* tag 'android-security-11.0.0_r51':
+  Don't crash if default supervision profile owner is not set
+  DO NOT MERGE Re-implement reading/writing Throwables from/to Parcel, without Parcel private APIs.
+  [DO NOT MERGE] Controls - Do not recreate intent
+  RESTRICT AUTOMERGE Remove line of code that was mistakently left in.
+  Revert ""Revert ""[pm] remove old stage dirs on low storage""""
+  Update deletion conditions for a package's UsageStats.
+  Allow forcing status bar state changes and do so when the screen turns off.
+  Prevent apps from spamming addAccountExplicitly. See comment here for the discussion on solution https://b.corp.google.com/issues/169762606#comment14
+
+Conflicts:
+	core/java/android/app/admin/DevicePolicyManagerInternal.java
+	services/core/java/com/android/server/pm/PackageInstallerService.java
+
+Change-Id: I75897aa717fbe7bb5f2116001a7db2bb6fff3470",2022-01-20 07:27:56-07:00
+119,703986fd5b7e6549cdaff662c06a7ae526c46ddb,"frameworks: Add support for clock auto-hiding
+
+Hide statusbar clock when launcher is visible. Useful when you already have a clock as widget.
+
+Change-Id: I03dfc81bc055f2f865ac704e3bf9d9d104fac272",2022-01-24 20:36:41+01:00
+120,a84cb4570d035f86a591cd7b2d0a2c18534cbe42,"Automatic translation import
+
+[BadDaemon] Fixed strings in SystemUI for values-ast-rES/strings.xml
+manually
+
+Change-Id: Ib0d451cc78b54766f1756f8b823df79e2e36c400",2022-02-13 19:56:01+01:00
+121,c4214cf241a3bf3fc7d0ea0a5360964effcaa7db,"Add CLI commands to restrict Wi-Fi, Cellular, and VPN data
+
+* The creates a CLI accessible version of per-app cellular data,
+  VPN, and wifi restrictions.
+
+Reference: https://review.lineageos.org/c/259455
+Signed-off-by: tumatanquang <baobaoxich@yahoo.com>
+Change-Id: I005cacdd7be3e6311ef47465d3fca7fa847d3b7e",2022-02-18 14:56:04+01:00
+122,98f3c37439e30ed5e22f94340766821a31d8bdd9,"GlobalActionsDialog: Hint that there's more behind restart button
+
+If advanced restart is enabled, show a slightly different text to
+hint that there might be something more behind it. The string exists,
+so make use of it.
+
+Change-Id: I607fb48c24ea7a8c004ccca33af19ced1847e170",2022-02-25 11:09:47+01:00
+123,0d7e68d8748745327610a39be8d57a3256ccb15e,"Add CLI command to restrict all network usage
+
+Reference: https://review.lineageos.org/c/324695
+Signed-off-by: Tư Mã Tần Quảng <baobaoxich@gmail.com>
+Change-Id: I07dd734faca6116356fc05af7dff262bec65b4cb",2022-02-25 17:05:30+01:00
+124,1c97e4e394a23dc505a2efa4bfd555ae625688b2,"GlobalActionsDialog: Never show emergency without telephony support
+
+Change-Id: I7a4cd340d69fa6e3e2e6a2ba0529276f3b04155b",2022-02-26 00:55:55+01:00
+125,93beccf9967cec9e84fa493b6ce9d23a02ec93e7,"Add nvcpl hook interfaces
+
+NvCPL works in conjunction with the PowerHAL in order to adjust various
+performance knobs based on the app or device specific profiles.
+
+Change-Id: I4953cbb96d729dbe0cee6d7071b5933586770330",2022-03-03 07:12:29+01:00
+126,3aa91ba5a999c38f82b3cf43414026dc9bbfa894,"Add nvidia profile manager
+
+This implements and API for apps to interface with NvCPL and by
+extension the PowerHAL.
+
+Reverse engineered from the Shield Experience 8.2.0 update then cleaned
+up to match Android standards.
+
+Change-Id: I774ac62c8867151f21712cfeee25f96a591415ad",2022-03-03 07:12:29+01:00
+127,c56b83016a6f89b92868ead3bc6bb9cd303e5027,"Merge tag 'android-security-11.0.0_r53' into staging/lineage-18.1_merge-android-security-11.0.0_r53
+
+Android security 11.0.0 release 53
+
+* tag 'android-security-11.0.0_r53':
+  Add ALLOW_SLIPPERY_TOUCHES permission
+  Handle onNullBinding
+  Only allow trusted overlays to specify FLAG_SLIPPERY
+  Check group channels for FGSes
+  [RESTRICT AUTOMERGE] Fix the inconsistency of protection level
+  Don't abandon child sessions (1/n)
+
+Conflicts:
+	packages/SystemUI/AndroidManifest.xml
+
+Change-Id: I26dee5bb2d2973ae350e6a2960424a322e9cfeed",2022-03-08 06:54:32-07:00
+128,7088043cabe359696a464431ec62d488cc6b808d,"BootAnimation: Check for resolution override
+
+Change-Id: Ib001ce767067e3789ea5957ac9b23ed416341d18",2022-03-16 20:15:41+01:00
+129,3a5099942f76f671bd01dacce2b191514388e480,"Fix LockIcon to use Context.getDrawable(int)
+
+Using Resources.getDrawable(int) is deprecated because it lacks theme information,
+and I was seeing a crash because theme attributes were not fully resolved.
+
+Test: manual
+Change-Id: Idf1b13e16362c2e06227813f4298091ba4406bd5",2022-03-23 00:56:25+05:30
+130,89c54c83bd8bfeeb2ba214f522afbf11bdc516fc,"Support 8 channel IEC61937.
+
+There is no longer a requirement for IEC61937 streams to be stereo.
+For high bit-rate streams they may have 8 channels.
+
+Test: create AudioTrack with 8 channel IEC61937
+Bug: 31916412
+Change-Id: I4dfd3e78041a81601d5bde47a4deaa0313066028",2022-03-30 02:02:57-05:00
+131,f2aeff22fcf2165087246ab161da639c474953b5,"Revert ""Revert ""Revert ""BG-FGS-start while-in-use permission restriction improve...""""""
+
+Upstream change 5d30b7015879 (""BG-FGS-start while-in-use permission
+restriction improvement"") properly fixes what we needed to work-around.
+
+This reverts commit b64352d7c66e93ddc2b448f556e265178309d730.
+
+Change-Id: I00b3ab4161dceddff015e4f5365cd777acfe2faa",2022-04-05 06:40:23-06:00
+132,d215015374f78e047c3f65bb8da169235305d82a,"Merge tag 'android-security-11.0.0_r54' into staging/lineage-18.1_merge_android-security-11.0.0_r54
+
+Android security 11.0.0 release 54
+
+* tag 'android-security-11.0.0_r54':
+  [RESTRICT AUTOMERGE] Add hide-non-system-overlay flag for HarmfulAppWarningActivity
+  BG-FGS-start while-in-use permission restriction improvement.
+  Restrict AdbManager broadcasts to apps with MANAGE_DEBUGGING permission.
+  Prevent apps from creating blocked channel groups
+
+Change-Id: I8b6370cb873a42f9c41ca24f24a69a18d3b1e0fc",2022-04-05 06:41:18-06:00
+133,d045f50ed2f0e1f00aefc591f9f104f2bee3a546,"Merge tag 'android-security-11.0.0_r55' into staging/lineage-18.1_merge_android-security-11.0.0_r55
+
+Android Security 11.0.0 Release 55 (8287685)
+
+* tag 'android-security-11.0.0_r55':
+  Always restart apps if base.apk gets updated.
+  Verify caller before auto granting slice permission
+  [DO NOT MERGE] Keyguard - Treat messsages to lock with priority
+  [RESTRICT AUTOMERGE] Do not resume activity if behind a translucent task
+  Filter notification APIs by user
+
+Conflicts:
+	services/core/java/com/android/server/wm/RootWindowContainer.java
+
+Change-Id: I3de384c44e161c0ad6b2dd0540e9ad0eb5346c11",2022-05-03 18:08:36-06:00
+134,a7e586e207b316ac0c8a89fefb04e1a2cafcbe2c,"ATV: Display battery notifications
+
+This is for handheld gaming devices that have batteries and are
+using Android TV.
+
+Change-Id: I22592699214d40aac2a733203b05c076b2a1ae70",2022-05-20 13:50:33+02:00
+135,5286ff9aafedf3b98c23db06db69b11539954465,"Merge tag 'android-security-11.0.0_r56' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r56
+
+Android Security 11.0.0 Release 56 (8528208)
+
+* tag 'android-security-11.0.0_r56' of https://android.googlesource.com/platform/frameworks/base:
+  Disallow PAP authentication when MPPE is requested
+  limit TelecomManager#registerPhoneAccount to 10; api doc update
+  [rvc] RESTRICT AUTOMERGE Add finalizeWorkProfileProvisioning.
+  Fix NPE
+  Prevent non-admin users from deleting system apps.
+  Fix security hole in GateKeeperResponse
+  DO NOT MERGE Add an OEM configurable limit for zen rules
+  Update GeofenceHardwareRequestParcelable to match parcel/unparcel format.
+
+Change-Id: I253da8c9f716439e73108e0568f9934a1984c134",2022-06-07 06:09:57-06:00
+136,391f017fb11db8f5c53d2f4a4f2e6da1d94a1044,"Merge tag 'android-security-11.0.0_r57' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r57
+
+Android security 11.0.0 release 57
+
+* tag 'android-security-11.0.0_r57' of https://android.googlesource.com/platform/frameworks/base:
+  Crash invalid FGS notifications
+  [RESTRICT AUTOMERGE] Log to EventLog on prepareUserStorage failure
+  [RESTRICT AUTOMERGE] Ignore errors preparing user storage for existing users
+  [RESTRICT AUTOMERGE] UserDataPreparer: reboot to recovery for system user only
+  [RESTRICT AUTOMERGE] UserDataPreparer: reboot to recovery if preparing user storage fails
+  [RESTRICT AUTOMERGE] StorageManagerService: don't ignore failures to prepare user storage
+
+Change-Id: Ia902573185b3700e03308aa1a5f995b0ad0c9ee0",2022-07-07 06:55:59-06:00
+137,f1127d73228743deb29ac0e77a0e26946d21c22a,"Merge tag 'android-security-11.0.0_r58' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r58
+
+Android Security 11.0.0 Release 58 (8712617)
+
+* tag 'android-security-11.0.0_r58' of https://android.googlesource.com/platform/frameworks/base:
+  Only allow the system server to connect to sync adapters
+  Stop using invalid URL to prevent unexpected crash
+  [RESTRICT AUTOMERGE]Prevent set intent on non-leaf tasks
+  Remove package title from notification access confirmation intent
+  Clear mInterface before calling resetIkeState()
+  Make sure callingPackage belongs to callingUid when checking BG-FGS restrictions.
+  DO NOT MERGE Suppress notifications when device enter lockdown
+  [RESTRICT AUTOMERGE]Only allow system and same app to apply relinquishTaskIdentity
+
+Conflicts:
+	services/core/java/com/android/server/am/ActiveServices.java
+
+Change-Id: Ia11174475cbcd37101081511e8e2081c710cbb8d",2022-08-04 06:11:17-06:00
+138,c8d6f671eedcd9bb3069f48267b4b57517df3e50,"Merge tag 'android-security-11.0.0_r59' into staging/lineage-18.1_merge_android-security-11.0.0_r59
+
+Android security 11.0.0 release 59
+
+* tag 'android-security-11.0.0_r59':
+  Remove package name from SafetyNet logs
+  IMMS: Make IMMS PendingIntents immutable
+  Parcel: recycle recycles
+  Fix duplicate permission privilege escalation
+
+Change-Id: I38511a14c59649d3fb17edfc2baae65ec7c4e5aa",2022-09-07 15:19:04-06:00
+139,8a4acc6b88854163a59b992a9f695d91df8518cc,"Merge tag 'android-security-11.0.0_r60' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r60
+
+Android Security 11.0.0 Release 60 (9033583)
+
+* tag 'android-security-11.0.0_r60' of https://android.googlesource.com/platform/frameworks/base:
+  Enforce zen rule limit on a package level.
+  Fix NPE when deleting old zen rules
+  Store DND rule owners
+  DO NOT MERGE - Exclude TYPE_PRIVATE_PRESENTATION app visiblity
+  Block FullScreenIntent while device is in use if notification has a silencing GroupAlertBehavior.
+  Stop crashing the system on hitting the alarm limit
+  Limit the number of concurrently snoozed notifications
+  Restrict getInputMethodWindowVisibleHeight
+
+Change-Id: I064d21a10614843f98b09e8cbb3290d9ac83cb4c",2022-10-05 06:02:14-06:00
+140,010d27ffa5d57a92735a9cf820086d6401510039,"Merge tag 'android-security-11.0.0_r61' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r61
+
+Android security 11.0.0 release 61
+
+* tag 'android-security-11.0.0_r61' of https://android.googlesource.com/platform/frameworks/base:
+  [DO NOT MERGE] Do not dismiss keyguard after SIM PUK unlock
+  DO NOT MERGE Move accountname and typeName length check from Account.java to AccountManagerService.
+  Prevent apps from spamming addAccountExplicitly. See comment here for the discussion on solution https://b.corp.google.com/issues/169762606#comment14
+  Fix system zen rules by using owner package name if caller is system
+  [RESTRICT AUTOMERGE] Check permission for VoiceInteraction
+  Trim any long string inputs that come in to AutomaticZenRule
+  Check rule package name in ZenModeHelper.addAutomaticRule
+  DO NOT MERGE Fix auto-grant of AR runtime permission if device is upgrading from pre-Q
+  Do not send AccessibilityEvent if notification is for different user.
+  [RESTRICT AUTOMERGE] Do not send new Intent to non-exported activity when navigateUpTo
+  switch TelecomManager List getters to ParceledListSlice
+  DO NOT MERGE Move accountname and typeName length check from Account.java to AccountManagerService.
+
+Conflicts:
+	services/core/java/com/android/server/pm/permission/PermissionManagerService.java
+
+Change-Id: Ib35acb1b73ecab5019a49da7281113716f25f20d",2022-11-08 18:48:14-07:00
+141,78585e8ea2b89b813a5f6c9839dfe035e9f4293f,"Fallback ESC to BACK
+
+The current keyboard shortcut for BACK is ctrl-alt-del, which
+doesn't even work. Allowing ESC to act as BACK matches what some
+vendors are already doing downstream.
+
+Change-Id: I5df5dbedb84d364ac5a56cdf159f2ce9747e6ecc",2022-11-15 20:45:17+01:00
+142,35e8db7c0d25bf935d44115e968e76289a26df73,"Merge tag 'android-security-11.0.0_r62' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r62
+
+Android Security 11.0.0 Release 62 (9269287)
+
+* tag 'android-security-11.0.0_r62' of https://android.googlesource.com/platform/frameworks/base:
+  [DO NOT MERGE] Revert ""Fix system zen rules by using owner package name if caller is system""
+  [DO NOT MERGE] Revert ""Check rule package name in ZenModeHelper.addAutomaticRule""
+  Validate package name passed to setApplicationRestrictions.
+  Add safety checks on KEY_INTENT mismatch.
+  [DO NOT MERGE] Fix permanent denial of service via setComponentEnabledSetting
+  [Do Not Merge] Ignore malformed shortcuts
+  [DO NOT MERGE] Update window with FLAG_SECURE when bouncer is showing
+  [RESTRICT AUTOMERGE] Allow activity to be reparent while allowTaskReparenting is applied
+  Fix a security issue in app widget service.
+  Fix NPE
+  [pm] forbid deletion of protected packages
+  Include all enabled services when FEEDBACK_ALL_MASK.
+  Prevent non-admin users from deleting system apps.
+  Limit the size of NotificationChannel and NotificationChannelGroup
+  Revert ""Prevent non-admin users from deleting system apps.""
+  Drop input for toast and child surfaces
+  SurfaceControl: Add setDropInputMode api
+  DO NOT MERGE: Revert ""Map TYPE_TRUSTED_APPLICATION_OVERLAY to system window type for A11y""
+  Add mechanism for a task's windows to be trusted overlays
+  Change InputWindowInfo::isTrustedOverlay() to be permission and flag based
+
+Conflicts:
+	core/java/android/view/WindowManager.java
+	packages/SystemUI/src/com/android/systemui/statusbar/phone/NotificationShadeWindowController.java
+
+Change-Id: Iaf5f611012175df784718939776975e3c78d7180",2022-12-07 07:40:55-07:00
+143,874102da3227b771b2e341c300fa38f348cb5cb7,"Merge tag 'android-security-11.0.0_r63' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r63
+
+Android security 11.0.0 release 63
+
+* tag 'android-security-11.0.0_r63' of https://android.googlesource.com/platform/frameworks/base:
+  Ensure that only SysUI can override pending intent launch flags
+  Fix sharing to another profile where an app has multiple targets
+  Add protections against queueing a UsbRequest when the underlying UsbDeviceConnection is closed.
+  RESTRICT AUTOMERGE Revoke SYSTEM_ALERT_WINDOW on upgrade past api 23
+  [RESTRICT AUTOMERGE] Trim the activity info of another uid if no privilege
+  [RESTRICT AUTOMERGE][SettingsProvider] key size limit for mutating settings
+  RESTRICT AUTOMERGE Validate permission tree size on permission update
+  [RESTRICT AUTOMERGE] [SettingsProvider] mem limit should be checked before settings are updated
+  [DO NOT MERGE] Fix conditionId string trimming in AutomaticZenRule
+  Disable all A11yServices from an uninstalled package.
+  Limit length and number of MIME types you can set
+  Limit lengths of fields in Condition to a max length.
+
+Change-Id: I5ea58e1d8e8138b3d2094b2d36c6c65083a33478",2023-01-04 21:37:22-07:00
+144,1b4001cd2bef49bac9eda4ab95f3dd0decf4092b,"Merge tag 'android-security-11.0.0_r64' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r64
+
+Android Security 11.0.0 Release 64 (9383110)
+
+* tag 'android-security-11.0.0_r64' of https://android.googlesource.com/platform/frameworks/base:
+  Use rule package name in addAutomaticZenRule; specify ""android"" for all system apps
+  Convert argument to intent in ChooseTypeAndAccountActivity
+  [RESTRICT AUTOMERGE] Correct the behavior of ACTION_PACKAGE_DATA_CLEARED
+  [DO NOT MERGE] Revert ""Fix system zen rules by using owner package name if caller is system""
+  [DO NOT MERGE] Revert ""Check rule package name in ZenModeHelper.addAutomaticRule""
+  Fix system zen rules by using owner package name if caller is system
+  Check rule package name in ZenModeHelper.addAutomaticRule
+  Make Activites touch opaque - DO NOT MERGE
+
+Change-Id: I9f72ac0e0d779cb74bdef2704d62bcfc4e1c3602",2023-02-11 06:44:10-07:00
+145,98f04721f78a3ccfc20cb77d9060b8af8c13e473,"Merge tag 'android-security-11.0.0_r65' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r65
+
+Android security 11.0.0 release 65
+
+* tag 'android-security-11.0.0_r65' of https://android.googlesource.com/platform/frameworks/base:
+  Revert ""Ensure that only SysUI can override pending intent launch flags""
+  Reconcile WorkSource parcel and unparcel code.
+  RESTRICT AUTOMERGE Revoke dev perm if app is upgrading to post 23 and perm has pre23 flag
+  Enable user graularity for lockdown mode
+  Stop managed profile owner granting READ_SMS
+  Move service initialization
+  Revert ""[RESTRICT AUTOMERGE] Trim the activity info of another uid if no privilege""
+  DO NOT MERGE Move accountname and typeName length check from Account.java to AccountManagerService.
+  Prevent apps from spamming addAccountExplicitly. See comment here for the discussion on solution https://b.corp.google.com/issues/169762606#comment14
+  Revert ""Prevent apps from spamming addAccountExplicitly.""
+  Revert ""DO NOT MERGE""
+
+Change-Id: I1d2227cceb359b2764be791226fa2547e0029592",2023-03-17 00:59:24-06:00
+146,4f05b2dd0c578a5d5c95d74daae045466204f1c6,"Merge tag 'android-security-11.0.0_r66' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r66
+
+Android Security 11.0.0 Release 66 (9682389)
+
+* tag 'android-security-11.0.0_r66' of https://android.googlesource.com/platform/frameworks/base:
+  Revert ""Make Activites touch opaque - DO NOT MERGE""
+  [RESTRICT AUTOMERGE] Fix bypass BG-FGS and BAL via package manager APIs
+  Add a limit on channel group creation
+  [RESTRICT AUTOMERGE] Strip part of the activity info of another uid if no privilege
+  [DO NOT MERGE] Backport BAL restrictions from S to R, this blocks apps from using Alarm Manager to bypass BAL restrictions.
+  Encode Intent scheme when serializing to URI string RESTRICT AUTOMERGE
+  Fix checkKeyIntentParceledCorrectly's bypass
+  Checking if package belongs to UID before registering broadcast receiver
+  Revert ""[RESTRICT AUTOMERGE] Trim the activity info of another uid if no privilege""
+  DO NOT MERGE: Context#startInstrumentation could be started from SHELL only now.
+  [RESTRICT AUTOMERGE] Trim the activity info of another uid if no privilege
+
+Change-Id: Ib3ab43f066b241bd5b6bf25965af3ad6fda936df",2023-04-12 17:22:00-06:00
+147,6f7a4b9671afbcb5ea3364ead26278ab7e7b7526,"Automatic translation import
+
+Change-Id: I99cff798056d4e87a7aac3f7cdd1eb1866d52255",2023-04-24 14:25:51+00:00
+148,d0458eb3ae2434a341bf37d06faba1da3cabcbdd,"Automatic translation import
+
+Change-Id: I0f0232aec51fe7dbfc2ef39c78882d2dbe146b57",2023-05-01 09:10:16+00:00
+149,17d7e595c6e07eb2a9fe1f5fd162825e9699d9c3,"Merge tag 'android-security-11.0.0_r67' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r67
+
+Android security 11.0.0 release 67
+
+* tag 'android-security-11.0.0_r67' of https://android.googlesource.com/platform/frameworks/base:
+  Fix WindowInputTests#testOverlapWindow failing (1/2)
+  Limit the number of shortcuts per app that can be retained by system
+  Trim strings added to persistent snoozed notification storage.
+  Make Activites touch opaque - DO NOT MERGE
+  Revert ""Make Activites touch opaque - DO NOT MERGE""
+  enforce stricter rules when registering phoneAccounts
+  Uri: check authority and scheme as part of determining URI path
+  Checks if AccessibilityServiceInfo is within parcelable size.
+  [RESTRICT AUTOMERGE][pm] still allow debuggable for system app downgrades
+  [RESTRICT AUTOMERGE][pm] prevent system app downgrades of versions lower than preload
+  Make Activites touch opaque - DO NOT MERGE
+
+Change-Id: I4684b4db1d152cb5afe26d936aaf00c500c98b22",2023-05-05 06:53:08-06:00
+150,23c1110d9f0062abac38a0613b3b1708acf8b2fa,"Automatic translation import
+
+Change-Id: I86a300695ac08542f8fb80915710363e0dbfbba6",2023-05-15 13:15:40+00:00
+151,d45e66b335d47edf9fa1789631f8dfa2ce4b5d03,"Automatic translation import
+
+Change-Id: I3a51bd9ae6a43e28436e95621a4e1306d89af809",2023-06-01 10:19:27+00:00
+152,77fd855223ffe7df2ae681091f25152ae8852f76,"tconfig-lineage; aospremote; lineageremote; repo start staging/lineage-18.1_merge_android-security-11.0.0_r68
+git fetch --tag aosp android-security-11.0.0_r68 && git merge
+--log=200000 FETCH_HEAD
+Merge tag 'android-security-11.0.0_r68' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r68
+
+Android Security 11.0.0 Release 68 (9892680)
+
+* tag 'android-security-11.0.0_r68' of https://android.googlesource.com/platform/frameworks/base:
+  [RESTRICT AUTOMERGE] Add BubbleMetadata detection to block FSI
+  Enforce DevicePolicyManager.setUserControlDisabledPackages in AppStandbyController
+  Allow filtering of services
+  Handle invalid data during job loading.
+  Check key intent for selectors and prohibited flags
+  [DO NOT MERGE] Prevent RemoteViews crashing SystemUi
+  [DO NOT MERGE] Wait for preloading images to complete before inflating notifications
+  Prevent sharesheet from previewing unowned URIs
+  Remove Activity if it enters PiP without window
+
+Change-Id: Ic4a7393644dacfb146f704fc2fb18faee453c53b",2023-06-08 06:26:52-06:00
+153,e0291f1cc1aa9acb0fdec4cf25b209168327838a,"Automatic translation import
+
+Change-Id: Ifcdf2b37a9a58d90bd147a6e0adb676b1b3ea65c",2023-06-15 12:06:35+00:00
+154,d7c017f03928c5ba51d31303249ed70b92dc7e25,"Automatic translation import
+
+Change-Id: Ib11f75692d1546368aed9dcd66789eadec810e28",2023-07-01 17:31:03+00:00
+155,7792b798c5bb73f446bde476e5d2092baded2f83,"Merge tag 'android-security-11.0.0_r69' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r69
+
+Android security 11.0.0 release 69
+
+* tag 'android-security-11.0.0_r69' of https://android.googlesource.com/platform/frameworks/base:
+  Visit URIs in landscape/portrait custom remote views.
+  Truncate ShortcutInfo Id
+  Verify URI permissions for EXTRA_REMOTE_INPUT_HISTORY_ITEMS.
+  DO NOT MERGE Increase notification channel limit.
+  DO NOT MERGE Dismiss keyguard when simpin auth'd and...
+  Only allow NEW_TASK flag when adjusting pending intents
+  DO NOT MERGE: Limit the ServiceFriendlyNames
+  DO NOT MERGE: Add size check on PPS#policy
+  Import translations. DO NOT MERGE ANYWHERE
+  Limit the number of supported v1 and v2 signers
+  Sanitize VPN label to prevent HTML injection
+  Revert ""Ensure that only SysUI can override pending intent launch flags""
+  Ensure that only SysUI can override pending intent launch flags
+  [RESTRICT AUTOMERGE] Passpoint Add more check to limit the config size
+
+Change-Id: Ie675bf2e5b059467bafc4d7285d65fa221b92895",2023-07-07 08:16:17-06:00
+156,68b16f7990cacedbc25ec75e93677de450817f84,"Automatic translation import
+
+Change-Id: Ie10325a6d6a471cc3e3fbb9ba697200bd8b166fe",2023-07-15 16:40:11+00:00
+157,afe218566db025cb53022b26c919ae6b4fcf541b,"Automatic translation import
+
+Change-Id: Icc8f3f16dc60dc9e4929a9cf27c4fae854db175f",2023-08-01 18:25:36+00:00
+158,c3571dcf77e1659b4ca9b5bc62bf11bff4d85470,"Merge tag 'android-security-11.0.0_r70' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r70
+
+Android Security 11.0.0 Release 70 (10286620)
+
+* tag 'android-security-11.0.0_r70' of https://android.googlesource.com/platform/frameworks/base:
+  Resolve StatusHints image exploit across user.
+  Use Settings.System.getIntForUser instead of getInt to make sure user specific settings are used
+  Verify URI permissions in MediaMetadata
+  Check URIs in notification public version.
+  Implement visitUris for RemoteViews ViewGroupActionAdd.
+  Ensure policy has no absurdly long strings
+  On device lockdown, always show the keyguard
+  Verify URI permissions for notification shortcutIcon.
+  ActivityManagerService: Allow openContentUri from vendor/system/product.
+  DO NOT MERGE: ActivityManager#killBackgroundProcesses can kill caller's own app only
+
+Change-Id: I5a17e622e1449bb096997364ef899bed0cb50298",2023-08-07 19:16:32-06:00
+159,3e19265fab2b4c455194f9a65dd59ef574793f0e,"Automatic translation import
+
+Change-Id: Ib3f61222e3bb30c22cd22d4e4e4462d70a61642c",2023-08-15 16:40:18+00:00
+160,dccf6f8e6804c4f4fb4bc849ddf11a7488f1e867,"Automatic translation import
+
+Change-Id: I600ca3b7dc31493c16d8152a706bc4caec683b6a",2023-09-01 16:02:47+00:00
+161,8c3dda3e7fb895fe386991d81a6606ce1d25bf0c,"Merge tag 'android-security-11.0.0_r71' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r71
+
+Android security 11.0.0 release 71
+
+* tag 'android-security-11.0.0_r71' of https://android.googlesource.com/platform/frameworks/base:
+  Improve user handling when querying for resumable media
+  Update AccountManagerService checkKeyIntentParceledCorrectly.
+  Forbid granting access to NLSes with too-long component names
+  Ignore virtual presentation windows - RESTRICT AUTOMERGE
+  DO NOT MERGE Grant carrier privileges if package has carrier config access.
+  DO NOT MERGE Revert ""Verify URI permissions for EXTRA_REMOTE_INPUT_HISTORY_ITEMS.""
+
+Conflicts:
+	packages/SystemUI/src/com/android/systemui/media/MediaBrowserFactory.java
+	packages/SystemUI/src/com/android/systemui/media/MediaResumeListener.kt
+	packages/SystemUI/src/com/android/systemui/media/ResumeMediaBrowser.java
+	packages/SystemUI/src/com/android/systemui/media/ResumeMediaBrowserFactory.java
+	packages/SystemUI/tests/src/com/android/systemui/media/MediaResumeListenerTest.kt
+
+Change-Id: I89e5a3d9ed4b9e1068b8b4e40a72d8b4cc07627a",2023-09-09 13:07:53-06:00
+162,ef438ae15efaeaf2b45d1e7bfd7fd34803cda36d,"Automatic translation import
+
+Change-Id: Ia6d51be0dce60696c779c7ea8c18a98224d26b25",2023-10-01 17:52:49+00:00
+163,b957c694e66626731e52ac80cb60d83b2933abc7,"Merge tag 'android-security-11.0.0_r72' of https://android.googlesource.com/platform/frameworks/base into staging/lineage-18.1_merge_android-security-11.0.0_r72
+
+Android Security 11.0.0 Release 72 (10763435)
+
+* tag 'android-security-11.0.0_r72' of https://android.googlesource.com/platform/frameworks/base:
+  Revert ""DO NOT MERGE Dismiss keyguard when simpin auth'd and...""
+  [RESTRICT AUTOMERGE] Ignore small source rect hint
+  RESTRICT AUTOMERGE: SettingsProvider: exclude secure_frp_mode from resets
+  Add userId check before loading icon in Device Controls
+  Fixing DatabaseUtils to detect malformed UTF-16 strings
+  Disallow loading icon from content URI to PipMenu
+  Fix KCM key mapping cloning
+  [DO NOT MERGE] Verify URI Permissions in Autofill RemoteViews
+  Do not share key mappings with JNI object
+  Verify URI permissions for EXTRA_REMOTE_INPUT_HISTORY_ITEMS.
+  Import translations. DO NOT MERGE ANYWHERE
+  Add placeholder when media control title is blank
+  RingtoneManager: verify default ringtone is audio
+
+Conflicts:
+	packages/SystemUI/src/com/android/systemui/controls/management/ControlAdapter.kt
+	packages/SystemUI/src/com/android/systemui/media/MediaDataManager.kt
+	packages/SystemUI/src/com/android/systemui/pip/phone/PipMenuActivity.java
+
+Change-Id: Icf9a002c965930f95e3be5c7a23954143ab35c96",2023-10-07 11:33:23-06:00
+164,aa8daa2af1d4ea8d81f580f7a7cc33adfd783501,"Automatic translation import
+
+Change-Id: I9d0e47776a01329f3cc4072ff2e26faa132ec3bc",2023-10-15 18:21:51+00:00
+165,1abc2da9f58989b5770db291785e13f90eb29f26,"Automatic translation import
+
+Change-Id: I35539a0b0e5de7f6de7f916c467c3aeb284afc1d",2023-11-01 20:19:00+00:00
+166,ef4a37b328104d5f95d718204e96e2775575c0f6,"Merge tag 'android-security-11.0.0_r73' into staging/lineage-18.1_android-security-11.0.0_r73
+
+Android security 11.0.0 release 73
+
+* tag 'android-security-11.0.0_r73' of https://android.googlesource.com/platform/frameworks/base:
+  [SettingsProvider] verify ringtone URI before setting
+  RESTRICT AUTOMERGE Make log reader thread a class member
+  Use type safe API of readParcelableArray
+  [DO NOT MERGE] Check caller's uid in backupAgentCreated callback
+  DO NOT MERGE Fix BAL via notification.publicVersion
+
+Change-Id: Ic113286d5f20ffc9030b5b9620dba3ff31dc2954",2023-11-12 09:07:47-07:00
+167,c3f27eb76552a4a0e46c7ddeaa05ab543e86bcfe,"Automatic translation import
+
+Change-Id: I3b95526fecc5872cd4638e21ddac22f50d8add65",2023-12-01 21:01:38+00:00
+168,dca679bf8f46f6548d65a3c0cf1e12b495dea97d,"Merge tag 'android-security-11.0.0_r74' into staging/lineage-18.1_android-security-11.0.0_r74
+
+Android Security 11.0.0 Release 74 (10993236)
+
+* tag 'android-security-11.0.0_r74':
+  RESTRICT AUTOMERGE: Check URI permissions for resumable media artwork
+  Updated: always show the keyguard on device lockdown
+  Adding in verification of calling UID in onShellCommand
+  Revert ""On device lockdown, always show the keyguard""
+  Validate userId when publishing shortcuts
+  Use readUniqueFileDescriptor in incidentd service
+  Restrict number of shortcuts can be added through addDynamicShortcuts
+  Require permission to unlock keyguard
+  Validate URI-based shortcut icon at creation time.
+  RESTRICT AUTOMERGE: Drop invalid data.
+  Visit Uris related to Notification style extras
+  Fix bypass BAL via `requestGeofence`
+  Visit Uris added by WearableExtender
+
+Conflicts:
+	packages/SystemUI/tests/src/com/android/systemui/media/MediaDataManagerTest.kt
+
+Change-Id: I495d0122e69d61e433d4fa5244924c4f6b644fdc",2023-12-10 10:01:05-07:00
+169,fed44d35e1fd3a5b7b5b77da3d4144c222c2cf8b,"Automatic translation import
+
+Change-Id: I53e4df5f5cc18ed49044fdc4fc2e901efd9c3faa",2024-01-01 17:11:41+00:00
+170,6e9f3b71c251843d94d7428f1eaf46a014be8712,"Merge tag 'android-security-11.0.0_r75' into staging/lineage-18.1_android-security-11.0.0_r75
+
+Android security 11.0.0 release 75
+
+* tag 'android-security-11.0.0_r75':
+  Fix vulnerability that allowed attackers to start arbitary activities
+  RESTRICT AUTOMERGE Log to detect usage of whitelistToken when sending non-PI target
+  [CDM] Validate component name length before requesting notification access.
+  Truncate user data to a limit of 500 characters
+  DO NOT MERGE Ensure finish lockscreen when usersetup incomplete
+  DO NOT MERGE Dismiss keyguard when simpin auth'd and...
+
+Conflicts:
+	packages/SystemUI/src/com/android/keyguard/KeyguardSecurityContainer.java
+
+Change-Id: Ib78c4711dd699bf6b6548f2c2a4c96e45449d661",2024-01-07 10:55:39-07:00

@@ -1,0 +1,3111 @@
+,hash,commit,date
+0,8acf7b3981a55a3da70fd03d38b3645437b84d46,"Merge tag 'android-12.1.0_r7' into staging/lineage-19.1_merge-android-12.1.0_r7
+
+Android 12.1.0 Release 7 (SQ3A.220605.009.A1)
+
+# -----BEGIN PGP SIGNATURE-----
+#
+# iF0EABECAB0WIQRDQNE1cO+UXoOBCWTorT+BmrEOeAUCYp57OgAKCRDorT+BmrEO
+# eDl/AJ9DKA7YWCgqbfWyZi2DaiqYVzJCmwCcCudlhs2frChLcMq0TYlTd/eOYPA=
+# =7+w/
+# -----END PGP SIGNATURE-----
+# gpg: Signature made Tue Jun  7 01:10:02 2022 EEST
+# gpg:                using DSA key 4340D13570EF945E83810964E8AD3F819AB10E78
+# gpg: Good signature from ""The Android Open Source Project <initial-contribution@android.com>"" [marginal]
+# gpg: initial-contribution@android.com: Verified 1233 signatures in the past
+#      7 months.  Encrypted 4 messages in the past 5 months.
+# gpg: WARNING: This key is not certified with sufficiently trusted signatures!
+# gpg:          It is not certain that the signature belongs to the owner.
+# Primary key fingerprint: 4340 D135 70EF 945E 8381  0964 E8AD 3F81 9AB1 0E78
+
+# By Bill Yi (85) and others
+# Via Automerger Merge Worker (518) and others
+* tag 'android-12.1.0_r7': (351 commits)
+  DO NOT MERGE: Revert ""RESTRICT AUTOMERGE: Polish IME transition from fullscree...""
+  [DO NOT MERGE] Force extra nav bar provide side gesture insets
+  Disallow PAP authentication when MPPE is requested
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  [DO NOT MERGE] Fixed status bar glitch for apps that access internal res
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  [qt] RESTRICT AUTOMERGE Add finalizeWorkProfileProvisioning.
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Import translations. DO NOT MERGE ANYWHERE
+  Fix NPE
+  Fix NPE
+  Fix NPE
+  Fix NPE
+  Fix NPE
+  Fix NPE
+  ...
+
+ Conflicts:
+	packages/SystemUI/src/com/android/systemui/statusbar/phone/fragment/CollapsedStatusBarFragment.java
+	services/core/java/com/android/server/audio/AudioDeviceBroker.java
+
+Change-Id: I82f36e1a4a564d36b86a60e0bef0a15816bba061",2022-06-11 18:26:40+03:00
+1,23b641c5793bcbe559e56588016b9fb7555ae6ff,"Show the vibrate icon in the Status Bar by default
+
+Change-Id: I39d2f0ee7849403c404bdfa109e191102466c537",2022-06-11 18:15:28+02:00
+2,9129d2dc731e74a0d403d331a7136c9175e10d24,"SystemUI: Import Pixel display interfaces
+
+We'll need the Pixel display interfaces to implement HBM control for
+UDFPS, but they're in the hardware/google/interfaces namespace that we
+can't import here. Add a copy of the display interfaces (as of
+android-12.0.0_r13) until we have a better solution.
+
+NB: setCompensationImageHandle(NativeHandle, String) has been removed
+because NativeHandle is a HIDL type that isn't available in a pure-AIDL
+context.
+
+Change-Id: Iee6c3eea483aa956d486fd413cbd8417c409a3ca",2022-06-12 01:31:52+02:00
+3,ba528922c37f982e6533939b98852373848446a1,"SystemUI: Add HBM provider for UDFPS on Pixel devices
+
+This implements high brightness mode (HBM) control for the under-display
+fingerprint sensor on Pixel devices. It enables and disables local HBM
+through the Pixel display HAL, similar to Google's implementation in the
+stock OS.
+
+Blocking IPC calls to the display HAL are done on a background thread to
+avoid causing frame drops by blocking the main thread, but callbacks are
+always run on the main thread as specified by the UdfpsHbmProvider docs.
+Care is taken to avoid enabling LHBM when it's already enabled and vice
+versa, as doing so causes the display HAL's request to time out and
+throw an exception.
+
+For simplicity, global HBM is not supported as it has never been used in
+production on Pixel devices.
+
+Change-Id: I8d301c7e1ce54ee8ffd987708b6f0e2bf115f7ef",2022-06-12 01:31:57+02:00
+4,1726a9eda3299ea04660d5109fea4b55375f0798,"fixup! Allow lineage resources package to be overlayed by RRO packages
+
+Change-Id: I7b1a53191ad613741159820bdd17bcb56d9872ef",2022-06-14 17:31:23+02:00
+5,9d31f5ad45805fd692ffd797dde13e6f16ed73e8,"SystemUI: Redraw display cutout on overlay changes
+
+Fixes notch hide overlay on some devices
+
+commit 5481d59996b34cda1cb6b680af7510fee7b53b42
+Author: daniml3 <danimoral1001@gmail.com>
+Date:   Tue Mar 9 08:11:13 2021 +0100
+
+    SystemUI: check if the cutout views array is null before using it
+
+    Signed-off-by: daniml3 <danimoral1001@gmail.com>
+    Change-Id: I1316c61280dadc30a86f2ae72559437a61dd4616
+
+Co-authored-by: daniml3 <danimoral1001@gmail.com>
+Change-Id: I5a049099ab375833f1e5ebbda49dc36c3c0b0a68",2022-06-16 16:46:17+02:00
+6,a5ca55c94e60a2036d1affb05072492a92b6b240,"SystemUI: MediaOutputController: Avoid NPE when created with empty packageName
+
+If mPackageName is empty the mMediaController won't be set in start() which
+results in a null object reference. Prior to commit d1f381a7dba1894b4c06029e305f12feb04483da
+it was possible to create MediaOutputController with an empty package name.
+In this case the dialog did not contain information about currently played
+media but provided working options to change the output device. This commit
+returns this behaviour.
+
+Change-Id: I94939467dcfe759f8e4aae88097579fb17c94a8e",2022-06-17 19:14:27+02:00
+7,7f4501b8fa7b5318425b990d7c2bb062a80a86d0,"Automatic translation import
+
+Change-Id: If18af2b4a1239c710285ade71a5f9432f55ee471",2022-06-20 23:57:00+03:00
+8,1ce45bc32ce80fbe3c6cc2fb14ccfabc566347f4,"SystemUI: screenshot: open long screenshot activity for partial screenshots
+
+The partial screenshot UI is basically unusable. Replace it
+with the long  screenshot UI which offers cropping, saving,
+canceling, and sharing capabilities.
+
+Change-Id: I27f7a811838f7e3f2057f567c7a350255996a8cb",2022-06-26 01:39:57+03:00
+9,13429c61674c3b1cfbc71d5d22853cebbe7706a2,"SystemUI: screenshot: remove misplaced call to set crop view padding
+
+This call to setExtraPadding() discards the previously set
+padding, making the screenshot crop view be able to select
+over the borders of the image. Remove it.
+
+Change-Id: I6cc28c79c2d9f4958215bb5957be6c9b2eab1002",2022-06-26 01:40:04+03:00
+10,e110cba8fecf449207bca80f8696fe73af1d6e31,"SystemUI: screenshot: remove duplicate clamping on move action
+
+On MotionEvent.ACTION_DOWN, a range of of motion is calculated and
+stored. On MotionEvent.ACTION_MOVE, the new position of the crop
+boundary is clamped by the original range of motion, and also
+clamped again by a new range of motion inside setBoundaryPosition().
+
+The original range of motion is pointless and only used in this case,
+remove it.
+
+Change-Id: Ib4f35bf5317f5b5879606680beee3e077f829d10",2022-06-26 10:41:45+03:00
+11,834defa7e31a7d75de18de2fb148a7f845989830,"SystemUI: screenshot: add extra crop boundaries
+
+Add corner boundaries that allow resizing in both vertical and
+horizontal directions at the same time.
+
+To handle corner boundaries, split every boundary into vertical
+and horizontal boundaries, and handle both vertical and horizontal
+changes for all boundaries. If the boundary is a purely vertical
+(top, bottom) or purely horizontal (left, right) boundary, the
+opposite direction boundary will be none, and the selection won't
+be changed on that selection.
+
+Also, add a middle boundary that allows moving the current selection.
+
+To achieve this, treat the middle boundary as composed of top and
+left boundaries, and when trying to change either the top or the
+left boundary while the currently dragged boundary is the middle
+one, reposition the opposite boundary too.
+
+Change-Id: I6dd703733b3d161f5979d91a124350fb1a8d52ae",2022-06-26 10:49:32+03:00
+12,92abcecfe2bd5a84a601a5eafd3ddf75c3968d38,"SystemUI: screenshot: disable magnification for partial screenshots
+
+Partial screenshots are screen-size and don't need a magnifying glass.
+
+Change-Id: I472103352411d1482423230a4ff08ddda45cc53d",2022-06-26 10:49:33+03:00
+13,45cefae04e40dc0de22e2dcdfcb1854431055edb,"SystemUI: screenshot: close QS after launching long screenshot activity
+
+Change-Id: Ief5510c037b27be714f8f6cc8661d81931f3babd",2022-06-26 16:28:45+02:00
+14,484c59b972c1772f75a4b1b9fce7512eee517dcb,"SystemUI: screenshot: add delay for long-press partial screenshot
+
+* Otherwise, we get power menu in screenshot.
+
+Signed-off-by: Pranav Vashi <neobuddy89@gmail.com>
+Change-Id: I018994c16eedfabffd6b7c291377668701c0e00d",2022-06-26 19:09:25+02:00
+15,dabc24b51717d2ffc8f68af2e05787dd8cebc9b1,"SystemUI: Make QS panel change on UI mode changes
+
+This reverts commit d62f7249f9e3222da95ecf6816601c408aac6be5.
+
+This is a prerequisite for making the QS panel follow the light system
+theme setting.
+
+Change-Id: Iac4c96ccb3845812ca3df820bf27dc533816f72e
+Signed-off-by: althafvly <althafvly@gmail.com>",2022-07-01 16:04:25+01:00
+16,1b62ea8bfae85099b20f48509f97f37d70149b43,"Revert ""Do not re-inflate QS and SB when CONFIG_UI_MODE""
+
+This reverts commit 8a40ff855b86bc86e23367017002289920855a4e.
+
+This is a prerequisite for making the QS panel follow the light system
+mode setting.
+
+Change-Id: Ibad399ece587505559cc73febdda2f2d8558e94d",2022-07-01 16:04:25+01:00
+17,3e99d1767968a27405a5656a47c6bc87c12d684c,"SystemUI: Follow light/dark theme in quick settings
+
+Android 12's dual-tone style where the quick settings panel is always
+dark makes the light theme look like a second-class citizen. Pure black
+also looks out-of-place next to QS tiles and the notification panel
+because dynamic themes don't affect it at all.
+
+Revert to the ~Beta 1 style where quick settings used the same theme as
+the notification shade.
+
+- colorAccentPrimary has been replaced with colorAccent for contrast in
+  light mode, because colorAccentPrimary is system_accent1_100 (dark
+  accent color)
+- Footer chips have been converted to surfaces (similar to QS tiles and
+  notifications), which makes more sense with the new style
+- The QS background is now the same as the notification shade background
+  in both light and dark modes
+
+Demo screenshots (with dual-tone commit):
+https://twitter.com/kdrag0n/status/1445922541218922496
+
+[kdrag0n: ported to 12L]
+
+Change-Id: I3d45b72f0f119e100505409d178ab8f698993881",2022-07-01 16:04:26+01:00
+18,13ddb603f5c0cfd8cd8999938b55fd06991c5133,"SystemUI: Initialize QS tiles in inactive state
+
+Now that the QS fragment is recreated when changing the UI mode (so that
+it follows light/dark themes), all tiles flash with active color briefly
+because the new views become visible before states are refreshed.
+
+Initializing tiles in the inactive state is much less disruptive, and
+the effect is very hard to see as compared to the active color because
+the background color is much less prominent.
+
+Change-Id: I048171d503f5533e91bab486b8805ac15c329f31",2022-07-01 16:04:26+01:00
+19,efdefe7d7daf1d403b11a1d5fcd391000e8d2047,"SystemUI: Add dual-tone light and dark themes for QS
+
+Google's dual-tone QS design where the notification panel has a
+semantically higher elevation adds depth to the notification+QS shade,
+and we don't necessarily have to give it up just because our QS has
+light and dark themes.
+
+To preserve the dual-tone effect, use a darker background color for the
+QS section:
+
+Light:
+    Notifications: neutral1 20 (surface_light)
+    Notification panel: neutral1 50 (light BG)
+    QS background: neutral1 100 (darker light BG / surface_header_light)
+    Inactive QS tiles: neutral1 20 (surface_light)
+
+Dark:
+    Notifications: neutral1 800 (surface_dark)
+    Notification panel: neutral1 900 (dark BG)
+    QS background: neutral1 950 (surface_header_dark_sysui modulated to L* 5)
+    Inactive QS tiles: neutral1 800 (surface_dark)
+
+The dark QS background could be neutral1 0 (black) like it was before,
+but I don't think it looks as good because it can't be tinted based on
+the active wallpaper and thus stands out from other colors.
+
+Unfortunately, Google's current CAM16-based modulation causes hue shifts
+in extreme light and dark shades (e.g. L* = 98 / 5), but we'll fix this
+by generating and overlaying modulated surface colors in our
+ThemeOverlayController implementation.
+
+Demo screenshots: https://twitter.com/kdrag0n/status/1445922541218922496
+
+Change-Id: Icdc4957ecb4e0201377351f1a3e1c6928d6b3955",2022-07-01 16:04:26+01:00
+20,643d46cefd3548dab0b55cadfb52c5d7247d601c,"SystemUI: Fix QS clock overlapping on UI mode change
+
+Calling updateAnimators() in a separate runnable seems to
+cause QSB header elements to overlap each other when switching
+between dark and light mode. This change was introduced in
+https://github.com/LineageOS/android_frameworks_base/commit/0558e1211604b3b6f465a394832bbf8fa06d1dfe and seems unnecessary so lets revert it.
+
+Change-Id: I14e60b608f2aac373e71fec0a6ab7d8e787d2457",2022-07-01 16:04:26+01:00
+21,2f6486cc1099224384bebd611cea9e5291f08a6d,"SystemUI: Calculate paged QS tiles height properly
+
+When QS is re-inflated during UI mode change and we're on the
+3rd or higher QS page, the first QS page is misaligned and
+hence height returns 0, resulting in footer and media panel
+position overlapping the QS panel. Return the maximum height
+among all present QS pages to fix this issue.
+
+Change-Id: I539babdb75c114cc44b4213ff114d4272be22ef6",2022-07-01 16:04:26+01:00
+22,22b7fd2e39b0e133437788f234a978144b06485d,"SystemUI: Follow light/dark theme in power menu
+
+Now that we've modified the power menu to refresh on UI mode changes,
+make it follow the system light/dark theme for better integration in
+light mode.
+
+SystemUI: Always refresh power menu on UI mode change
+
+This is necessary for reliably theming the global actions dialog with
+dynamic colors and adapting it to light/dark themes.
+
+Demo screenshots (with color overlays applied):
+https://twitter.com/kdrag0n/status/1445960685427433473
+
+[kdrag0n: ported to 12L]
+
+Change-Id: If58fb4079a4cd11414ff928fad3576beecb14ff5
+Signed-off-by: althafvly <althafvly@gmail.com>",2022-07-01 16:04:27+01:00
+23,3367784f32d5faced63c893824bb996f39bfa9d3,"SystemUI: Re-evaluate system theme on UI mode change
+
+- Need for power menu to set accurate colors
+
+Change-Id: I05d41eaf8ea19ce3b6ce659d01da33cf55de3b7e",2022-07-01 16:04:27+01:00
+24,2efc6aaec9b71e0e0d1a050cedce746edc38a74e,"SystemUI: Make battery & clock clickable again in QuickStatusBarHeader
+
+Change-Id: I944b1122739754cc704f65039319fb260fcdbf1d",2022-07-02 14:26:51+02:00
+25,517c7db45dc9ae271e26fac2345023fd242c1feb,"SystemUI: Bring in drawables for statusbar icon toggles
+
+- Icons from aosp base and settings
+- Minor edits for width, height, tint and color
+
+From 'core/res/res/drawable' dir:
+- ic_statusbar_auto_rotate - ic_qs_auto_rotate
+- ic_statusbar_camera - ic_camera
+- ic_statusbar_mute - ic_audio_ring_notif_mute
+- ic_statusbar_wifi - ic_wifi_signal_4
+- ic_statusbar_vibrate - ic_audio_ring_notif_vibrate
+- ic_statusbar_alarm - ic_audio_alarm
+
+From 'packages/SystemUI/res/drawable' dir:
+- ic_statusbar_headset - ic_headset
+- ic_statusbar_cast - ic_cast
+
+From 'packages/apps/Settings/res/drawable' dir:
+- ic_statusbar_work - ic_enterprise
+- ic_statusbar_hotspot - ic_hotspot
+- ic_statusbar_do_not_disturb - ic_do_not_disturb_on_24dp
+- ic_statusbar_ethernet - ic_settings_ethernet
+- ic_statusbar_mobile_network - ic_network_cell
+- ic_statusbar_airplanemode - ic_airplanemode_active
+- ic_statusbar_clock - ic_settings_date_time
+- ic_statusbar_priority - ic_important_outline
+
+Change-Id: Id30e5039e73068d0c73dd5fc7d0305865af1d791",2022-07-06 03:10:32+02:00
+26,aa8742f84e8a269409d97b8385f0601d7df9e0b1,"SystemUI: Avoid NPE in volume dialog
+
+Change-Id: I1bc6d46de01ddd4db6b32555e5557611550d007e",2022-07-06 09:02:31+02:00
+27,83340a2f4915f90d76ec23d51bc1c7d8e8d26a3c,"SystemUI: Fix signal bar icon overlay issue
+
+If the signal bar visible state is STATE_DOT, it should be shown
+a dot instead of signal bar icons. But the signal bar icon will
+be shown again if the mobile state changed, and then, the dot and
+signal bar icon are both shown. So don't update signal bar
+visibility if the state is not STATE_ICON
+
+Bugs: 200915946
+Test: Manual
+Change-Id: I7fb04049790f112441511462d3f2963aed42c790",2022-07-06 10:03:40+02:00
+28,0956c4dc431a9e54dfdafa6c1d1f9c95dcb96d9f,"BootAnimation: Check for resolution override
+
+Change-Id: Ib001ce767067e3789ea5957ac9b23ed416341d18",2022-07-11 17:31:08+02:00
+29,faf136b1bdd0464352e654f58e751c0c19feaf96,"SystemUI: support black theme for dark mode [1/4]
+
+Co-authored-by: Jesse Chan <jc@lineageos.org>
+Change-Id: I57cd53de8f2c1e4d445441b514875b6af915b858",2022-07-11 22:00:02+02:00
+30,6422e60083fd555f1fcd0a9c7b6645965839f210,"Merge tag 'android-12.1.0_r11' into staging/lineage-19.1_merge-android-12.1.0_r11
+
+Android 12.1.0 release 11
+
+# -----BEGIN PGP SIGNATURE-----
+#
+# iF0EABECAB0WIQRDQNE1cO+UXoOBCWTorT+BmrEOeAUCYsXEugAKCRDorT+BmrEO
+# eAB0AJ9JP7U8IhvBBWWMncOSn4UczVuGeACfcoPzzsmeaKLmn6qi1EDCV6Scvdo=
+# =rSdZ
+# -----END PGP SIGNATURE-----
+# gpg: Signature made Wed Jul  6 20:22:02 2022 EEST
+# gpg:                using DSA key 4340D13570EF945E83810964E8AD3F819AB10E78
+# gpg: Good signature from ""The Android Open Source Project <initial-contribution@android.com>"" [marginal]
+# gpg: initial-contribution@android.com: Verified 1242 signatures in the past
+#      8 months.  Encrypted 4 messages in the past 5 months.
+# gpg: WARNING: This key is not certified with sufficiently trusted signatures!
+# gpg:          It is not certain that the signature belongs to the owner.
+# Primary key fingerprint: 4340 D135 70EF 945E 8381  0964 E8AD 3F81 9AB1 0E78
+
+# By Eric Biggers (5) and others
+# Via Android Build Coastguard Worker (4) and Android (Google) Code Review (3)
+* tag 'android-12.1.0_r11':
+  Revert ""[DO NOT MERGE] Do not clear calling identify when using BiometricPrompt from FingerprintService.""
+  DO NOT MERGE: Revert ""RESTRICT AUTOMERGE: Polish IME transition from fullscree...""
+  Revert ""DO NOT MERGE Suppress notifications when device enter lockdown""
+  Update ServiceState broadcast for location permissions
+  Add excludedPackages parameter to broadcast
+  USB: Increase debounce time for DISCONNECT processing (revised)
+  DO NOT MERGE Suppress notifications when device enter lockdown
+  [DO NOT MERGE] Do not clear calling identify when using BiometricPrompt from FingerprintService.
+  Log to EventLog on prepareUserStorage failure
+  Ignore errors preparing user storage for existing users
+  UserDataPreparer: reboot to recovery for system user only
+  UserDataPreparer: reboot to recovery if preparing user storage fails
+  StorageManagerService: don't ignore failures to prepare user storage
+
+Change-Id: If7cb7526f3991cdd301d453c06da27287e0ede90",2022-07-12 10:55:28+03:00
+31,100058582558ae6500303c8c4af54561da4e75c6,"Partially revert ""Assume sensors perform prox check""
+
+This commit partially reverts f40bd8fbb65c896c824fe3f1a5be857bbe8ae281
+(""Assume sensors perform prox check"").
+
+Some devices do not have proximity gated sensors, and still require
+gating in software.
+Partially revert this commit to bring back the ability for sensors to
+be proximity gated in software.
+
+Change-Id: Ic3d5c6e98d1767623ace4ee4eea1c52606fabd4a",2022-07-16 22:52:11+02:00
+32,a4b357c9dd7c372c08cbe782ea6e1b09380f88a1,"SystemUI: doze: add config for double tap sensors that need a proximity check
+
+Change-Id: Id7df987f0e9db4e5e2328534764ded397b6ac48d",2022-07-16 22:52:11+02:00
+33,3dd1c0ac07e72905c64cb43366edd571b2bdae9d,"SystemUI: doze: add config for long press sensors that need a proximity check
+
+Change-Id: I34d5a8313304e3ac8bd53282de66ab1d3d1653a8",2022-07-16 22:52:11+02:00
+34,d7f1a80214c2f4fa03f55ffd99e494e31f20c53b,"fixup! Add nvidia profile manager
+
+Fixes:
+external/robolectric-shadows/shadows/framework/src/main/java/org/robolectric/shadows/ShadowPackageParser.java:69: error: org.robolectric.shadows.ShadowPackageParser.Callback is not abstract and does not override abstract method getAppProfileService() in android.content.pm.PackageParser.Callback
+  private static class Callback implements PackageParser.Callback {
+                 ^
+1 error
+
+Change-Id: I4a2103361a80a920962d985d6358d9f8574f9454",2022-07-24 17:08:42+02:00
+35,f606ff9c46f6e54b287c692e6b2eee9f7e8fc02c,"fixup! DeviceGroup: Framework changes for Group Device operations.
+
+fixup for change-Id: I0a8186e800e9d2701319db1adc97bdcf0441cc12
+
+Signed-off-by: Pranav Vashi <neobuddy89@gmail.com>
+Change-Id: Id67a9bc3e4a0e411b7377f111324465ca447b2a3",2022-07-25 22:27:26+02:00
+36,ad25de41b4b152426c9b72315f349b9e91ef773d,"base: ChooserActivity: Don't show image edit button on multiple targets
+
+Ie52aaab90f678d32d9b67f95d81f86b82d1b9c7c introduced edit button but didn't
+took into account that there can be multiple images being shared. This patch
+adds a check to ensure that this action is not shown in such cases.
+
+Signed-off-by: Aayush Gupta <aayushgupta219@gmail.com>
+Change-Id: I787cd9cfd873242542b330a522bed5df9deb62a4",2022-08-04 17:27:52+02:00
+37,322b2a5d799231b421ac5968de6ded30d08f1d27,"Automatic translation import
+
+Change-Id: I08dc67fe6e397169f20e1c3986c48d86e3ebf893",2022-08-04 20:42:06+03:00
+38,01364b249e36ceba72fba3acc14197062a1fbbd6,"SystemUI: Fix QS mobile icon disappearing on theme switch
+
+When there is only single SIM, the signal icon disappears
+from expanded QS header on switching dark theme QS tile.
+Ensure that the signal icon is always shown on single SIM.
+
+Change-Id: I089731fe5815a0b2bcbbed1002ca65aa5d3301cd
+Signed-off-by: Adithya R <gh0strider.2k18.reborn@gmail.com>",2022-08-05 19:53:36+02:00
+39,14cec8935c61ea3ce0db7a31bf8d00690ce8753a,"SystemUI: Redo circle battery style
+
+- Now shows up on QuickSettings panel.
+- Fixes issues with battery circle style on theme and
+  ui mode change and statusbar icon toggle.
+- Fixes wrong tint color with circle battery icon.
+- Re-evaluating system theme to avoid delay in circle
+  battery tint color change.
+
+Change-Id: Id90f85e47ce4b9811e9bb67b91169997020300d8",2022-08-06 08:50:03+02:00
+40,fce1b15db00aae4447456359ac1c16bf773bbb26,"use SharedPreferences to save verify results
+
+If an app declares too much hosts for App Link, Statementservice will crash since
+it uses Data class of WorkManager to save verify result for all hosts while Data throws
+IllegalStateException if it occupies more than 10240 bytes when serialized.
+This fix uses SharedPreferences to save verify results instead of Data class of WorkManager.
+
+Test:Disable GMS core and reboot device, then install Google Map; Statementservice does not crash
+and framework receives host verify results from Statementservice
+
+Signed-off-by: Bin Wang <bin.wang@oppo.corp-partner.google.com>
+Change-Id: I6d1b19fd8ed3158a621a2fb0089d92430482fd61",2022-08-07 23:04:44+02:00
+41,26066d9ee84bc90aa8f5f77cb6a2dfe5dc4be78c,"Keyguard: Allow user configurable fingerprint wake-and-unlock
+
+Change-Id: I471908cfa27a54e0075394eed348cb15386f62ce",2022-08-08 18:38:01+02:00
+42,92ebedf7b4cf1b3fe3f6bd0db1f8cecc2425f012,"SystemUI: screenshot: open the screenshot instead of edit
+
+Open the taken screenshot in gallery application when clicking on the
+preview. There is a seperate edit button, so the preview imageview
+should open gallery instead.
+
+Test: atest com.android.systemui.screenshot.ScreenshotNotificationSmartActionsTest
+Change-Id: I8f882ddd0da47ca50acc37d25ee0866ce5698e4f",2022-08-08 18:52:06+02:00
+43,f85097863810e3bc65597c29689932eb707d65e8,"DO NOT MERGE Suppress notifications when device enter lockdown
+
+This CL makes the following modifcations:
+1. Add LockPatternUtils.StrongAuthTracker to monitor
+the lockdown mode status of the phone.
+2. Call mListeners.notifyRemovedLocked with all the
+notifications in the mNotificationList when entering
+the lockdown mode.
+3. Call mListeners.notifyPostedLocked with all the
+notifications in the mNotificationList when exiting
+the lockdown mode.
+4. Dismiss the function calls of notifyPostedLocked,
+notifyRemovedLocked, and notifyRankingUpdateLocked
+during the lockdown mode.
+
+The CL also adds corresponding tests.
+
+Bug: 173721373
+Test: atest NotificationManagerServiceTest
+Test: atest NotificationListenersTest
+Test: manually verify the paired device cannot receive
+notifications when the host phone is in lockdown mode.
+Ignore-AOSP-First: pending fix for a security issue.
+
+Change-Id: I7e83544863eeadf8272b6ff8a9bb8136d6466203
+Merged-In: I7e83544863eeadf8272b6ff8a9bb8136d6466203
+(cherry picked from commit 3cb6842a053e236cc98d7616ba4433c31ffda3ac)
+(cherry picked from commit b1099290b8eb939fcb707c817989dd24d0e7a3b5)
+Merged-In: I7e83544863eeadf8272b6ff8a9bb8136d6466203",2022-08-10 05:55:39-06:00
+44,26a39ef345e111ca509a00f34d50c823461225aa,"Make sure callingPackage belongs to callingUid when checking BG-FGS restrictions.
+
+This is to stop spoofed packageName to pretend to be allowListed
+packageName so it can bypass the BG-FGS restriction. This applies to
+both BG-FGS while-in-use restriction and BG-FGS-start restriction
+since these two restrictions are related.
+
+Bug: 216695100
+Bug: 215003903
+Test: atest cts/tests/app/src/android/app/cts/ActivityManagerFgsBgStartTest.java#testSpoofPackageName
+Change-Id: Ic14fc331a9b5fbdbcfe6e54a31c8b765513bfd89
+Merged-In: Ic14fc331a9b5fbdbcfe6e54a31c8b765513bfd89
+(cherry picked from commit eef20391ce4d15d4508dc295cb338954a7c69de7)
+Merged-In: Ic14fc331a9b5fbdbcfe6e54a31c8b765513bfd89",2022-08-10 05:55:40-06:00
+45,66d3d4b687cac1c00ada8b66de974c4643b29691,"Clear mInterface before calling resetIkeState()
+
+Clear mInterface before calling resetIkeState() in
+onDefaultNetworkChanged().
+resetIkeState() will trigger interfaceRemoved() to be called.
+If mInterface is set, interfaceRemoved() will clear
+Ikev2VpnRunner which makes VPN disconnect.
+
+This issue can be reproduced when device establishes VPN
+connection with mobile data first then connects to wifi.
+In this case, onLost() for mobile data will not be called
+because there is a new network(wifi) can satisfy the request,
+so only onAvailable() for wifi will be called.
+Which means onSessionLost() will not be called and only
+onDefaultNetworkChanged() will be called, which makes that
+mInterface is not cleared before interfaceRemoved() is called.
+
+Bug: 219546241
+Test: Check if VPN is still there when establishing VPN with
+      mobile data first, then connect to wifi and disconnect
+      wifi.
+Change-Id: I7f9a1d9afd2a40762e9fac68edf1fb8ae75df8bc
+(cherry picked from commit 520cc2fde363dd038911b98b8b46259faf58a659)
+Merged-In: I7f9a1d9afd2a40762e9fac68edf1fb8ae75df8bc
+(cherry picked from commit 65d44b93bb99eae441ebf5bf1afb4efd00074758)
+Merged-In: I7f9a1d9afd2a40762e9fac68edf1fb8ae75df8bc",2022-08-10 05:55:40-06:00
+46,b29568f8b9948aed6562b205fc569d7ba6a77f96,"DO NOT MERGE. Add a permissions check to LocationManagerService.
+
+Prevents apps from reading location requests of other users without INTERACT_ACROSS_USERS permission.
+Bug: 222473855
+Test: Build
+
+Change-Id: Id591cd39ed7813c649b44d4a3210f0b1fb79b40d
+(cherry picked from commit 16560c093091b7ab390c16137618da6fd916d44e)
+(cherry picked from commit 5b376bc9fd51e1a39fd5e1bd6a698c7cb2b9b3d4)
+Merged-In: Id591cd39ed7813c649b44d4a3210f0b1fb79b40d",2022-08-10 05:55:40-06:00
+47,475c5c8015d9437456c1741e77d54d465bc45fb0,"Disallow privileged apps to bypass location restriction
+
+This bypass was originally allowed to let restricted users who can't use
+location to pair bluetooth devices. This isn't needed anymore with the
+bluetooth permissions.
+
+Test: Set up restricted profile and pair bluetooth
+      Verify com.android.phone gets rejected
+Bug: 230861324
+Bug: 231496105
+Merged-In: Ib34c0b56ef52f5ee2deceb84b02cd0ff73d8181d
+Change-Id: Ib34c0b56ef52f5ee2deceb84b02cd0ff73d8181d
+(cherry picked from commit 807f4cfc80728313d04f95343e5aea14691aceb0)
+Merged-In: Ib34c0b56ef52f5ee2deceb84b02cd0ff73d8181d",2022-08-10 05:55:40-06:00
+48,9642f85f5b777567389007f222d031e9b81dc3b7,"Allow system server uid to bypass location restriction
+
+Blocking system server from giving itself location restriction doesn't
+make much sense.
+
+Test: Disable, reboot, observe bootloop, apply patch, build, flash,
+          observe successful boot
+Bug: 230861324
+Bug: 231496105
+Merged-In: Ic869da4847e4f39896861f3bf6e83f6f6c76ea62
+Change-Id: Ic869da4847e4f39896861f3bf6e83f6f6c76ea62
+(cherry picked from commit 1dddfe1f703cab6e159fafad45f51e8bad207dba)
+Merged-In: Ic869da4847e4f39896861f3bf6e83f6f6c76ea62",2022-08-10 05:55:40-06:00
+49,092156bc632dce1a6a3c56fcec8f45d6cce25afb,"Make CheckOp return allowed if any attr tag for a package is excluded
+
+checkOp doesn't support checking against an attribution tag, this causes
+some checkOps to fail when a noteOp is successful meaning that a
+preflight routine might fail before delivering data and doing the more
+precise check. This only affects when a user restriction is applied and
+there are excepted package+tag.
+
+Test: Checkop with test app
+Bug: 232502990
+Bug: 231496105
+Merged-In: Idcf5ac9a5401ad8089f5873da1f978fdf9258b5a
+Change-Id: Idcf5ac9a5401ad8089f5873da1f978fdf9258b5a
+(cherry picked from commit 61c2d0291bd5b9b39a1d7db7454b3d7c630e7de9)
+(cherry picked from commit 25f1b6a1ac5c71ebafe4b9235829aa3a79d1dd21)
+Merged-In: Idcf5ac9a5401ad8089f5873da1f978fdf9258b5a",2022-08-10 05:55:40-06:00
+50,e9e40c316783a0f9529ea5203096e8bceba6d26e,"Remove package title from notification access confirmation intent
+
+Bug: 228178437
+Test: Manually confirmed on an application
+Change-Id: Idad6dc0c71d7b39de0bd9e4ad922b5e6020a6184
+Merged-In: Idad6dc0c71d7b39de0bd9e4ad922b5e6020a6184
+(cherry picked from commit e86cdf4ba16c68d3fe361eec24c99059aeef8536)
+Merged-In: Idad6dc0c71d7b39de0bd9e4ad922b5e6020a6184",2022-08-10 05:55:40-06:00
+51,b1f5b79a62453d38179ae1fca1b89797ac03bd1b,"Stop using invalid URL to prevent unexpected crash
+
+Verify the input PAC Uri before performing follow-up actions.
+
+Check if the URL is a valid URL to filter some invalid URLs since
+these invalid URLs could not fall into any subclass of existing
+URLConnections. When the PAC Uri is other invalid URL scheme, it
+will cause an UnsupportedOperationException if there is no proper
+subclass that implements the openConnection() method.
+A malformed URL may crash the system.
+
+Even it's a valid URL, some subclasses(e.g. JarURLConnection)
+may not have openConnection() implemented. It will also hit the
+problem, so convert the possbile exception from openConnection()
+to re-throw it to IOException which is handled in the existing
+code.
+
+Bug: 219498290
+Test: atest FrameworksNetTests CtsNetTestCases
+Test: Test with malformed URL
+Change-Id: I22903414380b62051f514e43b93af992f45740b4
+(cherry picked from commit 6390b37a3b32fc7583154d53fda3af8fbd95f59f)
+Merged-In: I22903414380b62051f514e43b93af992f45740b4
+(cherry picked from commit fe57c5bf892c54c495cacd23492532bfa9a63dd7)
+Merged-In: I22903414380b62051f514e43b93af992f45740b4",2022-08-10 05:55:41-06:00
+52,7b5fce10d191dd819048edee9ed01433efea9e72,"Only allow the system server to connect to sync adapters
+
+Bug: 203229608
+Test: Manual test with changing the check logic + debug log
+Change-Id: If18009f61360564d02dcda9b1e5fa15685e3250f
+(cherry picked from commit 58270527d11ac7e5f07d337a402d8edf046a63ee)
+(cherry picked from commit 7d1397a54475ed7fee632339ef7c60b432f0fbff)
+Merged-In: If18009f61360564d02dcda9b1e5fa15685e3250f",2022-08-10 05:55:41-06:00
+53,57d3806348f9bf2c8d3b33e171869bdd46515bcd,"Allow apps receiving MediaSession callbacks to start FGS from BG.
+
+If the app invoking the MediaSession callbacks is capable of
+starting a FGS from background, then also allow the target app
+receiving the callbacks to start FGS from background.
+
+Bug: 221873343
+Test: manual
+Change-Id: I98de12b5410c3f0f70d7d2be12bef3e6d0e1bf73
+Merged-In: I98de12b5410c3f0f70d7d2be12bef3e6d0e1bf73
+(cherry picked from commit 6e2b1434733f1168067506c0967ced86772220de)",2022-08-13 20:03:00+02:00
+54,f6d0f9e8ca43ab65ebaa9247ec388bd0af70c0f3,"Allow shell uid without checking the package name.
+
+Bug: 230779051
+Test: manual
+Change-Id: I2867a15840a0987c948179e2f8069e652c4a0c1f
+Merged-In: I2867a15840a0987c948179e2f8069e652c4a0c1f
+(cherry picked from commit 6a61fb48f0a470fb39eb50602335e424945d064e)",2022-08-13 20:03:00+02:00
+55,bbcb4157d8acc45e3fbdf212bcdaa8d002eff446,"Extend splash screen exception list to SC-V2
+
+Extend the support of the exception list for SC-V2 and apps targeting
+S and SC-V2.
+
+Test: atest ActivityRecordTests
+Test: com.android.server.wm.SplashScreenExceptionListTest
+Bug: 231708538
+Merged-In: I5412e81f70cbc9aac3861d13d85e199e949bedc7
+Change-Id: I70a2aa4684c1267fe98e0e2260c61042db9c2e36
+(cherry picked from commit e16beeffe35d16e482240666791ccfd6cf457604)",2022-08-13 20:03:00+02:00
+56,3a190757284faf236e0bf70bb651820bcd48bbc2,"Automatic translation import
+
+Change-Id: Ieed541ccc1e947f63232fed71c01bc6630da449c",2022-08-15 15:49:50+02:00
+57,e2c024f96fe049e275d3af61170b0878135e9e9c,"SystemUI: VolumeDialogImpl: Show output button if there is an active stream
+
+The media output dialog can be used to connect different devices.
+This patch makes it show up if at least one of the following
+conditions is met:
+1: There is an active local media controller
+2: There is a bluetooth a2dp device connected
+
+Change-Id: Ie2a2a0f3125e1ffbf78bfc1f66868696f6389294",2022-08-26 14:57:36+02:00
+58,e26a2ead9dc146ffffa63406963fc4e8a8687202,"SystemUI: VolumeDialogImpl: Move the MediaOutputDialog above status bar
+
+The volume dialog is above the status bar too and can be used while
+the statusbar is expanded. Opening the media output dialog then will
+cause the dialog to appear below the status bar which isn't visible
+until the status bar is collapsed. This change moves the media output
+dialog above the status bar.
+
+Change-Id: Ie906ee0a59d52dbb6b6f703e210fa43308d069f0",2022-08-26 14:57:53+02:00
+59,33a0c1ca661a4bbd707442713a308be9f606a864,"SystemUI: VolumeDialogImpl: notifyVisible after the volume panel is fully hidden
+
+notifyVisible(false) leads to reset of active stream. As a result,
+the current active row will be untinted. Currently, this happens
+immediately after the dismissal is requested, before the volume panel
+is fully hidden.
+
+User can notice the row has been untinted before the panel is hidden.
+
+This changes moves notifyVisible to the end of animation so the volume
+panel appearance will be consistent in between.
+
+Change-Id: Iacd83d48634a11bc248c9a2a45b68b53256fdcb2
+Signed-off-by: Jesse Chan <jc@lineageos.org>",2022-08-26 14:57:54+02:00
+60,4b55896265e4283636c0297d7a37d14771ed6ff9,"fixup! Rewrite trust USB restriction handling
+
+For our Trust preferences, if the `trust_restrict_usb` setting is
+missing, we default to assuming a value of 0 (don't restrict USB
+devices). However, here in fw/b, we're instead defaulting to assuming a
+value of 1 (restruct USB devices when device is locked). As such, this
+can cause confusion because the user is expecting that we aren't
+restricting USB connections by default.
+
+Let's update the fw/b side of things to also assume a value of 0 instead
+to clear up the confusion.
+
+Change-Id: Ifa45bfb05ad4e745266f3da11ee3f0f4a6a3384b",2022-08-28 11:39:43-07:00
+61,16a2ea48ae337131c0825eb4c1d054f41d3bcb4a,"Don't pass non slider adj. as user interactions
+
+This cl stops passing RBC on, RBC off and RBC intensity changes as
+slider interactions. Normal slider interactions will be passed as a user
+interaction, regardless of whether RBC is on or not. Also, ensure the
+short term model (STM) is correctly reset when necessary.
+
+                    | Old Scenario:     | New Scenario:
+RBC turned on       | user initiated    | non user
+                    | keep STM          | reset STM
+
+RBC turned off      | non user          | non user
+                    | reset STM         | reset STM
+
+Change of intensity | user initiated    | non user
+                    | reset STM         | reset STM
+
+Slider interaction  | user initiated    | user initiated
+ whilst RBC is on   | keep STM          | keep STM
+
+Bug: 204298104
+Bug: 202262784
+Test: adb shell dumpsys display | grep -A50 mEvents
+Test: manual logs and check interactions
+
+Change-Id: I135623dc9ccca11817d5dd07d9b333b94aac30f1",2022-09-09 15:09:36+02:00
+62,f27493ca32186a10cc091634bf3e7ee637dcb4b4,"Fix duplicate permission privilege escalation
+
+Duplicate permissions definition with different group allows
+privilege permission escalation to a different permission group.
+
+Android studio and gradle plugin does not allow duplicate permissions
+with different attributes, these tools only allow if duplicate
+permissions are exact copies.
+
+Also platform stores permissions in map at multiple places with permission
+name as key. This suggests that we can disallow duplicate permissions
+during package install/update
+
+Bug: 213323615
+Test: AppSecurityTests
+Change-Id: I34120fff2ec2a158dfa55779d2afd4bbd49487ff
+Merged-In: I9bc839836786a0876e67fd73c05f8944bb532249
+(cherry picked from commit 548edbb850227e076735615f83f8e23352b0b82d)
+Merged-In: I34120fff2ec2a158dfa55779d2afd4bbd49487ff",2022-09-09 18:45:51-06:00
+63,d42ec4c0e5ad85792f526cc90d8830b02febc1b0,"Remove package name from SafetyNet logs
+
+Bug: 213323615
+Test: AppSecurityTests
+Change-Id: I8f823487ca16861a35135cfc3383fa2ce8258017
+Merged-In: I4b61d13256ce0bfb8fc9d21db52ee78ce2097f14
+(cherry picked from commit dfeea39dbc61ea9884e7e017335cbdf4942fa181)
+Merged-In: I8f823487ca16861a35135cfc3383fa2ce8258017",2022-09-09 18:45:51-06:00
+64,3792f09dcbd496d6c30558d7b26ceff2a6e742d2,"DozeSensors: only use proximity sensor if supported
+
+On msm-4.14 devices, when the proximity sensor is in use,
+the smp2p-sleepstate IRQ is fired multiple times a second,
+with each one holding a 200ms wakelock.
+This is probably a bug in the DSP firmware.
+To fix this, avoid using the proximity sensor in doze mode,
+because sleep is preferred to turning off the screen.
+
+Change-Id: I57750afd77267abdc49780f70636626d20e666ad",2022-09-25 18:49:14+02:00
+65,263c70d638de51184f95e4e376c109908fd89dae,"hasRestrictedModeAccess: Clear calling identity when checking network capabilities
+
+* This code ends up being called from Datura, the firewall app,
+  which would fail with:
+java.lang.SecurityException: Package android does not belong to 10139
+   at android.net.NetworkPolicyManager.removeUidPolicy(NetworkPolicyManager.java:352)
+   at org.calyxos.datura.settings.SettingsManager.setAppRestriction(SettingsManager.java:108)
+Caused by: android.os.RemoteException: Remote stack trace:
+   at android.app.AppOpsManager.checkPackage(AppOpsManager.java:8552)
+   at com.android.server.ConnectivityService.getNetworkCapabilities(ConnectivityService.java:2042)
+   at android.net.ConnectivityManager.getNetworkCapabilities(ConnectivityManager.java:1563)
+   at com.android.server.net.NetworkPolicyManagerService.hasRestrictedModeAccess(NetworkPolicyManagerService.java:4133)
+   at com.android.server.net.NetworkPolicyManagerService.getNewRestrictedModeUidRule(NetworkPolicyManagerService.java:4116)
+Package android does not belong to 10139
+  where 10139 is the uid of the firewall app
+* This should be safe since we're only checking the capabilities here,
+  and not actually returning anything anywhere - just a boolean
+
+Change-Id: Ia0b5790be19ad5aece0d30ae8e1a465f45f4fed6",2022-09-26 16:07:50+02:00
+66,8ba3b2ecf62593344757329e9934db6f2a574276,"fixup! fw/b: Add support for allowing/disallowing apps on cellular, vpn and wifi networks
+
+* Listen to changes in all networks
+* Limit backend calls during network capability changes to transport changes
+* Allow traffic over VPN networks if policy does not restrict it even if other transports are present
+
+Change-Id: I0d719bb7c7f04a493a4ddefa8e6154ef4159abd0",2022-09-26 16:07:50+02:00
+67,94af8f82a44c09f7cafabc7bffa06b2e52ca787b,"restricted-networking: Always log newly installed apps being added to the allowlist
+
+* This way we can try to track down rare issues noticed where
+  sometimes an app didn't get added to the allowlist, or it got
+  added when it shouldn't have.
+
+Change-Id: Ib95f80918feb5db95766837e5708ad070f2d1070",2022-09-26 16:07:50+02:00
+68,cd997ae00ace81cd210ef028032de27462eb7ce4,"restricted-networking: Always log UID removal
+
+* Will help debug any issues that may or may not arise.
+
+Change-Id: I40f0937b921a83dfdee14891b791a067ae463b95",2022-09-26 16:07:50+02:00
+69,9d57437aaeaaafbf9de681afed1fbd406935a8d8,"restricted-networking: Only add newly installed apps to the allowlist, not upgrades
+
+* Upgrading apps still sends PACKAGE_ADDED, since it's sent for
+  ""new package installs"", which technically an upgrade still is.
+* Check EXTRA_REPLACING to see if it's a new app.
+* Avoids unconditionally turning on networking on app upgrade
+
+Change-Id: Ie7a4090101d47c7033b7f41792e943129dba0700",2022-09-26 16:07:50+02:00
+70,759bccdedd80beb711ae950d38d5ddbbd88c7e30,"restricted-networking: Add a marker policy for network-isolation migration
+
+* We remove the pre-12 POLICY_REJECT_ALL (network-isolation) since it's
+  been replaced with restricted-networking-mode.
+* However, if the migration fails, there's no way of knowing, since
+  restricted-networking-mode is an allowlist
+* Add a new marker policy that is not used anywhere, just so that we
+  can debug migration problems easily with
+  `adb shell dumpsys netpolicy`
+* Can be easily removed later once we know for sure this works well (12L perhaps)
+
+Change-Id: I349eb146d4af935c8ce2d2329ab353d042a319f0",2022-09-26 16:07:50+02:00
+71,f507e578bb9e8539493dce829307b28b865fdc2a,"fixup! Implement backup/restore for network policy
+
+* Add handling for secondary users
+
+Change-Id: I7d5806650f7f3a30638d9fac7848bd8d0bfda9a6",2022-09-26 16:07:50+02:00
+72,7d859aa90a381d80da2580e9b384c72c1e668859,"Add custom handling for backup/restore of UIDS_ALLOWED_ON_RESTRICTED_NETWORKS
+
+Change-Id: I8a4086692c385e9d6166a9bcb11d0a16c9fc7422",2022-09-26 16:07:50+02:00
+73,e1f5dc7e844cf7171c89766800cce8e55462461e,"SystemUI: Fix QS header clock color
+
+Now that we're flipping QS colors by theme (dark/light), we can no longer
+rely on wallpaper colors for QS clock. Instead, we now can rely on clock color
+being updated correctly on QS re-inflation (via
+QuickStatusBarHeader.updateResources).
+
+Change-Id: Icdf2484793cb63b7c0ab6ab87e94185e6bdc9ca4",2022-09-28 19:19:49+02:00
+74,a66abdde6d19431ac16ed009e492e2c7aa63a4fc,"SystemUI: QSCustomizer: Fix QS tile reset text color
+
+- Fixes https://gitlab.com/LineageOS/issues/android/-/issues/4873
+
+Change-Id: I49a599f10f68c0c576ec863b919936a3b171f2c6",2022-09-30 16:18:51+02:00
+75,c8c129afe16f5b4c9da9bf4c07a0bbeba4e4f697,"Restrict getInputMethodWindowVisibleHeight
+
+Make sure only the app currently interacting with the IME can
+query this, and restrict the API to apps targeting SDKs before T
+
+Fixes: 204906124
+Test: atest 'InputMethodManagerTest#getInputMethodWindowVisibleHeight_returnsZeroIfNotFocused'
+Change-Id: If1da19a3dd8c29542afc970b4b201d87547c27a9
+Merged-In: If1da19a3dd8c29542afc970b4b201d87547c27a9
+(cherry picked from commit 753331b390dc4d7cf895087223a8d72952af4de4)
+Merged-In: If1da19a3dd8c29542afc970b4b201d87547c27a9",2022-10-04 06:46:42-06:00
+76,7a455b258ba1b47318aa6c17b7ac20c6e7bb3453,"Stop crashing the system on hitting the alarm limit
+
+Exempting the system as a runtime restart is not clearly
+better than extreme memory and computation pressure that can result from
+the originating spam.
+Callers in the system should guard against any spammy requests that lead
+them to create a lot of alarms.
+
+Test: Builds, boots and existing tests should pass.
+
+atest CtsAlarmManagerTestCases:UidCapTests
+atest FrameworksMockingServicesTests:AlarmManagerServiceTest
+
+Bug: 234441463
+Change-Id: Id5e94d44ac9ab24870a8213ec7583da0f592a5ff
+(cherry picked from commit 3b9f3f4a0f5a661be65e287996cae8a4481a1453)
+Merged-In: Id5e94d44ac9ab24870a8213ec7583da0f592a5ff
+(cherry picked from commit 87fd506129631225581de641c4dd9956a15aa0ab)
+Merged-In: Id5e94d44ac9ab24870a8213ec7583da0f592a5ff",2022-10-04 06:46:42-06:00
+77,f35e379e1a6a8bfaff6e947d3bfbd0c095879af0,"Block FullScreenIntent while device is in use if notification has a silencing GroupAlertBehavior.
+
+Bug: 231322873
+Test: atest NotificationInterruptStateProviderImplTest
+Merged-In: Id82d20c9f1f2001400871b5381f52b40fbdf81c5
+Change-Id: Id82d20c9f1f2001400871b5381f52b40fbdf81c5
+(cherry picked from commit 09761a98b5bbbefa331c49a96b50b4e08dc3f8df)
+Merged-In: Id82d20c9f1f2001400871b5381f52b40fbdf81c5",2022-10-04 06:46:42-06:00
+78,7d466d7b00888dba5270d8064dccd711d1496a1f,"Fix Notification redaction when power cycling a non-dozing device while occluded.
+
+This issue was originally raised in the S timeline, but had already been fixed by the refactor to use UnlockedScreenOffAnimationController, which called updateIsKeyguard(/*force*/ true) from onFinishedWakingUp().  This solved the problem of re-triggering the redaction, but it also intriduced a new bug where the keyguard could end up briefly showing on top of the occluding activity when AOD was supported but off.  As a result, they limited the call to when the AOD was on (and animations were controlling, etc).  This CL uses the opposite check to make sure we recalcualte redaction (and only redaction, not the whole keyguard) when waking up while occluded.
+
+We also needed to make sure that we rerun the notification pipeline when updating public information so that any necessary public views are sure to inflate.  That rerun has been limited in scope to conditions where the public mode information has detectably changed.
+
+Bug: 189575031
+Bug: 239828798
+Test: CTS Verifier NotificationPrivacyTest on emulator, AOD off, AOD on
+Merged-In: I95443ee6b77377aceb54b983d34131628027da9b
+Change-Id: I95443ee6b77377aceb54b983d34131628027da9b
+(cherry picked from commit 9d20909eaed9a8eae2ee73827bc15b1353e2dd8b)
+Merged-In: I95443ee6b77377aceb54b983d34131628027da9b",2022-10-04 06:46:42-06:00
+79,b0e48bda617e40866e9cde2cf8958bcc160fd6af,"Enforce zen rule limit on a package level.
+
+This means that a single package with multiple different condition providers or configuration activities will correctly have all of their zen rules associated with the same package rather than each owner/activity having their rules counted separately.
+
+Bug: 235823407
+Test: ZenModeHelperTest
+Change-Id: I35daf9a24f546ae25a78a2d841be39072cdc5641
+Merged-In: I35daf9a24f546ae25a78a2d841be39072cdc5641
+(cherry picked from commit f4e69394eee569ac3ec5748094b9ce88a91c278c)
+(cherry picked from commit 34f2ef779b368e9d57bfab09b61cab6d282e10e9)
+Merged-In: I35daf9a24f546ae25a78a2d841be39072cdc5641",2022-10-04 06:46:47-06:00
+80,2f2dd97c1ee430c36d69e16b644641c03be46520,"Strip transition information from activityoptions when sent to app
+
+The implementation of shared-element transitions takes the
+ActivityOptions from the calling activity and sends them to
+another activity. This means that any sensitive information
+passed into ActivityManager via ActivityOptions can make its
+way to an unrelated app. Recently a RemoteTransition object
+was added which includes some sensitive information.
+
+This CL strips the sensitive information from the activity
+options before sending it to anonther app.
+
+Bug: 237290578
+Test: atest ActivityManagerTest#testActivityManager_stripTransitionFromActivityOptions
+Change-Id: Ifa08fc195698f02bf70ca386178c67f6ba4a14ea
+(cherry picked from commit 0d03e6f1fc66fefb5409ac93ff49fa922f81664c)
+Merged-In: Ifa08fc195698f02bf70ca386178c67f6ba4a14ea",2022-10-04 06:47:49-06:00
+81,b24ae4fee23abb04a6f320ddfad0139a072df451,"Camera: Skip stream size check for whitelisted apps..
+
+Issue:
+For quadracfa capture, Blob/YUV output streams need to be
+configured with custom dimensions which will not be
+available in advertised stream configurations map.
+
+Fix:
+Skip the stream size check for whitelisted apps to allow
+configuration of streams with custom dimensions.
+
+Also, additionally, remove session id check so that
+buffers from one session can be passed on to another
+session for reprocess.
+
+Setprop to be used:
+adb shell setprop persist.vendor.camera.privapp.list <pack1,pack2>
+
+CRs-Fixed: 2075934
+Change-Id: Ie9c950fdc4e1675d19c38630d7063ac9d7c9d5b1",2022-10-13 10:34:04+02:00
+82,11b0c7005af679db65872bd45c1a3b5234aee04c,"SystemUI: Properly set onclick listener for battery
+
+Change-Id: I59acae19c382a2995777464ec545c608fcaa00c0",2022-10-27 10:56:42+00:00
+83,b9f57cb67636f526f50e544f1462bce4640b2e4a,"DO NOT MERGE
+Move accountname and typeName length check from Account.java to AccountManagerService.
+
+Bug: 169762606
+Test: atest AccountManagerServiceTest
+Change-Id: I80fabf3a64c55837db98ff316e7e5420129c001b
+(cherry picked from commit 0adcadb0b28310bac568def4da2cbaf16843bcea)
+(cherry picked from commit c48f5407d5ae5210b9ee486e362c43a90409faa0)
+Merged-In: I80fabf3a64c55837db98ff316e7e5420129c001b",2022-11-08 06:35:31-07:00
+84,5c68b1333bb3d3a2522bc6f2631c9fa91b8eff47,"switch TelecomManager List getters to ParceledListSlice
+
+It was shown that given a large phoneAccountHandles that are
+over 1 mb, a TransactionTooLarge exception can be silently thrown
+causing an empty list to be returned.
+
+In order to prevent this behavior, all Lists that return a
+PhoneAccountHandle or PhoneAccount have been switched to
+ParceledListSlice.
+
+bug: 236263294
+Test: atest android.telecom.cts.PhoneAccountRegistrarTest
+             #testRegisterPhoneAccountHandleWithFieldOverLimit
+Change-Id: I025245b2a6f8cfaca86f268851a9d8f0817e07dd
+Merged-In: I025245b2a6f8cfaca86f268851a9d8f0817e07dd
+(cherry picked from commit d54a48f42aca2ce06363a2c260cd3a8668e938d8)
+Merged-In: I025245b2a6f8cfaca86f268851a9d8f0817e07dd",2022-11-08 06:40:30-07:00
+85,8a2bb82716fc44049e5bff9fdbb2044c1ff59daa,"[RESTRICT AUTOMERGE] Do not send new Intent to non-exported activity when navigateUpTo
+
+The new Intent was delivered to a non-exported activity while
+#navigateUpTo was called from an Activity of a different uid.
+
+Bug: 238605611
+Test: atest StartActivityTests
+Change-Id: I854dd825bfd9a2c08851980d480d1f3a177af6cf
+Merged-In: I854dd825bfd9a2c08851980d480d1f3a177af6cf
+(cherry picked from commit 89ebc8c43f7d2aeaee4fdcf667f07aa98404981d)
+Merged-In: I854dd825bfd9a2c08851980d480d1f3a177af6cf",2022-11-08 06:40:30-07:00
+86,c9a0b9b3fa30d1a24537b8d68a8d3e9ad4e87ffe,"Do not send AccessibilityEvent if notification is for different user.
+
+Bug: 237540408
+Test: BuzzBeepBlinkTest#testA11yCrossUserEventNotSent
+Change-Id: I62a875e26e214847ec72ce3c41b4f2fa8e597e07
+(cherry picked from commit a367c0a16a9070ed6bee3028ac5bbc967773ee8f)
+Merged-In: I62a875e26e214847ec72ce3c41b4f2fa8e597e07",2022-11-08 06:40:30-07:00
+87,a1865c2b63ad8204cd29634820004bb729b50490,"DO NOT MERGE Fix auto-grant of AR runtime permission if device is upgrading from pre-Q
+
+Test: Manually install app apks targeting Q and verifying that AR permission is not auto-granted
+Test: atest ActivityRecognitionPermissionTest
+Bug: 210065877
+Change-Id: I5b2f25218fcbb34a940dfa2ff722cc6595732cfa
+(cherry picked from commit 23aac9cb8eb4545a79bafef3c14864e0aa59e228)
+Merged-In: I5b2f25218fcbb34a940dfa2ff722cc6595732cfa",2022-11-08 06:40:30-07:00
+88,e12b1a456b8736ecc10550562c413c33b5591f4b,"Check rule package name in ZenModeHelper.addAutomaticRule
+
+instead of checking that of the configuration activity, which is potentially spoofable. The package name is verified to be the same app as the caller by NMS.
+
+This change removes isSystemRule (called only once) in favor of checking the provided package name directly.
+
+Bug: 242537431
+Test: ZenModeHelperTest, manual by verifying via provided exploit apk
+Change-Id: Ic7f350618c26a613df455a4128c9195f4b424a4d
+(cherry picked from commit 59732d6232d7d82d03897b25be0381c3c510db9b)
+Merged-In: Ic7f350618c26a613df455a4128c9195f4b424a4d",2022-11-08 06:40:30-07:00
+89,6011fb5153c26340a71c28bd1f97270f46b25de2,"Trim any long string inputs that come in to AutomaticZenRule
+
+This change both prevents any rules from being unable to be written to disk and also avoids risk of running out of memory while handling all the zen rules.
+
+Bug: 242703460
+Bug: 242703505
+Bug: 242703780
+Bug: 242704043
+Bug: 243794204
+Test: cts AutomaticZenRuleTest; atest android.app.AutomaticZenRuleTest; manually confirmed each exploit example either saves the rule successfully with a truncated string (in the case of name & conditionId) or may fail to save the rule at all (if the owner/configactivity is invalid). Additionally ran the memory-exhausting PoC without device crashes.
+
+Change-Id: I110172a43f28528dd274b3b346eb29c3796ff2c6
+Merged-In: I110172a43f28528dd274b3b346eb29c3796ff2c6
+(cherry picked from commit de172ba0d434c940be9e2aad8685719731ab7da2)
+(cherry picked from commit 19bc2c3559620ed00e448117e65f6b44e6eb6d9b)
+Merged-In: I110172a43f28528dd274b3b346eb29c3796ff2c6",2022-11-08 06:40:30-07:00
+90,7fcd9a37fa797b2f0d6c5fabfb9d1b0e52009ab7,"Fix system zen rules by using owner package name if caller is system
+
+Previously were unable to add new zen rules because rules added via the settings pages were getting registered under package ""com.android.settings"", which then were not considered ""system rules"". These rules should have package android, so when we can trust the caller (via checking that the caller is system) we should be taking the package name from the owner of the rule.
+
+Bug: 245236706
+Bug: 242537431
+Test: NMSTest; manual
+
+Change-Id: Id69b671592396ac3304862dadbe73de328a8e27a
+Merged-In: Id69b671592396ac3304862dadbe73de328a8e27a
+(cherry picked from commit 78245566a27882cce59c0d7cd4c60e1604392a3f)
+Merged-In: Id69b671592396ac3304862dadbe73de328a8e27a",2022-11-08 06:40:31-07:00
+91,f3bb6da05eeb2280356c87c87fbf7a41601dd66b,"Make sure parallel broadcasts enforce excluded permissions
+
+Bug: 211029161
+Bug: 210118427
+Test: atest android.content.cts.ContextWrapperTest#testSendBroadcastRequireNoneOfPermissions_receiverHasExcludedPermissions
+Merged-In: Ib4fafe2423c7ded1daf1b763f8103601c0e2c852
+Change-Id: Ib4fafe2423c7ded1daf1b763f8103601c0e2c852
+(cherry picked from commit 0eee4fa476212a35cecee499cfbbfe2d35580bb2)
+Merged-In: Ib4fafe2423c7ded1daf1b763f8103601c0e2c852",2022-11-08 06:40:31-07:00
+92,c0353314847735082aa8a51557361d2081f5cdbc,"[DO NOT MERGE] Do not dismiss keyguard after SIM PUK unlock
+
+After PUK unlock, multiple calls to
+KeyguardSecurityContainerController#dismiss() were being called from
+the KeyguardSimPukViewController, which begins the transition to the
+next security screen, if any. At the same time, other parts of the
+system, also listening to SIM events, recognize the PUK unlock and
+call KeyguardSecurityContainer#showSecurityScreen, which updates which
+security method comes next. After boot, this should be one of PIN,
+Password, Pattern, assuming they have a security method. If one of the
+first dismiss() calls comes AFTER the security method changes, this is
+incorrectly recognized by the code as a successful
+PIN/pattern/password unlock. This causes the keyguard to be marked as
+done, causing screen flickers and incorrect system state.
+
+The solution: every call to dismiss() should include a new parameter
+for the security method used. If there is a difference between this
+parameter and the current value in KeyguardSecurityContainerCallback,
+ignore the request, as the system state has changed.
+
+Fixes: 238804980
+Bug: 218500036
+Test: atest KeyguardSecurityContainerTest
+AdminSecondaryLockScreenControllerTest KeyguardHostViewControllerTest
+KeyguardSecurityContainerControllerTest
+
+Change-Id: I7c8714a177bc85fbce92f6e8fe911f74ca2ac243
+Merged-In: I7c8714a177bc85fbce92f6e8fe911f74ca2ac243
+(cherry picked from commit 37aeb26b0ae28a48c1ed40f008d5808d8a84be23)
+(cherry picked from commit 1e7087f1136989b67c9b72c470617e5fb8c80501)
+Merged-In: I7c8714a177bc85fbce92f6e8fe911f74ca2ac243",2022-11-08 06:40:31-07:00
+93,b6ce47054c0770ce028e44b165610a65417dfd33,"Limit the number of concurrently snoozed notifications
+
+Test: atest FrameworksUiServicesTests
+Bug: 234441463
+Change-Id: I005b43979d1c708fd505c8b33ae0c8cb03ddbb35
+Merged-In: I005b43979d1c708fd505c8b33ae0c8cb03ddbb35
+(cherry picked from commit 7c38394ae9c69620499a87e629edae4fe0ac4edc)
+(cherry picked from commit bc808de2f8a88e76fde0b6d033b4a232aebff8cb)
+Merged-In: I005b43979d1c708fd505c8b33ae0c8cb03ddbb35",2022-11-08 06:40:31-07:00
+94,2c34f8cefabcfbe28763bb8c35f496e257b5a9be,"Fallback ESC to BACK
+
+The current keyboard shortcut for BACK is ctrl-alt-del, which
+doesn't even work. Allowing ESC to act as BACK matches what some
+vendors are already doing downstream.
+
+Change-Id: I5df5dbedb84d364ac5a56cdf159f2ce9747e6ecc",2022-11-15 20:45:20+01:00
+95,ea88f4dacab25b56ef333ec24362200e9b8dfd47,"camera: Skip HFR checks for privileged apps
+
+Issue: HAL3 supports HFR only if its greater than or equal
+       to 120fps.
+
+Fix: Skip the checks to allow HFR 60 and 90 fps in HAL3 for
+     specific apps.
+     The following property need to be set to allow these
+     HFR configurations :
+     adb shell setprop persist.camera.privapp.list <pack1,pack2,etc>
+
+Change-Id: I5f3bc94bea60dbe03284de39cd4280f67df8b015
+CRs-Fixed: 2258892",2022-11-25 21:05:36+01:00
+96,0c648fbdfd607a586fd411c7036cbf7cac0efba3,"fixup! SystemUI: Add visualizer feature
+
+Visualizer doesn't show if we occlude it on playback.
+
+Change-Id: If3c62e9c7dd51731ae8bf764f5137a729d251792",2022-12-05 15:31:16+01:00
+97,17f77d49d8f311f2b6e159847799500b329e7bb1,"Revert ""Prevent non-admin users from deleting system apps.""
+
+This reverts commit 6c870e157994519094e9e50ddf93e57a26779e22.
+
+Reason for revert: Regression, DELETE_SYSTEM_APP flag no longer works
+
+Change-Id: Id3eb9e08a5404e88c39235d0d47337ed41bc6139
+Merged-In: I4e959e296cca9bbdfc8fccc5e5e0e654ca524165
+(cherry picked from commit d9089fbe06e77f5ea1773f5d69b641a81e0b5832)
+Merged-In: Id3eb9e08a5404e88c39235d0d47337ed41bc6139",2022-12-05 22:42:42-07:00
+98,1064ad0a0ec5eafc1fd7c14d42d546b3fc480245,"Revert ""Prevent exfiltration of system files via user image settings.""
+
+This reverts commit bfb1cd5fd27c8d854336163540bb5b014ad504d1.
+
+Reason for revert: regression if multiple crop system crop handlers are present
+
+Change-Id: I570c736ffbd55891bcb2e08110ee4111c5e88d59
+Merged-In: Idf1ab60878d619ee30505d71e8afe31d8b0c0ebe
+(cherry picked from commit 3cfba99d24bc04bc15edd49d1442bee8adb6c171)
+Merged-In: I570c736ffbd55891bcb2e08110ee4111c5e88d59",2022-12-05 22:42:42-07:00
+99,40d09c7983dc8f5053123f0045ba5b4fa4494a10,"Prevent non-admin users from deleting system apps.
+
+This addresses a security issue where the guest user can remove updates
+for system apps.
+
+With this CL, attempts to uninstall/downgrade system apps will fail if
+attempted by a non-admin user, unless the DELETE_SYSTEM_APP flag is
+specified.
+
+This is a fixed version of ag/17408864, to address b/236578018.
+
+Bug: 170646036
+Test: manual, try uninstalling system app update as guest
+Merged-In: I4e959e296cca9bbdfc8fccc5e5e0e654ca524165
+Change-Id: I6ecfef50294c9000a6ce539bdec6f372c872a40b
+(cherry picked from commit fbfa268d47c7915b7a87d3fef22a5b8f3bbabeb7)
+Merged-In: I6ecfef50294c9000a6ce539bdec6f372c872a40b",2022-12-05 22:42:42-07:00
+100,adeaf8cc25530afb8a92e4a04127651c0995bedd,"Limit the size of NotificationChannel and NotificationChannelGroup
+
+Test: android.app.NotificationChannelGroupTest
+Test: android.app.NotificationChannelTest
+Test: cts NotificationChannelTest
+Test: cts NotificationChannelGroupTest
+Bug: 241764350
+Bug: 241764340
+Bug: 241764135
+Bug: 242702935
+Bug: 242703118
+Bug: 242703202
+Bug: 242702851
+Bug: 242703217
+Bug: 242703556
+Change-Id: I0925583ab54d6c81c415859618f6b907ab7baada
+(cherry picked from commit 3850857cb0e7f26702d5bd601731d7290390fa3b)
+(cherry picked from commit b664159aa809093eec69480e801f367215b78f10)
+Merged-In: I0925583ab54d6c81c415859618f6b907ab7baada",2022-12-05 22:42:42-07:00
+101,cfe51c00cd4c0b412d321bbb967a1faddcaa2216,"Include all enabled services when FEEDBACK_ALL_MASK.
+
+Bug: 243849844
+Test: m sts;
+      sts-tradefed run sts-dynamic-develop -m CtsAccessibilityTestCases
+Change-Id: I4f93e06d1066085bd64e8f09882de2f4a72a0633
+(cherry picked from commit 2bc4d49c2b0265f5de1c62d1342b1426cc5e1377)
+Merged-In: I4f93e06d1066085bd64e8f09882de2f4a72a0633",2022-12-05 22:42:42-07:00
+102,62d9be5800c460e7c1f323898306fc75ac37d66a,"[pm] forbid deletion of protected packages
+
+BUG: 242996180
+Test: adb shell pm uninstall --user 0 com.google.android.apps.work.oobconfig
+Test: Verified with the command above. Before this CL, the package can
+be deleted. After this CL, the deletion will fail.
+
+Change-Id: Iba408e536b340ea5d66ab499442c0c4f828fa36f
+(cherry picked from commit 15f85c7fa97fe9faa540e6ad9e850990f46a5cca)
+Merged-In: Iba408e536b340ea5d66ab499442c0c4f828fa36f
+(cherry picked from commit dba7ceb57ecdf9485bcfe8eb554510ccf9ad773c)
+Merged-In: Iba408e536b340ea5d66ab499442c0c4f828fa36f",2022-12-05 22:42:42-07:00
+103,78f58b477987e157ac4d73db4f99a19ecebd33bd,"Limit lengths of fields in Condition to a max length.
+
+This app-generated input needs to not be too long to avoid errors in the process of writing to disk.
+
+Bug: 242846316
+Test: cts ConditionTest; atest ConditionTest; manually verified exploit apk is OK
+
+Change-Id: Ic2fa8f06cc7a4c1f262115764fbd1be2a226b4b9
+Merged-In: Ic2fa8f06cc7a4c1f262115764fbd1be2a226b4b9
+(cherry picked from commit 81352c3775949c622441e10b468766441e35edc7)
+(cherry picked from commit 7059638be9271303e22b7b3e8aa6d58677f6143b)
+Merged-In: Ic2fa8f06cc7a4c1f262115764fbd1be2a226b4b9",2022-12-05 23:24:36-07:00
+104,d0b5819a37b7a06b07385d898742d558aac4e7da,"Fix NPE
+
+Test: NotificationChannelGroupTest
+Test: view notification settings for an app that doesn't use groups
+Fixes: 244574602
+Bug: 241764350
+Bug: 241764340
+Bug: 241764135
+Bug: 242702935
+Bug: 242703118
+Bug: 242703202
+Bug: 242702851
+Bug: 242703217
+Bug: 242703556
+Change-Id: I9c681106f6d645e62b0e44903d40aa523fee0e95
+(cherry picked from commit 6f02c07176d0fa4d6985c8f2200ccf49a1657d1c)
+Merged-In: I9c681106f6d645e62b0e44903d40aa523fee0e95
+(cherry picked from commit e51c402650c5e4400108cf63d460ec349577087c)
+Merged-In: I9c681106f6d645e62b0e44903d40aa523fee0e95",2022-12-05 23:24:36-07:00
+105,82e4c08288424015d447681815554397cf793a1e,"Fix a security issue in app widget service.
+
+Bug: 234013191
+Test: atest RemoteViewsAdapterTest
+Change-Id: Icd2eccb7a90124aca18a3dd463c3f79e3a595c20
+Merged-In: Icd2eccb7a90124aca18a3dd463c3f79e3a595c20
+(cherry picked from commit 263d7d0ba8818c471a27938c4e002bae33569f01)
+(cherry picked from commit 0ee21ef3e652c78c934d257632a4951bd6d38011)
+Merged-In: Icd2eccb7a90124aca18a3dd463c3f79e3a595c20",2022-12-05 23:24:36-07:00
+106,67b29ab4020e94c433391aedc23d8457f79fe40b,"[RESTRICT AUTOMERGE] Allow activity to be reparent while allowTaskReparenting is applied
+
+Any malicious application could hijack tasks by
+android:allowTaskReparenting. This vulnerability can perform UI
+spoofing or spying on user’s activities.
+
+This CL only allows activities to be reparent while
+android:allowTaskReparenting is applied and the affinity of activity
+is same with the target task.
+
+Bug: 240663194
+Test: atest IntentTests
+Change-Id: I73abb9ec05af95bc14f887ae825a9ada9600f771
+(cherry picked from commit 7af50c4d5f0354438872167b0e446930caca9deb)
+Merged-In: I73abb9ec05af95bc14f887ae825a9ada9600f771",2022-12-05 23:24:36-07:00
+107,a8afb70ebc208f6e6a285e83cf44b53202a7869e,"[DO NOT MERGE] Update window with FLAG_SECURE when bouncer is showing
+
+This will prevent bouncer interactions from showing up in
+screenrecords or screenshots.
+
+Fixes: 215005011
+Test: atest NotificationShadeWindowControllerImpl && take screenshot
+with bouncer up
+
+Change-Id: I3f59df865dc2dd13d4b9ac54bb2dacb7b23f0aa1
+Merged-In: I3f59df865dc2dd13d4b9ac54bb2dacb7b23f0aa1
+(cherry picked from commit 6888543d3a6cde5a9e16f9accb0a4256152aba2d)
+(cherry picked from commit 18ddad1f5a3d9592e063c3d3a70278bccc2e08e5)
+Merged-In: I3f59df865dc2dd13d4b9ac54bb2dacb7b23f0aa1",2022-12-05 23:24:37-07:00
+108,ec5b5e1dfa1406a29e719430a3cd05a4f960f41a,"Prevent exfiltration of system files via avatar picker.
+
+This adds mitigations to prevent system files being exfiltrated
+via the settings content provider when a content URI is provided
+as a chosen user image.
+
+The mitigations are:
+
+1) Copy the image to a new URI rather than the existing takePictureUri
+prior to cropping.
+
+2) Only allow a system handler to respond to the CROP intent.
+
+This is a fixed version of ag/17071224, to address b/239513606.
+
+Bug: 187702830
+Test: build and check functionality
+Change-Id: Ie352d07bbcfc7e0b0a1db1dbe3fd43085e0ecbb6
+Merged-In: Idf1ab60878d619ee30505d71e8afe31d8b0c0ebe
+(cherry picked from commit 1b48ca6b7f44bacdb7b9469bfaf08fe4881ea0ae)
+Merged-In: Ie352d07bbcfc7e0b0a1db1dbe3fd43085e0ecbb6",2022-12-05 23:24:37-07:00
+109,a0024d7805bc14fa7371124e9c9650df82be2513,"[Do Not Merge] Ignore malformed shortcuts
+
+After an app publishes a shortcut that contains malformed intent, the
+system can be stuck in boot-loop due to uncaught exception caused by
+parsing the malformed intent.
+
+This CL ignores that particular malformed entry. Since shortcuts are
+constantly writes back into the xml from system memory, the malformed
+entry will be removed from the xml the next time system persists
+shortcuts from memory to file system.
+
+Bug: 246540168
+Change-Id: Ibbfd0891eabdce72f76571798382fe949d8f453d
+Test: manual
+(cherry picked from commit 36338a315218221e51c24a42e44c4f743d416f82)
+Merged-In: Ibbfd0891eabdce72f76571798382fe949d8f453d",2022-12-05 23:24:37-07:00
+110,2d54a3bf75eae8280ffa37e6435d9dcdffcbc6a2,"Lower per-app notificationchannel limit
+
+Test: PreferencesHelperTest
+Bug: 240422263
+Change-Id: I8c12e3fc73e4a88842af275feaf2acffcced0402
+(cherry picked from commit f528b337dd48b7e8071269e07e610bd4a3668c75)
+Merged-In: I8c12e3fc73e4a88842af275feaf2acffcced0402
+(cherry picked from commit 36acdd675890296151b7a99e05fa7436d59a289b)
+Merged-In: I8c12e3fc73e4a88842af275feaf2acffcced0402",2022-12-05 23:24:37-07:00
+111,1aa63338540fb0ada2b87ae7bbcdecd5d8bc08fc,"[DO NOT MERGE] Fix permanent denial of service via setComponentEnabledSetting
+
+Do not update invalid component enabled settings to prevent the
+malicious apps from exhausting system server memory.
+
+Bug: 240936919
+Test: atest android.security.cts.PackageManagerTest
+Change-Id: I08165337895e89f13a2b9fcce1201cba9ad13d7d
+(cherry picked from commit 24473590373902db492de502c7c557ef5ead485f)
+Merged-In: I08165337895e89f13a2b9fcce1201cba9ad13d7d",2022-12-05 23:24:37-07:00
+112,8565487dae2587227a32526de58b4b2898100bbe,"Add safety checks on KEY_INTENT mismatch.
+
+For many years, Parcel mismatch typed exploits has been using the
+AccoungManagerService's passing of KEY_INTENT workflow, as a foothold of
+launching arbitrary intents. We are adding an extra check on the service
+side to simulate the final deserialization of the KEY_INTENT value, to
+make sure the client side won't get a mismatched KEY_INTENT value.
+
+Bug: 250588548
+Bug: 240138294
+Test: atest CtsAccountManagerTestCases
+Test: local test, also see b/250588548
+Change-Id: I433e34f6e21ce15c89825044a15b1dec46bb25cc
+(cherry picked from commit eb9a0566a583fa13f8aff671c41f78a9e33eab82)
+Merged-In: I433e34f6e21ce15c89825044a15b1dec46bb25cc",2022-12-05 23:24:37-07:00
+113,1c5e4928dcfb254c0204f78c60ecfe6b219a852d,"Validate package name passed to setApplicationRestrictions.
+
+This adds validation that the package name passed to
+setApplicationRestrictions is in the correct format. This will avoid
+an issue where a path could be entered resulting in a file being
+written to an unexpected place.
+
+Bug: 239701237
+Test: atest UserManagerServiceTest
+Change-Id: I1ab2b7228470f10ec26fe3a608ae540cfc9e9a96
+(cherry picked from commit 31a582490d6e8952d24f267df47d669e3861cf67)
+Merged-In: I1ab2b7228470f10ec26fe3a608ae540cfc9e9a96
+(cherry picked from commit cfcfe6ca8c545f78603c05e23687f8638fd4b51d)
+(cherry picked from commit 91a821d2e4d80558cf39a6d728213d3df0826908)
+Merged-In: I1ab2b7228470f10ec26fe3a608ae540cfc9e9a96",2022-12-06 07:53:09-07:00
+114,1832677b9a1dfd01c424b6d9090b6cf6183652b5,"[DO NOT MERGE] Revert ""Fix system zen rules by using owner package name if caller is system""
+
+This reverts commit 78245566a27882cce59c0d7cd4c60e1604392a3f.
+
+Reason for revert: broke DND schedules in multi-user mode b/257477671
+
+Change-Id: I8a244a6ad0457ef2679b5216f48611d4025b9983
+(cherry picked from commit 7deb6e4565789dafcdcafea7107d03662a5ee86c)
+Merged-In: I8a244a6ad0457ef2679b5216f48611d4025b9983",2022-12-06 07:53:09-07:00
+115,44fa57d2ebaa9ae4c41f94d9889115671dc82438,"[DO NOT MERGE] Revert ""Check rule package name in ZenModeHelper.addAutomaticRule""
+
+This reverts commit 59732d6232d7d82d03897b25be0381c3c510db9b.
+
+Reason for revert: broke DND schedules in multi-user mode b/257477671
+
+Change-Id: I33dd64f8686e60db332361b6cde2955c33cff8d0
+(cherry picked from commit 3bba7fb1844c7d550b4b4a3665b641cffa1713fb)
+Merged-In: I33dd64f8686e60db332361b6cde2955c33cff8d0",2022-12-06 07:53:09-07:00
+116,2a05a951ba34fa2b690a676dcd5744716c27499c,"Limit length and number of MIME types you can set
+
+Limit character length of MIME types to 255. If this length is exceeded
+then a IllegalArugmentException is thrown. The number of MIME types that
+can be set is also limited to 500 per MIME group with the number of
+total MIME Groups also limited to 500. A IllegalStateException is thrown if this number is exceeded.
+
+Bug: 237291548
+Test: Installed and ran POC app from b/237291548
+Change-Id: I1d57e674f778cfacdc89225ac3273c432a39af63
+Merged-In: I1d57e674f778cfacdc89225ac3273c432a39af63
+(cherry picked from commit 3ae3406b9706163073c282a8c4081faa32b606b2)
+Merged-In: I1d57e674f778cfacdc89225ac3273c432a39af63",2023-01-04 06:16:58-07:00
+117,f30e24fbc849472d74b7a600a83881a23196667f,"Disable all A11yServices from an uninstalled package.
+
+Previous logic would exit the loop after removing the first service
+matching the uninstalled package.
+
+Bug: 243378132
+Test: atest AccessibilityEndToEndTest
+Test: m sts;
+      sts-tradefed run sts-dynamic-develop -m \
+        CtsAccessibilityServiceTestCases
+Change-Id: I4ba30345d8600674ee8a9ea3ff411aecbf3655a3
+(cherry picked from commit e1f343acdeeddd9a08c9f6c832faf788ce101763)
+Merged-In: I4ba30345d8600674ee8a9ea3ff411aecbf3655a3",2023-01-04 06:17:09-07:00
+118,19702ea591fc2fe045ed9366127e5d824bfba474,"[DO NOT MERGE] Fix conditionId string trimming in AutomaticZenRule
+
+This change only applies to S branches and earlier.
+
+Bug: 253085433
+Bug: 242703460
+Bug: 242703505
+Bug: 242703780
+Bug: 242704043
+Bug: 243794204
+Test: AutomaticZenRuleTest
+Change-Id: Iae423d93b777df8946ecf1c3baf640fcf74990ec
+Merged-In: Iae423d93b777df8946ecf1c3baf640fcf74990ec
+(cherry picked from commit 7533d0420d85d56ec42bdb30a2ef1ae55ae95080)
+Merged-In: Iae423d93b777df8946ecf1c3baf640fcf74990ec",2023-01-04 06:17:09-07:00
+119,d10614e8de0f69aae3abbcb9439606305696286a,"[RESTRICT AUTOMERGE] [SettingsProvider] mem limit should be checked before settings are updated
+
+Previously, a setting is updated before the memory usage limit
+check, which can be exploited by malicious apps and cause OoM DoS.
+
+This CL changes the logic to checkMemLimit -> update -> updateMemUsage.
+
+BUG: 239415861
+Test: atest com.android.providers.settings.SettingsStateTest
+
+(cherry picked from commit 8eeb92950f4a7012d4cf282106a1418fd211f475)
+Merged-In: I20551a2dba9aa79efa0c064824f349f551c2c2e4
+Change-Id: I20551a2dba9aa79efa0c064824f349f551c2c2e4
+(cherry picked from commit 966b597383d1f5cbbc943affeb24b9b225b2ddae)
+Merged-In: I20551a2dba9aa79efa0c064824f349f551c2c2e4",2023-01-04 06:17:09-07:00
+120,33c13c17865d57cb5e55f301ae8eaa7fdf5b8f9c,"Backport missing permission check for querying main activity intent
+
+- This was fixed in T in ag/16820166, but the original code was
+  submitted in S.  This ensures that the caller of this method
+  is either holding the ACCESS_SHORTCUTS permission or is the
+  default launcher.
+
+Bug: 229256049
+Test: atest WMShellUnitTests
+
+Change-Id: Ib233ad754a6c6e3c4e0d0e10ed788ab8e055cccc
+Merged-In: Ib233ad754a6c6e3c4e0d0e10ed788ab8e055cccc
+(cherry picked from commit f4ed441e180d7113b5f6ebfe711e61a2dd3fd8b1)
+(cherry picked from commit b3192809643eff948d9457c8a7b36b968a7388a1)
+Merged-In: Ib233ad754a6c6e3c4e0d0e10ed788ab8e055cccc",2023-01-04 06:17:09-07:00
+121,53ece2aea297fb9a5c78a7bffaf3dad485908736,"RESTRICT AUTOMERGE Validate permission tree size on permission update
+
+Bug: 242537498
+Test: manual
+Change-Id: I15343e84c1802d6b89249106263319a6539fa73b
+(cherry picked from commit 1d86c8b29922525972559e00e26c1fcd6f496353)
+Merged-In: I15343e84c1802d6b89249106263319a6539fa73b",2023-01-04 06:17:10-07:00
+122,14bf3cb0902a769dcf700e6c1f596f5c1d5eefe6,"[RESTRICT AUTOMERGE][SettingsProvider] key size limit for mutating settings
+
+Prior to targetSdk 22, apps could add random system settings keys which
+opens an opportunity for OOM attacks. This CL adds a key size limit.
+
+BUG: 239415997
+Test: manual; will add cts test
+Merged-In: Ic9e88c0cc3d7206c64ba5b5c7d15b50d1ffc9adc
+Change-Id: Ic9e88c0cc3d7206c64ba5b5c7d15b50d1ffc9adc
+(cherry picked from commit 783bcba343c480f6ccedaaff41ba7171a1082e0c)
+(cherry picked from commit 0123e873d2e5f4c88aaa6bdf2e287461903fa6e5)
+Merged-In: Ic9e88c0cc3d7206c64ba5b5c7d15b50d1ffc9adc",2023-01-04 06:17:10-07:00
+123,b1dacbcb32d699c8e68ec630c25a457d9684ef03,"[RESTRICT AUTOMERGE] Trim the activity info of another uid if no privilege
+
+The activity info could be from another uid which is different
+from the app that hosts the task. The information should be
+trimmed if the caller app doesn't have the privilege.
+
+Bug: 243130512
+Test: verified locally
+Test: atest RecentTasksTest
+Change-Id: Ia343ac70e5bb9aeae718fca6674e1ca491a14512
+Merged-In: Ia343ac70e5bb9aeae718fca6674e1ca491a14512
+(cherry picked from commit fa8d6362348738284b3f33a13e1fa5cdd0af67b2)
+Merged-In: Ia343ac70e5bb9aeae718fca6674e1ca491a14512",2023-01-04 06:17:10-07:00
+124,ce0a326a0c700a2d71b697219bc39fb7b3eb1038,"RESTRICT AUTOMERGE Revoke SYSTEM_ALERT_WINDOW on upgrade past api 23
+
+Bug: 221040577
+Test: atest PermissionTest23#testPre23AppsWithSystemAlertWindowGetDeniedOnUpgrade
+Change-Id: I4b4605aaae107875811070dea6d031c5d9f25c96
+(cherry picked from commit 5e80fcf8c423f288a87d727f48ae38112177d716)
+Merged-In: I4b4605aaae107875811070dea6d031c5d9f25c96",2023-01-04 06:17:10-07:00
+125,f089bd6a11e3afcbcdfc5a2c286bc78d79be0600,"Add protections against queueing a UsbRequest when the underlying UsbDeviceConnection is closed.
+
+Bug: 204584366
+Test: CTS Verifier: USB Accessory Test & USB Device Test
+Test: No HWASan use-after-free reports with a test app
+Change-Id: Ia3a9b10349efc0236b1539c81465f479cb32e02b
+(cherry picked from commit 1691b54b1fda4239249a3871d2c17ed1ec753061)
+Merged-In: Ia3a9b10349efc0236b1539c81465f479cb32e02b",2023-01-04 06:17:10-07:00
+126,b0acd540cd5194b529aedaf87e00dff377da4448,"Fix sharing to another profile where an app has multiple targets
+
+Moves the fixUris call from onTargetSelected directly to the intent
+launch to ensure the intent which is actually started is updated with
+userId specific URIs.
+
+This is a backport of ag/19657256 and ag/20063949.
+
+Bug:242165528
+Bug:244876518
+Bug:242605257
+Test: manually share image from personal profile to work gmail,
+first with chat target then backing up and selecting the main target
+Test: manually share image from work Photos app to personal WhatsApp's
+frequent contact target.
+
+Change-Id: Id815984e691bf962e19e30a54f7247d16060b3b8
+Merged-In: Id815984e691bf962e19e30a54f7247d16060b3b8
+Merged-In: Ib41c8a3c46afcc2d62a4c1a924212bcd98bcfbe4
+Merged-In: Iabf5dcf2612fe718f2f0886e2e5e9b76f37af1e1
+(cherry picked from commit f50ced5f1e619d7fa7858748d6a9dbe861354f04)
+Merged-In: Id815984e691bf962e19e30a54f7247d16060b3b8",2023-01-04 06:17:10-07:00
+127,57cc81a61b64c23a84e5a232e0aa822e90b85241,"Ensure that only SysUI can override pending intent launch flags
+
+- Originally added in ag/5139951, this method ensured that activities
+  launched from widgets are always started in a new task (if the
+  activity is launched in the home task, the task is not brough forward
+  with the recents transition).  We can restrict this to only recents
+  callers since this only applies to 1p launchers in gesture nav
+  (both the gesture with 3p launchers and button nav in general will
+  always start the home intent directly, which makes adding the
+  NEW_TASK flag unnecessary).
+
+Bug: 243794108
+Test: Ensure that the original bug b/112508020 still works (with the
+      test app in the bug, swipe up still works after launching an
+      activity from the widget, and fails without applying the
+      override flags)
+Change-Id: Id53c6a2aa6da5933d488ca06a0bfc4ef89a4c343
+(cherry picked from commit c4d3106e347922610f8c554de3ae238175ed393e)
+Merged-In: Id53c6a2aa6da5933d488ca06a0bfc4ef89a4c343",2023-01-04 06:17:10-07:00
+128,b702b280e4cbf89243d6d1e272cdd7869dce2d07,"[DO NOT MERGE] Do not clear calling identify when using BiometricPrompt from FingerprintService.
+
+Bug: 214261879
+Test: atest AuthControllerTest
+Test: Manually verify with test apps in bug
+Change-Id: I8ae9f2b8a970bf7e5d32121dc358f7d0f0d060b8
+(cherry picked from commit ac89f8682f0558c775e360d3c5fb84702e914989)
+Merged-In: I8ae9f2b8a970bf7e5d32121dc358f7d0f0d060b8",2023-02-10 16:30:21-07:00
+129,bbf844775b20357ca64729263aaa75ea64ec2fe3,"Make Activites touch opaque - DO NOT MERGE
+
+Block touches from passing through activities by adding a dedicated
+surface that consumes all touches that would otherwise pass through the
+bounds availble to the Activity.
+
+Bug: 194480991
+Test: atest CtsWindowManagerDeviceTestCases:ActivityRecordInputSinkTests
+Test: atest CtsWindowManagerDeviceTestCases:CrossAppDragAndDropTests
+Test: atest CtsWindowManagerDeviceTestCases:PinnedStackTests
+Test: Manually ran through go/wm-smoke (verified pip and splitscreen
+still work)
+Test: Manually verfied that freeform windows work and don't consume
+touches outside their bounds
+
+Change-Id: I01b35e34a63868dead4e728a3d359ae0942302f9
+(cherry picked from commit 22261fa6649f6ec6441646743ad98132fcf47fe0)
+Merged-In: I01b35e34a63868dead4e728a3d359ae0942302f9",2023-02-10 16:30:25-07:00
+130,f64cb7e161e2a2f8e26430f2aec1795ff8f5ab5e,"[DO NOT MERGE] fpService#authWithPrompt uses correct user handle.
+
+CTS > BYOD Managed Provisioning > Authentication Bound Keys
+
+Verified Fingerprint-bound key test works as expected.
+
+Test: Manually verified CTS
+Bug: 231932206
+Change-Id: I473c9c28cd0fbb01f4dd48447ddea8aa32834131
+(cherry picked from commit f3650a6dee1ebe5f681699e4170c244e7bd7f9fc)
+(cherry picked from commit c79346286e9cb03df8bf8417c15059aed0f0b41a)
+Merged-In: I473c9c28cd0fbb01f4dd48447ddea8aa32834131",2023-02-10 16:58:42-07:00
+131,373dc024fe540a11b4167e870733704bd9b877b9,"[RESTRICT AUTOMERGE] Correct the behavior of ACTION_PACKAGE_DATA_CLEARED
+
+This action should be only broadcasted when the user data is cleared
+successfully. Broadcasting this action when failed case may result in
+unexpected result.
+
+Bug: 240267890
+Test: manually using the PoC in the buganizer to ensure the symptom
+      no longer exists.
+Change-Id: Iac8de8cf7837223dbd960b8d954ae6f40c702745
+(cherry picked from commit 1748c4e3569c960b3cc7af6fe76dc56b7929fc74)
+Merged-In: Iac8de8cf7837223dbd960b8d954ae6f40c702745",2023-02-10 16:58:42-07:00
+132,68be9dcda50c0ac555a4a04e6648283c1ee80cc5,"Convert argument to intent in ChooseTypeAndAccountActivity
+
+Bug: 244154558
+Test: manual
+Change-Id: I5a86639cd571e14e9a9f5d5ded631b5a7c08db7e
+(cherry picked from commit ede0a767c26f144e38b4a0c1c2f530b05ffd29a8)
+Merged-In: I5a86639cd571e14e9a9f5d5ded631b5a7c08db7e",2023-02-10 16:58:42-07:00
+133,fff7a19e27e1026ad9a20a80d60a809343c6bc34,"Use rule package name in addAutomaticZenRule; specify ""android"" for all system apps
+
+This is a roll forward of two reverted changes combined into one:
+commit b6d04416628ab29df57efcd738332912d9260cea
+commit e5e51116fb767162966a8e0d23fafb4f0ff46e86
+
+It additionally fixes an issue where in multi-user profiles (such as a guest user), rules would be incorrectly identified as not created by the system and would therefore fail to be created in settings.
+
+Bug: 257477671
+Bug: 245236706
+Bug: 242537431
+Test: NotificationManagerServiceTest; ZenModeHelperTest; manually verified that it's possible to create zen schedules from guest mode
+Change-Id: I0c4c705cfe5fc875151958957daaf8657fbc21a7
+Merged-In: I0c4c705cfe5fc875151958957daaf8657fbc21a7
+(cherry picked from commit 7261cdd30bf18965d421fc28c68c61e380bc952d)
+(cherry picked from commit 6e34748bdc541dbc841d6f29c0fb19a2eedec57d)
+Merged-In: I0c4c705cfe5fc875151958957daaf8657fbc21a7",2023-02-10 16:58:42-07:00
+134,693e82f72cdf40d65a151c24e9168f345ee551af,"RESTRICT AUTOMERGE Use chain start token in performOpTransaction
+
+Bug: 258672042
+Test: atest CtsPermission4TestCases
+Change-Id: I1d484ed7c72d4ae73f4cbec47522a18ae9088f6e
+(cherry picked from commit 9d09846798bce7253ed1202adb61257d4eefbd1d)
+Merged-In: I1d484ed7c72d4ae73f4cbec47522a18ae9088f6e",2023-02-10 16:58:43-07:00
+135,d1020a96f2567ba52ca79c6c754181bf908a425c,"Disallow clicks on privacy chip before provisioned
+
+While the device is provisioning, do not allow clicks on the privacy
+chip.
+
+Test: atest HeaderPrivacyIconsControllerTest
+Bug: 253043058
+Change-Id: I9c8f642976f3332f4d5c9db89a4917dae501f251
+(cherry picked from commit ea4a8ec146f2d916af8a3f6e605690ad2b189755)
+Merged-In: I9c8f642976f3332f4d5c9db89a4917dae501f251",2023-02-10 16:58:43-07:00
+136,39bd18cfa37bcc403288bb6c7fb2219385405312,"Revert ""[RESTRICT AUTOMERGE] Trim the activity info of another uid if no privilege""
+
+This reverts commit fa8d6362348738284b3f33a13e1fa5cdd0af67b2.
+
+Reason for revert: apps crashed due to the top activity info trimmed
+
+Bug: 264269392 263434196 263438172
+Change-Id: I57d37649acb31bd93bd5aa10507f548cd77fc8f2
+(cherry picked from commit b37e4e7e6f465c4b6a291be6c65587dbd75b4ae4)
+Merged-In: I57d37649acb31bd93bd5aa10507f548cd77fc8f2",2023-03-16 19:41:54-06:00
+137,13e194d35f19d15873aeb2551ba9186d76558b44,"Move service initialization
+
+Occasionally ILockSettings can fail to be initialized otherwise
+Fixes: 232714129
+Test: boot (and eventually bootstress/reboot-long)
+
+Change-Id: I2f9f9bdba37f4ebfaea56c1a6662f0474ae8a002
+Merged-In: I2f9f9bdba37f4ebfaea56c1a6662f0474ae8a002
+(cherry picked from commit 8e278543bd290d4b6c417758554d6dee93a4fe74)
+(cherry picked from commit d262fa6af707a18226c5a586ae2704ab0a9907bf)
+Merged-In: I2f9f9bdba37f4ebfaea56c1a6662f0474ae8a002",2023-03-16 19:41:54-06:00
+138,5676b94f5ff807eea35ebf63b97f83c3ffb2f7a1,"Enable user graularity for lockdown mode
+
+The NotificationManagerService registers a LockPatternUtils.StrongAuthTracker
+to observe the StrongAuth changes of every user.
+More specifically, it’s the STRONG_AUTH_REQUIRED_AFTER_USER_LOCKDOWN flag.
+Via this flag, NotificationManagerService can perform the following operations
+when the user enter or exit lockdown mode:
+
+Enter lockdown:
+1. Remove all the notifications belonging to the user.
+2. Set the local flag to indicate the lockdown is on for the user.
+   The local flag will suppress the user's notifications on the
+   post, remove and update functions.
+
+Exit lockdown:
+1. Clear the local flag to indicate the lockdown is off for the user.
+2. Repost the user’s notifications (suppressed during lockdown mode).
+
+The CL also updates corresponding tests.
+
+Bug: 173721373
+Bug: 250743174
+Test: atest NotificationManagerServiceTest
+Test: atest NotificationListenersTest
+Ignore-AOSP-First: pending fix for a security issue.
+
+Change-Id: I4f30e56550729db7d673a92d2a1250509713f36d
+Merged-In: I4f30e56550729db7d673a92d2a1250509713f36d
+(cherry picked from commit de3b12fca23178d8c821058261572449b67d5967)
+(cherry picked from commit 0b56ec9aa245f7bbdf065a4b33b5ef00a558dbe4)
+Merged-In: I4f30e56550729db7d673a92d2a1250509713f36d",2023-03-16 19:41:54-06:00
+139,66940e260478b665f3c008dfd53d3b44cd164b89,"Reconcile WorkSource parcel and unparcel code.
+
+Prior to this CL, WorkSources would Parcel their list of WorkChains as
+-1 if null, or the size of the list followed by the list itself if
+non-null. When reading it back in, on the other hand, they would check
+if the size was positive, and only then read the list from the Parcel.
+This works for all cases except when the WorkSource has an empty but
+non-null list of WorkChains as the list would get written to the parcel,
+but then never read on the other side.
+
+If parceling a list was a no-op when empty this wouldn't be an issue,
+but it must write at least its size into the parcel to know how many
+elements to extract. In the empty list case, this single element is left
+unread as the size is not positive which essentially corrupts any future
+items read from that same parcelable.
+
+Bug: 220302519
+Test: atest android.security.cts.WorkSourceTest#testWorkChainParceling
+Change-Id: I2fec40dfced420ca38e717059b0e95ee8ef9946a
+(cherry picked from commit 266b3bddcf14d448c0972db64b42950f76c759e3)
+Merged-In: I2fec40dfced420ca38e717059b0e95ee8ef9946a",2023-03-16 19:41:54-06:00
+140,6c86f15ca01aa3b4c0150d6a905dcf82dfc37593,"Enforce MediaButtonReceiver extracted component name matches session package name
+
+This change makes sure that the extracted component name in a
+MediaButtonReceiverHolder matches the Media Session owner's package
+name. This avoids incorrectly routing media button events and potential
+security issues.
+
+Bug: 244312001
+Bug: 238177121
+Test: atest CtsMediaBetterTogetherTestCases
+Change-Id: Ifac9cf53889222e31d18c14c1e096ee68c0a346c
+(cherry picked from commit 185c3e252397bfa37592edbb5b2f5ae97db92eda)
+Merged-In: Ifac9cf53889222e31d18c14c1e096ee68c0a346c
+(cherry picked from commit 48c388277880e56ab5cc29e145e4d00aa383ce01)
+Merged-In: Ifac9cf53889222e31d18c14c1e096ee68c0a346c",2023-03-16 19:41:54-06:00
+141,c4ab6858af6c7c0b2d186c3032b1ec2bf0dc4815,"Enforce MediaButtonReceiver ComponentName belongs to app
+
+Adds check that enforces ComponentName's package belongs to calling app.
+This avoids privileged execution of arbitrary code through media button
+events.
+
+This is a partial revert revert of ag/19338169.
+
+Bug: 238177121
+Test: atest CtsMediaBetterTogetherTestCases
+Change-Id: I4aba866a9758366175ea4af0d434729ad98fa48d
+(cherry picked from commit 1b2fa2486cc97fd9515300f858d4da2af8d8908c)
+Merged-In: I4aba866a9758366175ea4af0d434729ad98fa48d
+(cherry picked from commit 863d396f4ccabee91d51b04f72f44c34ffe351f0)
+(cherry picked from commit 833af484ecbe732ec086ee08a068c6010cd070c9)
+Merged-In: I4aba866a9758366175ea4af0d434729ad98fa48d",2023-03-16 19:43:18-06:00
+142,68ef7c5a725d4f6f4387fde049d7d4ec447f996e,"Revert ""Ensure that only SysUI can override pending intent launch flags""
+
+This reverts commit c4d3106e347922610f8c554de3ae238175ed393e.
+
+Reason for revert: b/264884187, b/264885689 
+
+Change-Id: I9fb0d66327f3f872a92e6b9d682d58489e81e6ba
+(cherry picked from commit 7bb933f48ff15d8f08d2185005b7b3e212915276)
+Merged-In: I9fb0d66327f3f872a92e6b9d682d58489e81e6ba",2023-03-16 19:43:19-06:00
+143,da40a046caf74dfb789bb5cdd3b7d2847f9c956a,"Skip permission check for system ui.
+
+This is a workaround for a race condition between system ui and role
+service's role based grants on boot.
+
+The config value used is the same that the role service uses to give
+system ui its role.
+
+Test: Verify check is bypassed
+Bug: 221782106
+Change-Id: Ia44abeefbec1b27df6bf802d7493c03381518e96",2023-03-31 06:56:31+03:00
+144,1645ad8ce3f70201f3e8315bbc329b1e09ff2b49,"DO NOT MERGE: Context#startInstrumentation could be started from SHELL only now.
+
+Or, if an instrumentation starts another instrumentation and so on,
+and the original instrumentation is started from SHELL, allow all
+Context#startInstrumentation calls in this chain.
+
+Otherwise, it'll throw a SecurityException.
+
+Bug: 237766679
+Test: atest CtsAppTestCases:InstrumentationTest
+Merged-In: Ia08f225c21a3933067d066a578ea4af9c23e7d4c
+Merged-In: I1b76f61c5fd6c9f7e738978592260945a606f40c
+Merged-In: I3ea7aa27bd776fec546908a37f667f680da9c892
+Change-Id: I7ca7345b064e8e74f7037b8fa3ed45bb6423e406
+(cherry picked from commit 5985225e777cdb96b738aeda859dff49f6c6f853)
+Merged-In: I7ca7345b064e8e74f7037b8fa3ed45bb6423e406",2023-04-11 20:42:12-06:00
+145,2e7af97f081b0985e14d63df2c50f948b6f9075d,"Fix checkKeyIntentParceledCorrectly's bypass
+
+The checkKeyIntentParceledCorrectly method was added in checkKeyIntent, which was originaly  only invoked when AccountManagerService deserializes the KEY_INTENT value as not NULL. However, due to the self-changing bundle technique in Parcel mismatch problems, the Intent value can change after reparceling; hence would bypass the added checkKeyIntentParceledCorrectly call.
+
+This CL did the following:
+
+- Ensure the checkKeyIntent method is also called when result.getParcelable(AccountManager.KEY_INTENT) == null.
+
+Bug: 260567867
+Bug: 262230405
+Test: local test, see b/262230405
+Test: atest CtsAccountManagerTestCases
+Merged-In: I7b528f52c41767ae12731838fdd36aa26a8f3477
+Change-Id: I7b528f52c41767ae12731838fdd36aa26a8f3477
+(cherry picked from commit 9f623983a8d4ec48d58b0eda56fa461fc6748981)
+Merged-In: I7b528f52c41767ae12731838fdd36aa26a8f3477",2023-04-11 20:42:12-06:00
+146,54a73e2f6ca472fe66039ab2823fdc2a5ba26cf2,"Checking if package belongs to UID before registering broadcast receiver
+
+Test: manual testing done on device by installing test APK and checking if receiver can register
+Bug: 242040055
+Change-Id: Ia525f218a46f8bf7fff660cec0d6432f09fdf24d
+Merged-In: Ia525f218a46f8bf7fff660cec0d6432f09fdf24d
+(cherry picked from commit 790a8d0dd329460bc60456681cb446accf2a27e0)
+(cherry picked from commit 8460609f01147d2a7e849eca1ca895211530b589)
+Merged-In: Ia525f218a46f8bf7fff660cec0d6432f09fdf24d",2023-04-11 20:42:12-06:00
+147,299efd901061ccc2a243df9d9b8059dffa9861ea,"Encode Intent scheme when serializing to URI string RESTRICT AUTOMERGE
+
+Avoids deserialization error when the scheme contains a
+reserved character.
+
+Bug: 261858325
+
+Test: atest android.content.cts.IntentTest#testEncoding
+
+Merged-In: Ic34b3f796b762763db5aa7b5d7c109ae70607470
+Change-Id: Ic34b3f796b762763db5aa7b5d7c109ae70607470
+(cherry picked from commit bfe7e8bab48caff53dbcf2913f724de2e4f5aa81)
+Merged-In: Ic34b3f796b762763db5aa7b5d7c109ae70607470",2023-04-11 20:42:12-06:00
+148,af52e36a81099ffc43e898f74f1e8f70ec1de2e3,"[DO NOT MERGE] Backport BAL restrictions from T to S, this blocks apps from using Alarm
+Manager to bypass BAL restrictions.
+
+Test: atest-src BackgroundActivityLaunchTest
+Bug: 195756028
+Change-Id: I33112ff59d913d8a7244289fe1a43512844e902a
+(cherry picked from commit 7a41e2fbc983ce0083b288e9489288de60dc8d8b)
+Merged-In: I33112ff59d913d8a7244289fe1a43512844e902a",2023-04-11 20:42:12-06:00
+149,6d2f7829dd6e3fdcc6ebff0c2d9e16c3a069ad9d,"[RESTRICT AUTOMERGE] Strip part of the activity info of another uid if no privilege
+
+The activity info could be from another uid which is different
+from the app that hosts the task. The information should be
+trimmed if the caller app doesn't have the privilege.
+
+However, removing the entire info may result in app compatibility
+issues. So, only swiping the info that are sensitive to empty
+string.
+
+Bug: 243130512
+Test: verified market app locally
+Test: atest RecentTasksTest
+Change-Id: I5b6775dd3c4e2ccdacd30741884d336b2eaa70da
+Merged-In: I5b6775dd3c4e2ccdacd30741884d336b2eaa70da
+(cherry picked from commit 5ba72200f6a66b5da48c9c3abd103a73aea1ef95)
+(cherry picked from commit 7be9e6efb63884f8f4bb647e537a29746bbeb9fa)
+Merged-In: I5b6775dd3c4e2ccdacd30741884d336b2eaa70da",2023-04-11 20:42:12-06:00
+150,f64311b32d86df04746b885d4ed0111d588fd48b,"Add a limit on channel group creation
+
+Same as exists for channels
+
+This is a backport of the fix in ag/16659457, including the adjustment from ag/20920023 (changed the max value from 50000 to 6000).
+
+Test: PreferencesHelperTest
+Bug: 210114537
+Bug: 261723753
+Change-Id: Ic27efba4c54e22eebca16fc948879e652df4467b
+(cherry picked from commit 37b3549807d15452ac334fae316e615c3b9b8e8b & I3f3a99765c161369e1b026686a0e5f0c83ed839e)
+Merged-In: I3f3a99765c161369e1b026686a0e5f0c83ed839e
+(cherry picked from commit 38257af19e18d19075483dfa351c7e5cbb9cbf75)
+Merged-In: Ic27efba4c54e22eebca16fc948879e652df4467b",2023-04-11 20:42:12-06:00
+151,2552ea758a9eb3c0b7f12426214a3c4c7fad0bca,"Fix bypass BAL via LocationManager.requestFlush
+
+Bug: 235823542
+Test: atest LocationProviderManagerTest and manual tests
+Change-Id: I2a0fa7b99c3ad5ae839d8018ec70cb5c26e33240
+(cherry picked from commit 750af79d5ccb282bb79ef40932858fbae801a48b)
+Merged-In: I2a0fa7b99c3ad5ae839d8018ec70cb5c26e33240",2023-04-11 20:42:13-06:00
+152,8ef7fac04f4331e2c029002d8d99eb2246d74625,"[RESTRICT AUTOMERGE] Fix bypass BG-FGS and BAL via package manager APIs
+
+Opt-in for BAL of PendingIntent for following APIs:
+
+* PackageInstaller.uninstall()
+* PackageInstaller.installExistingPackage()
+* PackageInstaller.uninstallExistingPackage()
+* PackageInstaller.Session.commit()
+* PackageInstaller.Session.commitTransferred()
+* PackageManager.freeStorage()
+
+Bug: 230492955
+Bug: 243377226
+Test: atest android.security.cts.PackageInstallerTest
+Test: atest CtsStagedInstallHostTestCases
+Change-Id: I9b6f801d69ea6d2244a38dbe689e81afa4e798bf
+(cherry picked from commit 5f00e89989392c9ae00b360e1388d0179dfb36d7)
+Merged-In: I9b6f801d69ea6d2244a38dbe689e81afa4e798bf",2023-04-11 20:42:13-06:00
+153,31150824df4d15d5922c4d513306f73fff7f90b9,"Automatic translation import
+
+Change-Id: Ibd059c7a3b4de0d53c2dc2bf29bb14a968ab86e2",2023-04-24 10:18:15+00:00
+154,e026818a26445b2a67b55108e1e3e05ca01ccb7b,"Revert ""Make Activites touch opaque - DO NOT MERGE""
+
+This reverts commit 22261fa6649f6ec6441646743ad98132fcf47fe0.
+
+Reason for revert: Re-release due to functional regression
+
+Change-Id: I9ca1fa2f140d640159fabec1424c52867cf01a60
+(cherry picked from commit 23bf0bda7d9b97a82ea04257318bb90677561476)
+Merged-In: I9ca1fa2f140d640159fabec1424c52867cf01a60",2023-05-02 08:21:10-06:00
+155,a0f0bd03a63c7a982209c0997637eb4797d0b3d9,"[RESTRICT AUTOMERGE][pm] prevent system app downgrades of versions lower than preload
+
+Also remove misleading commandline output.
+
+BUG: 256202273
+
+Test: manual
+1. Install preload system app v90, reboot
+2. (W/O data, W/ Flag, 90->80 NOK) adb install -d ~/Downloads/PrivApplication_80.apk
+Performing Streamed Install
+adb: failed to install /usr/local/google/home/schfan/Downloads/PrivApplication_80.apk: Failure [INSTALL_FAILED_VERSION_DOWNGRADE: System app: com.example.privapplication cannot be downgraded to older than its preloaded version on the system image. Update version code 80 is older than current 90]
+3. (90->100) Install data app v100
+4. (W/ data, W/O Flag, 100->90 NOK) adb install ~/Downloads/PrivApplication_90.apk
+Performing Streamed Install
+adb: failed to install /usr/local/google/home/schfan/Downloads/PrivApplication_90.apk: Failure [INSTALL_FAILED_VERSION_DOWNGRADE: Downgrade detected: Update version code 90 is older than current 100]
+5. (W/ data, W/ Flag, 100->90 downgrade OK) adb install -d ~/Downloads/PrivApplication_90.apk
+Performing Streamed Install
+Success
+6. (90->100) Install v100
+6. (W/data, W/ Flag, 100->80 NOK) adb install -d ~/Downloads/PrivApplication_80.apk
+Performing Streamed Install
+adb: failed to install /usr/local/google/home/schfan/Downloads/PrivApplication_80.apk: Failure [INSTALL_FAILED_VERSION_DOWNGRADE: System app: com.example.privapplication cannot be downgraded to older than its preloaded version on the system image. Update version code 80 is older than current 90]
+
+Change-Id: I5a8ee9e29a3a58f6e3fd188e0122355744b8b0ce
+(cherry picked from commit a4484d7f1be1fa413258fe18644d61f85611f586)
+(cherry picked from commit on googleplex-android-review.googlesource.com host: cc9d3867082ac1518b7264c3752442f5ca112aa1)
+Merged-In: I5a8ee9e29a3a58f6e3fd188e0122355744b8b0ce",2023-05-02 08:21:17-06:00
+156,84a1cc875280fd7a2b60642303a1755f5edcdfaa,"[RESTRICT AUTOMERGE][pm] still allow debuggable for system app downgrades
+
+Turns out we do have internal tests that downgrades system apps, so adding this exception to allow for that.
+
+BUG: 267232653
+BUG: 256202273
+
+Test: manual
+Change-Id: Ie281bbdc8788ee64ff99a7c5150da7ce7926235e
+(cherry picked from commit ceeca68b8c3f0ed8427b0212f63defe2f075146e)
+(cherry picked from commit on googleplex-android-review.googlesource.com host: 636cdf22b90ccb4866f380c307b7e1b92da03ed9)
+Merged-In: Ie281bbdc8788ee64ff99a7c5150da7ce7926235e",2023-05-02 08:21:17-06:00
+157,79d93158979161d6d3a842ec9400a03c5074e06f,"Checks if AccessibilityServiceInfo is within parcelable size.
+
+- If too large when parsing service XMLs then skip this service.
+- If too large when a service attempts to update its own info
+  then throw an error.
+
+Bug: 261589597
+Test: atest AccessibilityServiceInfoTest
+Change-Id: Iffc0cd48cc713f7904d68059e141cb7de5a4b906
+Merged-In: Iffc0cd48cc713f7904d68059e141cb7de5a4b906
+(cherry picked from commit on googleplex-android-review.googlesource.com host: 553232c29079fbeab28f95307d025c1426aa7142)
+Merged-In: Iffc0cd48cc713f7904d68059e141cb7de5a4b906",2023-05-02 08:21:17-06:00
+158,250579138c44374e207d60a71637490e797ef540,"Uri: check authority and scheme as part of determining URI path
+
+The interpretation of the path depends on whether the scheme or
+authority are specified and should be observed when unparcelling
+URIs.
+
+Bug: 171966843
+Test: atest FrameworksCoreTests:android.net.UriTest
+Test: atest com.android.devicehealthchecks.SystemAppCheck
+Change-Id: I06981d1c6e387b16df792494523994518848db37
+(cherry picked from commit f37a94ae920fa5879c557603fc285942ec4b84b1)
+(cherry picked from commit on googleplex-android-review.googlesource.com host: d83281c73070f2428754912ede95ecb0e3d69cd5)
+Merged-In: I06981d1c6e387b16df792494523994518848db37",2023-05-02 08:21:18-06:00
+159,e82446502de5989274829c70b84bf43b2d217001,"enforce stricter rules when registering phoneAccounts
+
+- include disable accounts when looking up accounts for a package to
+  check if the limit is reached (10)
+- put a new limit of 10 supported schemes
+- put a new limit of 256 characters per scheme
+- put a new limit of 256 characters per address
+- ensure the Icon can write to memory w/o throwing an exception
+
+bug: 259064622
+bug: 256819769
+Test: cts + unit
+Change-Id: Ia7d8d00d9de0fb6694ded6a80c40bd55d7fdf7a7
+Merged-In: Ia7d8d00d9de0fb6694ded6a80c40bd55d7fdf7a7
+(cherry picked from commit on googleplex-android-review.googlesource.com host: 6a02885f90fa64d88bac31efbcdbc2bfe0a9328f)
+Merged-In: Ia7d8d00d9de0fb6694ded6a80c40bd55d7fdf7a7",2023-05-02 08:21:18-06:00
+160,802dbc02ee70de1385060424e42497a22a6a0484,"Make Activites touch opaque - DO NOT MERGE
+
+Block touches from passing through activities by adding a dedicated
+surface that consumes all touches that would otherwise pass through the
+bounds availble to the Activity.
+
++ Keep displayId in sync for ActivityRecord
+
+Bug: 194480991
+Test: atest CtsWindowManagerDeviceTestCases:ActivityRecordInputSinkTests
+Test: atest CtsWindowManagerDeviceTestCases:CrossAppDragAndDropTests
+Test: atest CtsWindowManagerDeviceTestCases:PinnedStackTests
+Test: Used ""System > Developer Options > Simulate secondary display"" to
+test that moving activites between displays work as intended.
+
+Change-Id: Ie74674c87c81c571089463349ac6233717ed9f33
+(cherry picked from commit on googleplex-android-review.googlesource.com host: a418847bb8de788905aced4f59437de7cbfc5360)
+Merged-In: Ie74674c87c81c571089463349ac6233717ed9f33",2023-05-02 08:22:24-06:00
+161,6f4c85a9fe2bd0f8f9408df001ea7651e9706dda,"Trim strings added to persistent snoozed notification storage.
+
+This is a backport of ag/20581190 and includes the fix in ag/20778075.
+Note that on this branch, clearData doesn't seem to actually clear persistent storage.
+
+Bug: 258422365
+Test: atest NotificationManagerServiceTest SnoozeHelperTest
+Change-Id: If7c7db6694330ffbac551d044efadb26219fe17f
+Merged-In: I5a2823f10053ea8c83c612a567d6d4f1b6af23e7
+Merged-In: Ie809cb4d648a40622618e0fb374f36b6d8dc972a
+(cherry picked from commit on googleplex-android-review.googlesource.com host: b8a07871459ed895fc814730e198df4a0b5860dc)
+Merged-In: If7c7db6694330ffbac551d044efadb26219fe17f",2023-05-02 08:22:29-06:00
+162,a71883f3081348371482d96d71dc119ef2f7d463,"Limit the number of shortcuts per app that can be retained by system
+
+This is a second attempt at fixing the issue, the previous CL
+ag/20642213 was reverted because it simply throws an exception when the
+limit is reached, which causes apps to crash since chat apps tends to be
+sending large amount of conversation shortcuts and they have no way to
+know how many of these shortcuts are still cached by the system.
+
+Instead of throwing an exception, this CL simply removes excessive
+shortcuts to avoid crashes. Currently there is a limit on the number
+of shortcuts an app can publish in respect to each launcher activity.
+This CL further implements a global maximum of total number of shortcuts
+that can be retained for an app to mitigate from any potential system
+health issue.
+
+When the global maximum is reached, ShortcutService will proactively
+removes shortcuts from system memory. Cached shortcuts are removed
+first, followed by dynamic shortcuts, using last updated time as
+tie-breaker.
+
+This CL additionally addresses an unexpected flow where re-publishing
+previously removed shortcuts that are still retained by the system could
+cause the total number of shortcuts to exceed previously set limit.
+
+Bug: 250576066 233155034
+Test: manual
+Change-Id: I001c7a87b62aefa9487bf8efaf3cd02d7cb21521
+Merged-In: I001c7a87b62aefa9487bf8efaf3cd02d7cb21521
+(cherry picked from commit on googleplex-android-review.googlesource.com host: 94437e989c0391b2dbf28d33120fdc28a4ce8d4d)
+Merged-In: I001c7a87b62aefa9487bf8efaf3cd02d7cb21521",2023-05-02 08:22:29-06:00
+163,0b338a6b51eb75b6673db99e7aa7a037bfcf6cc8,"Re-enforce MANAGE_ACTIVITY_TASKS for applySyncTransaction
+
+The conditional permission was introduced for TaskFragmentOrganizer, but
+not really needed. Remove the conditional check.
+
+Bug: 259938771
+Test: pass existing tests
+Merged-In: I666b9ee6b6076766513b97e675fdbaa002428601
+Change-Id: I666b9ee6b6076766513b97e675fdbaa002428601
+(cherry picked from commit on googleplex-android-review.googlesource.com host: 6d848929eab6249b0ba1b8bd6d454744850b1718)
+Merged-In: I666b9ee6b6076766513b97e675fdbaa002428601",2023-05-06 08:50:28-06:00
+164,5bd2bde094b31ff02c283a3452e25f5dbc933b93,"Automatic translation import
+
+Change-Id: I31130b482dcde779ffc20b3b2a757e15cc8884c6",2023-05-15 11:24:04+00:00
+165,f3148e456ef907b893c8431f699037fec209e718,"Automatic translation import
+
+Change-Id: I8ed837ec882d421c389b691ae93d5019104bab11",2023-06-01 11:34:51+00:00
+166,eba871dc2b4dbf249e4d2db0cc187e64180c3923,"Request correct rendering type for EGL config
+
+According to [1] :
+section 3.4 :
+...
+Creation of a client API context based on an EGLConfig will
+fail unless the EGLConfig’s EGL_RENDERABLE_TYPE attribute
+include the bit corresponding to that API and version.
+...
+
+section 3.7.1.6:
+...
+An EGL_BAD_MATCH error is generated if config does not support the
+requested client API. This includes requesting creation of an OpenGL ES
+1.x, 2.0, or 3.0 context when the EGL_RENDERABLE_TYPE attribute of config
+does not contain EGL_OPENGL_ES_BIT, EGL_OPENGL_ES2_BIT, or EGL_-
+OPENGL_ES3_BIT respectively.
+...
+
+Bootanimation uses EGL_CONTEXT_CLIENT_VERSION  2 for context creation,
+so appropriate EGL_RENDERABLE_TYPE should be requested during eglChooseConfig.
+
+1. https://registry.khronos.org/EGL/specs/eglspec.1.5.pdf
+
+Google: 2489515
+Change-Id: I5ebc18d8ace84197d069049decadb402576546b5
+Signed-off-by: Andrii Chepurnyi <andrii_chepurnyi@epam.com>",2023-06-07 00:12:53+02:00
+167,268ad14fea89283f8f1b66902f874d3c1c95fe5b,"Remove Activity if it enters PiP without window
+
+This is to prevent malicious app entering PiP without being visible
+first, like blocking onResume from completion. Which in turn
+leaves the PiP window in limbo and non-interactable.
+
+Bug: 265293293
+Test: atest PinnedStackTests
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:4fad1456409b79d6e649a29d5116a4fe3160bd21)
+Merged-In: I458a9508662e72a1adb9d9818105f2e9d7096d44
+Change-Id: I458a9508662e72a1adb9d9818105f2e9d7096d44",2023-06-10 13:15:03-06:00
+168,b6d4b096665d9d356cadb12f16767d64945ee6e8,"[DO NOT MERGE] Wait for preloading images to complete before inflating notifications
+
+ NotificationContentInflater waits on SysUiBg thread for images to load, with a timeout
+ of 1000ms.
+
+Test: 1. Build a test app that posts MessagingStyle notifications with a huge image (8k+) set as data Uri.
+ 2. SystemUi should not ANR
+ 3. adb logcat | grep NotificationInlineImageCache  - shows timeout/cancellation logs
+
+Bug: 252766417
+Bug: 223859644
+
+(cherry picked from commit 195043f40e46ddcd2fe534a9dac344792d39d91c)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:b9cd15ad8a2f87893164ad2ab518039bb0b61424)
+Merged-In: I341db60223214cf2282b5c0270e343e1ce95fa01
+Change-Id: I341db60223214cf2282b5c0270e343e1ce95fa01",2023-06-10 13:15:03-06:00
+169,9d3642cadf39793a856274d7f4edeb98151366a6,"[DO NOT MERGE] Prevent RemoteViews crashing SystemUi
+
+  Catch canvas drawing exceptions caused  by unsuported image sizes.
+
+Test: 1. Post a custom view notification with a layout
+	containing an ImageView that references a 5k x 5k image
+2. Add an App Widget to the home screen with that has the
+	layout mentioned above as preview/initial layout.
+
+Bug: 268193777
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:c3db1e4451490ddc7f6033a6ab7d54e71ebda9d8)
+Merged-In: Ib3bda769c499b4069b49c566b1b227f98f707a8a
+Change-Id: Ib3bda769c499b4069b49c566b1b227f98f707a8a
+
+Change-Id: Ibbaa234b663bc8e40d2a0a0f076a8676b6b1bc16",2023-06-10 13:15:04-06:00
+170,7702158cea616a8749db357a169150c49adc73c9,"Grant MANAGE_USERS access to Traceur
+
+This change updates the privapp allowlist to grant the MANAGE_USERS
+permission to Traceur. This permission is needed to query admin user
+status, as Traceur shouldn't be able to start if the current user is not
+an admin.
+
+Test: Using ABTD, apply this change with ag/22119816 to verify that
+      Traceur still works as intended (opening app, tracing, etc.).
+Bug: 262243665
+Bug: 262244249
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:f42db15239663604eb5d36edb04a0f9a04576568)
+Merged-In: I8e2174065b686c052cb080b3590ea4d89e7a7783
+Change-Id: I8e2174065b686c052cb080b3590ea4d89e7a7783",2023-06-10 13:15:04-06:00
+171,f76b124b6ede9ead86eb033d5053850d833f75bb,"Check key intent for selectors and prohibited flags
+
+Bug: 265015796
+Test: atest
+FrameworksServicesTests: com.android.server.accounts.AccountManagerServiceTest
+(cherry picked from commit e53a96304352e2965176c8d32ac1b504e52ef185)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:5e01f68bdabe8aa7154e1ed936235b5304f4c0cd)
+Merged-In: Ie16f8654337bd75eaad3156817470674b4f0cee3
+Change-Id: Ie16f8654337bd75eaad3156817470674b4f0cee3",2023-06-10 13:15:04-06:00
+172,b8457600c1b0e1ed4f621bc13fce5088c6ab18c9,"Handle invalid data during job loading.
+
+Catch exceptions that may be thrown if invalid data ended up in the
+persisted job file.
+
+Bug: 246541702
+Bug: 246542132
+Bug: 246542285
+Bug: 246542330
+Test: install test app with invalid job config, start app to schedule job, then reboot device
+(cherry picked from commit c98fb42b480b3beedc2d94de6110f50212c4aa0b)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:7bdc1e8a3affd8534a829744001ef3ea26cce074)
+Merged-In: Id0ceba345942baf21177f687b8dd85ef001c0a9e
+Change-Id: Id0ceba345942baf21177f687b8dd85ef001c0a9e",2023-06-10 13:15:04-06:00
+173,2510c72e34c660e42599f9866ca846395ba1aebf,"Allow filtering of services
+
+Test: ServiceListingTest
+Bug: 260570119
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:a9c75de2b4ae92f4b7e7aade8433fd44ef376e11)
+Merged-In: Ib4740ba401667de62fa1a33334c2c1fbee25b760
+Change-Id: Ib4740ba401667de62fa1a33334c2c1fbee25b760",2023-06-10 13:15:04-06:00
+174,645206dd8566eb1b4ca286b4c0ede04b4e057fd4,"Enforce DevicePolicyManager.setUserControlDisabledPackages in AppStandbyController
+
+When deciding an app's standby bucket, check if the
+app has its user control disabled by an IT admin. If so,
+the app should be the exempted restricted bucket.
+
+Bug: 272042183
+Test: atest AppStandbyControllerTests
+(cherry picked from commit 269fcb6873dee199dd8023831f882aafff1f6291)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:3dbab873d6d8f78c4d498a575ad37fd0dc20efbe)
+Merged-In: I4279dc37f0e17aedb1c2a87468478248443a253e
+Change-Id: I4279dc37f0e17aedb1c2a87468478248443a253e",2023-06-10 13:15:04-06:00
+175,59729e1be98eec30bcfe9600c48248729fc0203b,"[RESTRICT AUTOMERGE] Add BubbleMetadata detection to block FSI
+
+Bug: 274759612
+Test: atest NotificationInterruptStateProviderImplTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:1bc1be92ce0d8bd8abd9efa13e85ac0d33556a3b)
+Merged-In: I40e1aa6377b8a60d91cb2f4189df1e9a4a4578a2
+Change-Id: I40e1aa6377b8a60d91cb2f4189df1e9a4a4578a2",2023-06-10 13:15:04-06:00
+176,fad839e2d005566d74fe8263c223f4c64e586712,"Prevent sharesheet from previewing unowned URIs
+
+Bug: 261036568
+Test: manually via supplied tool (see bug)
+(cherry picked from commit 3062b80fb28014a7482d5fa8b2a5c852134a5845)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:08809fa8c938ccc6f0cd21036fcc464a96d93384)
+Merged-In: I21accf6f753d2f676f1602d6e1ce829c5ef29e9a
+Change-Id: I21accf6f753d2f676f1602d6e1ce829c5ef29e9a",2023-06-10 13:15:04-06:00
+177,9b675792218fa769a1bbf9d5a9b3751e7570f9fc,"Automatic translation import
+
+Change-Id: I215fcff573bafc2279bc907ebb577cceec40c550",2023-06-15 10:50:28+00:00
+178,349d348e47f36acae1adbb67ca4ca07e08e01bad,"Automatic translation import
+
+Change-Id: I70830ea42fadd0f731d51c99fbae0f9827648b9c",2023-07-01 18:42:14+00:00
+179,ddb8198e65c965ed74fdf4be5144a84d844802e0,"Sanitize VPN label to prevent HTML injection
+
+This commit will try to sanitize the content of VpnDialog. This
+commit creates a function which will try to sanitize the VPN
+label, if the sanitized VPN label is different from the original
+one, which means the VPN label might contain HTML tag or the VPN
+label violates the words restriction(may contain some wording
+which will mislead the user). For this kind of case, show the
+package name instead of the VPN label to prevent misleading the
+user.
+
+The malicious VPN app might be able to add a large number of line
+breaks with HTML in order to hide the system-displayed text from
+the user in the connection request dialog. Thus, sanitizing the
+content of the dialog is needed.
+
+Bug: 204554636
+Test: N/A
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:2178216b98bf9865edee198f45192f0b883624ab)
+Merged-In: I8eb890fd2e5797d8d6ab5b12f9c628bc9616081d
+Change-Id: I8eb890fd2e5797d8d6ab5b12f9c628bc9616081d",2023-07-07 07:00:16-06:00
+180,cdd8435eba6773ff9a71ac90568c71bbad7b51dd,"Limit the number of supported v1 and v2 signers
+
+The v1 and v2 APK Signature Schemes support multiple signers; this
+was intended to allow multiple entities to sign an APK. Previously,
+the platform had no limits placed on the number of signers supported
+in an APK, but this commit sets a hard limit of 10 supported signers
+for these signature schemes to ensure a large number of signers
+does not place undue burden on the platform.
+
+Bug: 266580022
+Test: Manually verified the platform only allowed an APK with the
+       maximum number of supported signers.
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:6f6ee8a55f37c2b8c0df041b2bd53ec928764597)
+Merged-In: I6aa86b615b203cdc69d58a593ccf8f18474ca091
+Change-Id: I6aa86b615b203cdc69d58a593ccf8f18474ca091",2023-07-07 07:00:17-06:00
+181,477cb8ed3bc58fbac41689cfcdbda05402692c1b,"Grant URI permissions to the CallStyle-related ones
+
+This will also verify that the caller app can actually grant them.
+
+Fix: 274592467
+Test: atest NotificationManagerServiceTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:4dee5aab12e95cd8b4d663ad050f07b0f2433596)
+Merged-In: I83429f9e63e51c615a6e3f03befb76bb5b8ea7fc
+Change-Id: I83429f9e63e51c615a6e3f03befb76bb5b8ea7fc",2023-07-07 07:00:17-06:00
+182,796e70d56d9490e78e654e88578699f4d4f71553,"Only allow NEW_TASK flag when adjusting pending intents
+
+Bug: 243794108
+Test: atest CtsSecurityBulletinHostTestCases:android.security.cts.CVE_2023_20918
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:c62d2e1021a030f4f0ae5fcfc8fe8e0875fa669f)
+Merged-In: I5d329beecef1902c36704e93d0bc5cb60d0e2f5b
+Change-Id: I5d329beecef1902c36704e93d0bc5cb60d0e2f5b",2023-07-07 07:00:17-06:00
+183,37ca905ed529c3bbb624b5dfe244cf09e0fef417,"Dismiss keyguard when simpin auth'd and...
+
+security method is none. This is mostly to fix the case where we auth
+sim pin in the set up wizard and it goes straight to keyguard instead of
+the setup wizard activity.
+
+This works with the prevent bypass keyguard flag because the device
+should be noe secure in this case.
+
+Fixes: 222446076
+Test: turn locked sim on, which opens the sim pin screen. Auth the
+screen and observe that keyguard is not shown.
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:48fa9bef3451e4a358c941af5b230f99881c5cb6)
+Cherry-picking this CL as a security fix
+
+Bug: 222446076
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:65ea56f54c059584eb27ec53d486dba8161316ab)
+Merged-In: Id302c41f63028bc6dd58ba686e23d73565de9675
+Change-Id: Id302c41f63028bc6dd58ba686e23d73565de9675",2023-07-07 07:00:17-06:00
+184,26a1ac33ad29ce6f22acbfcd087d0f882aa0ed40,"Verify URI permissions for EXTRA_REMOTE_INPUT_HISTORY_ITEMS.
+
+Also added the person URIs in the test, since they weren't being
+checked.
+
+Test: atest NotificationManagerServiceTest & tested with POC from bug
+Bug: 276729064
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:43b1711332763788c7abf05c3baa931296c45bbb)
+Merged-In: I848545f7aee202495c515f47a32871a2cb6ae707
+Change-Id: I848545f7aee202495c515f47a32871a2cb6ae707",2023-07-07 07:00:18-06:00
+185,94cd71b3e35328c30778d02c07ee9a21d3ad6544,"Truncate ShortcutInfo Id
+
+Creating Conversation with a ShortcutId longer than 65_535 (max unsigned short), we did not save the conversation settings into the notification_policy.xml due to a restriction in FastDataOutput.
+This put us to a state where the user changing the importance or turning off the notifications for the given conversation had no effect on notification behavior.
+
+Fixes: 273729476
+Test: atest ShortcutManagerTest2
+Test: Create a test app which creates a Conversation with a long shortcutId. Go to the Conversation Settings and turn off Notifications. Post a new Notification to this Conversation and see if it is displayed.
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:ab0c8ac5b47509a71f27c4e5e9ce104d51bab0a8)
+Merged-In: I2617de6f9e8a7dbfd8fbeff589a7d592f00d87c5
+Change-Id: I2617de6f9e8a7dbfd8fbeff589a7d592f00d87c5",2023-07-07 07:00:18-06:00
+186,b2dfeb065030eef7d5dd1307068c54896e688171,"Visit URIs in landscape/portrait custom remote views.
+
+Bug: 277740848
+Test: atest RemoteViewsTest NotificationManagerServiceTest & tested with POC from bug
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:b4692946c10d11c1e935869e11dc709a9cdcba69)
+Merged-In: I7d3d35df0ec38945019f71755bed8797b7af4517
+Change-Id: I7d3d35df0ec38945019f71755bed8797b7af4517",2023-07-07 07:00:18-06:00
+187,e5322ec4ce2409b78f306d0af43761a3b38291ef,"Automatic translation import
+
+Change-Id: I389275e599b7304aec955bf0d70133b17f36a365",2023-07-15 15:25:01+00:00
+188,44bbfea0d4ec0eee8e7c61ae03dfdd2371e1bdb3,"SystemUI: Fix wrong method to identify cutout position
+
+- When the cutout is on the right side of the screen, the position of the right bound
+  of the cutout rectangle should be compared to the screen width, not to the height.
+- Google sneakily fixed it in the following commit of android-13.0.0_r16
+  0ab0199c399e3b1e952afa6c62c961c90a3d5ed9
+- Now, for devices with cutout on the right side of screen, no useless space area
+  will be generated in the middle of the status bar.
+
+Test:
+1. Settings -> System -> Developer options
+2. Select ""Corner cutout"" in ""Display cutout""
+3. Enable ""Show layout bounds""
+4. Check for space area between the notification icons area on the left side and
+   the system icons area on the right side that shouldn't be there.
+
+Change-Id: I75632aed20a9e31fd82dd7562c718e4c567dd9f3",2023-07-16 12:20:12+02:00
+189,2d20360c987cef357b3e7129ba1499579b43349d,"Automatic translation import
+
+Change-Id: I28827b509eb1b8a55e4d3dd22af27279122d08f5",2023-08-01 20:13:43+00:00
+190,1db9575c599343530de8b6ff78f2179625f1c381,"DO NOT MERGE: ActivityManager#killBackgroundProcesses can kill caller's own app only
+
+unless it's a system app.
+
+Bug: 239423414
+Bug: 223376078
+Test: atest CtsAppTestCases:ActivityManagerTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:d1c95670b248df945784b0f2830acf83b5682de3)
+Merged-In: Iac6baa889965b8ffecd9a43179a4c96632ad1d02
+Change-Id: Iac6baa889965b8ffecd9a43179a4c96632ad1d02",2023-08-07 18:55:32-06:00
+191,6fc71babb098385e882e7cd491f44970499608ab,"ActivityManagerService: Allow openContentUri from vendor/system/product.
+
+Apps should not have direct access to this entry point. Check that the
+caller is a vendor, system, or product package.
+
+Test: Ran PoC app and CtsMediaPlayerTestCases.
+Bug: 236688380
+(cherry picked from commit d0ba7467c2cb2815f94f6651cbb1c2f405e8e9c7)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:e37820e47c383aecf9d1173a0676c27e6a59ce4f)
+Merged-In: I0335496d28fa5fc3bfe1fecd4be90040b0b3687f
+Change-Id: I0335496d28fa5fc3bfe1fecd4be90040b0b3687f",2023-08-07 18:55:32-06:00
+192,64e1eb289bb272e03cf735733211a08dac802b8c,"Do not load drawable for wallet card if the card image icon iscreated
+with content URI.
+
+This prevents the primary user from accessing the secondary user's
+photos for QAW card images.
+
+Test: manually, atest
+Bug: 272020068
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:ff753ae693065685d85bbda6af2953905fdf434c)
+Merged-In: I6932c5131b3c795bac4ea9b537938e7ef4f3ea4e
+Change-Id: I6932c5131b3c795bac4ea9b537938e7ef4f3ea4e",2023-08-07 18:55:32-06:00
+193,ee234c797474f17f1206dbe9bfaa11c39e4e175e,"Verify URI permissions for notification shortcutIcon.
+
+Bug: 277593270
+Test: atest NotificationManagerServiceTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:beb185c5cd60edc68f4ef386c4407eba9c02c698)
+Merged-In: Iaf2a9a82f18e018e60e6cdc020da6ebf7267e8b1
+Change-Id: Iaf2a9a82f18e018e60e6cdc020da6ebf7267e8b1",2023-08-07 18:55:32-06:00
+194,580ee2c3614140ff611acd1af2132a43a16bb88f,"Ensure policy has no absurdly long strings
+
+The following APIs now enforce limits and throw IllegalArgumentException
+when limits are violated:
+* DPM.setTrustAgentConfiguration() limits agent packgage name,
+  component name, and strings within configuration bundle.
+* DPM.setPermittedAccessibilityServices() limits package names.
+* DPM.setPermittedInputMethods() limits package names.
+* DPM.setAccountManagementDisabled() limits account name.
+* DPM.setLockTaskPackages() limits package names.
+* DPM.setAffiliationIds() limits id.
+* DPM.transferOwnership() limits strings inside the bundle.
+
+Package names are limited at 223, because they become directory names
+and it is a filesystem restriction, see FrameworkParsingPackageUtils.
+
+All other strings are limited at 65535, because longer ones break binary
+XML serializer.
+
+The following APIs silently truncate strings that are long beyond reason:
+* DPM.setShortSupportMessage() truncates message at 200.
+* DPM.setLongSupportMessage() truncates message at 20000.
+* DPM.setOrganizationName() truncates org name at 200.
+
+Bug: 260729089
+Test: atest com.android.server.devicepolicy
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:12c201509e911f4dddabf371bd22c93e097e5d99)
+Merged-In: Idcf54e408722f164d16bf2f24a00cd1f5b626d23
+Change-Id: Idcf54e408722f164d16bf2f24a00cd1f5b626d23",2023-08-07 18:55:33-06:00
+195,68d20cfadb029f339a80634271fd2a2da5557adb,"On device lockdown, always show the keyguard
+
+Manual test steps:
+1. Enable app pinning and disable ""Ask for PIN before unpinning"" setting
+2. Pin an app (ie: Settings)
+3. Lockdown from the power menu
+Observe: user is brought to the keyguard, primary auth is required
+to enter the device. After entering credential, the device is still in
+app pinning mode.
+
+Test: atest KeyguardViewMediatorTest
+Test: manual steps outlined above
+Bug: 218495634
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:b23c2d5fb6630ea0da503b937f62880594b13e94)
+Merged-In: I9a7c5e1acadabd4484e58573331f98dba895f2a2
+Change-Id: I9a7c5e1acadabd4484e58573331f98dba895f2a2
+
+Change-Id: Ia967920c8b3f2388d7a1d4ce7a717525b2680923",2023-08-07 18:55:33-06:00
+196,a8ec22f965959cb1f8c76fa5ea9c0edf73ccc003,"Preserve flags for non-runtime permissions upon package update.
+
+PermissionManagerServiceImpl.restorePermissionState() creates a new
+UID permission state for non-shared-UID packages that have been
+updated (i.e. replaced), however the existing logic for non-runtime
+permission never carried over the flags from the old state. This
+wasn't an issue for much older platforms because permission flags
+weren't used for non-runtime permissions, however since we are
+starting to use them for role protected permissions (ROLE_GRANTED) and
+app op permissions (USER_SET), we do need to preserver the permission
+flags.
+
+This change merges the logic for granting and revoking a non-runtime
+permission in restorePermissionState() into a single if branch, and
+appends the logic to copy the flag from the old state in that branch.
+
+Bug: 283006437
+Test: PermissionFlagsTest#nonRuntimePermissionFlagsPreservedAfterReinstall
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:0e1ebd84e27f5d4fa8bc6577705293251bcbac4f)
+Merged-In: Iea3c66710e7d28c6fc730b1939da64f1172b08db
+Change-Id: Iea3c66710e7d28c6fc730b1939da64f1172b08db",2023-08-07 18:55:33-06:00
+197,147730e4612628fa05de5d9099bb802a2ca29591,"Check URIs in notification public version.
+
+Bug: 276294099
+Test: atest NotificationManagerServiceTest NotificationVisitUrisTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:67cd169d073486c7c047b80ab83843cdee69bf53)
+Merged-In: I670198b213abb2cb29a9865eb9d1e897700508b4
+Change-Id: I670198b213abb2cb29a9865eb9d1e897700508b4",2023-08-07 18:55:33-06:00
+198,2861dab20a619329f4c391cc0fac0d2ba24cd724,"Implement visitUris for RemoteViews ViewGroupActionAdd.
+
+This is to prevent a vulnerability where notifications can show
+resources belonging to other users, since the URI in the nested views
+was not being checked.
+
+Bug: 277740082
+Test: atest RemoteViewsTest NotificationVisitUrisTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:850fd984e5f346645b5a941ed7307387c7e4c4de)
+Merged-In: I5c71f0bad0a6f6361eb5ceffe8d1e47e936d78f8
+Change-Id: I5c71f0bad0a6f6361eb5ceffe8d1e47e936d78f8",2023-08-07 18:55:34-06:00
+199,b48846957a0a716c7d5696ba389f728b2e874f11,"Validate ComponentName for MediaButtonBroadcastReceiver
+
+This is a security fix for b/270049379.
+
+Bug: 270049379
+Test: atest CtsMediaMiscTestCases
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:c573c83a2aa36ca022302f675d705518dd723a3c)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:ba546a306217389a8ff9e5e948612651fd496081)
+Merged-In: I05626f7abf1efef86c9e01ee3f077d7177d7f662
+Change-Id: I05626f7abf1efef86c9e01ee3f077d7177d7f662",2023-08-07 18:55:34-06:00
+200,26c9cf7140ef6b8782a0b08fa331fbefe7ce6858,"Check URIs in sized remote views.
+
+Bug: 277741109
+Test: atest RemoteViewsTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:ae0d45137b0f8ea49a085bbce4d39f901685c4a5)
+Merged-In: Iceb33606da3a49b9638ab21aeae17a168c1b411a
+Change-Id: Iceb33606da3a49b9638ab21aeae17a168c1b411a",2023-08-07 18:55:34-06:00
+201,6301e1d4272452cfbe54cdd1b4f716896eb6be0d,"Fix PrivacyChip not visible issue
+
+Bug: 281807669
+Test: Manual, i.e. posting the following sequence of events (within few milliseconds) to the scheduler and observe the behaviour with and without the fix: Mic in use -> Mic not in use -> Mic in use
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:a45e1d045770eaabfdbf0e1212c9eb84caf1d565)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:20ea049a4a52dbc8d4e5ed957a2b6b9aa02a2f34)
+Merged-In: I9851e6ed4cb956d0459ef56251eb0ef3210764b8
+Change-Id: I9851e6ed4cb956d0459ef56251eb0ef3210764b8",2023-08-07 18:55:34-06:00
+202,2559e77cbb043c06e358444f526281cb9434b2d6,"Visit URIs in themed remoteviews icons.
+
+Bug: 281018094
+Test: atest RemoteViewsTest NotificationVisitUrisTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:634a69b7700017eac534f3f58cdcc2572f3cc659)
+Merged-In: I2014bf21cf90267f7f1b3f370bf00ab7001b064e
+Change-Id: I2014bf21cf90267f7f1b3f370bf00ab7001b064e",2023-08-07 18:55:34-06:00
+203,eee49f9cb80a37b3c2f70375cd1de64e32e2f86f,"Merge ""Use Settings.System.getIntForUser instead of getInt to make sure user specific settings are used"" into rvc-dev am: d198f5165c am: 886d492c8c
+
+Original change: https://googleplex-android-review.googlesource.com/c/platform/frameworks/base/+/23475765
+
+Signed-off-by: Automerger Merge Worker <android-build-automerger-merge-worker@system.gserviceaccount.com>
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:f37a92b8c8c98ca40f858782fe3720362565c16c)
+Merged-In: Idda8cdb4c853b6046ba19d35eeea2a1a6ee73541
+Change-Id: Idda8cdb4c853b6046ba19d35eeea2a1a6ee73541",2023-08-07 18:55:35-06:00
+204,5c665be16b7957aef1d698304862558e3de83144,"Remove unnecessary padding code
+
+Bug: 213170822
+
+Remove the code that CursorWindow::writeToParcel() uses to ensure slot
+data is 4-byte aligned.  Because mAllocOffset and mSlotsOffset are
+already 4-byte aligned, the alignment step here is unnecessary.
+
+CursorWindow::spaceInUse() returns the total space used.  The tests
+verify that the total space used is always a multiple of 4 bytes.
+
+Test: atest
+ * libandroidfw_tests
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:5d4afa0986cbc440f458b4b8db05fd176ef3e6d2)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:548b0a183859fb023dee7ecd7d9f05bf7fed00f8)
+Merged-In: I720699093d5c5a584283e5b76851938f449ffa21
+Change-Id: I720699093d5c5a584283e5b76851938f449ffa21",2023-08-07 18:55:35-06:00
+205,0e3a03142bcdade071c3997b1cb7be93678c1b42,"Verify URI permissions in MediaMetadata
+
+Add a check for URI permission to make sure that user can access the URI
+set in MediaMetadata. If permission is denied, clear the URI string set
+in metadata.
+
+Bug: 271851153
+Test: atest MediaSessionTest
+Test: Verified by POC app attached in bug, image of second user is not
+the UMO background of the first user.
+
+(cherry picked from commit b8a7fd8e6f41ee54d27c1e7aaa15b4a3f5365a02)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:91705f7cc95a87a5cc7814f543669adcd3b35f09)
+Merged-In: I384f8e230c909d8fc8e5f147e2fd3558fec44626
+Change-Id: I384f8e230c909d8fc8e5f147e2fd3558fec44626",2023-08-07 18:55:35-06:00
+206,0101ae8a47ff484d43af3dde506d19cde4590f65,"Merge ""Resolve StatusHints image exploit across user."" into rvc-dev am: 543e6febbf am: 8c3d465b5e
+
+Original change: https://googleplex-android-review.googlesource.com/c/platform/frameworks/base/+/23438530
+
+Fixes: 285650146
+Fixes: 280797684
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:06456af560729b8a8d209613bb117ede3496fd9d)
+Merged-In: I7822bf2bb75c775faaaa7023fd2c9af9f6d6888f
+Change-Id: I7822bf2bb75c775faaaa7023fd2c9af9f6d6888f",2023-08-07 18:55:35-06:00
+207,5a90c77327de244dee82de520ca602581d5341ed,"DO NOT MERGE Revert ""Verify URI permissions for EXTRA_REMOTE_INPUT_HISTORY_ITEMS.""
+
+This reverts commit 43b1711332763788c7abf05c3baa931296c45bbb.
+
+Reason for revert: regression reported at b/289223315
+
+Bug: 289223315
+Bug: 276729064
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:28428b737903c9b82d7ce3682336d15d8ad00762)
+Merged-In: I101938fbc51592537023345ba1e642827510981b
+Change-Id: I101938fbc51592537023345ba1e642827510981b",2023-09-08 07:17:06-06:00
+208,7d92e02aa27e2f5aa236d568f341f960256071de,"DO NOT MERGE Grant carrier privileges if package has carrier config access.
+
+TelephonyManager#hasCarrierPrivileges internally uses
+SubscriptionManager#canManageSubscription to decide whether to grant
+carrier privilege status to an app or not.
+SubscriptionManager#canManageSubscription returns true if caller APK's
+certificate matches with one of the mNativeAccessRules or
+mCarrierConfigAccessRules. This over-grants carrier privilege status
+to apps that only has mNativeAccessRules.
+Carrier privilege status should
+be granted to the caller APK only if it's certificate matches with one
+of mCarrierConfigAccessRules.
+Replaced SubscriptionManager#canManageSubscription with
+PhoneInterfaceManager#hasCarrierConfigAccess which returns true only if
+caller APK certificates matches with one of mCarrierConfigAccessRules of
+the given subscription.
+
+Bug: 226593252
+Test: Manual Testing as explained in b/226593252#comment51
+      atest CtsTelephonyTestCases
+      Flashed build on raven-userdebug and performed basic
+      funtionality tests
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:fc32ff6c0bbbeeb7dd6c4e0af1f77ce8f19bcbd1)
+Merged-In: I662064529d2a9348f395fe3b541366de8bc2fe7d
+Change-Id: I662064529d2a9348f395fe3b541366de8bc2fe7d",2023-09-08 07:17:06-06:00
+209,c916dad1dfd40b0a4031fb954ada07989121f607,"[DO NOT MERGE] Update quickshare intent rather than recreating
+
+Currently, we extract the quickshare intent and re-wrap it as a new
+PendingIntent once we get the screenshot URI. This is insecure as
+it leads to executing the original with SysUI's permissions, which
+the app may not have. This change switches to using Intent.fillin
+to add the URI, keeping the original PendingIntent and original
+permission set.
+
+Bug: 278720336
+Test: manual (to test successful quickshare), atest
+SaveImageInBackgroundTaskTest (to verify original pending intent
+unchanged)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:573d31ef204bc8bbf24a7341afe17870708c0904)
+Merged-In: Icad3d5f939fcfb894e2038948954bc2735dbe326
+Change-Id: Icad3d5f939fcfb894e2038948954bc2735dbe326
+
+Change-Id: I0fe48b575e68daf89de7dbcb98502bff84aa2658",2023-09-08 07:18:53-06:00
+210,f5fd00ab73631e1a840445cae87077517e83ffc4,"Ignore virtual presentation windows - RESTRICT AUTOMERGE
+
+Windows of TYPE_PRESENTATION on virtual displays should not be counted
+as visible windows to determine if BAL is allowed.
+
+Test: manual test, atest BackgroundActivityLaunchTest
+Bug: 264029851, 205130886
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:bf60a0c6f153a55714d4879bb6cf5b239381a22a)
+Merged-In: I08b16ba1c155e951286ddc22019180cbd6334dfa
+Change-Id: I08b16ba1c155e951286ddc22019180cbd6334dfa",2023-09-08 07:18:55-06:00
+211,83ee559375e3286e01ce4c66f0905fee007278ca,"Forbid granting access to NLSes with too-long component names
+
+This makes the limitation, which was previously only checked on the Settings UI, enforced everywhere.
+
+Fixes: 260570119
+Fixes: 286043036
+Test: atest + manually
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:8a40b0b3a17658af16922b4ba99ccc4258af89f5)
+Merged-In: I4c25d80978cb37a8fa1531f5045259d25ac64692
+Change-Id: I4c25d80978cb37a8fa1531f5045259d25ac64692",2023-09-08 07:18:55-06:00
+212,dc790136f99780793fc2fe1c8d7c478d1b00c3e5,"Update AccountManagerService checkKeyIntentParceledCorrectly.
+
+Bug: 265798288
+Test: manual
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:b117b506ec0504ff9eb2fa523e82f1879ecb8cc1)
+Merged-In: Iad33851af32a11c99d11bc2b5c76d124c3e97ebb
+Change-Id: Iad33851af32a11c99d11bc2b5c76d124c3e97ebb",2023-09-08 07:18:55-06:00
+213,492ce6e3bcffd9996657e37b36dea35c4bb84347,"Improve user handling when querying for resumable media
+
+- Before trying to query recent media from a saved component, check
+  whether the current user actually has that component installed
+- Track user when creating the MediaBrowser, in case the user changes
+  before the MBS returns a result
+
+Test: atest MediaResumeListenerTest
+Bug: 284297711
+(cherry picked from commit e566a250ad61e269119b475c7ebdae6ca962c4a7)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:8dccce4f519c91354d5bc6850137269fec715e5d)
+Merged-In: I838ff0e125acadabc8436a00dbff707cc4be6249
+Change-Id: I838ff0e125acadabc8436a00dbff707cc4be6249",2023-09-08 08:38:31-06:00
+214,71e3acf509833bb428b8d1efee42daea316d5a0d,"RingtoneManager: verify default ringtone is audio
+
+When a ringtone picker tries to set a ringtone through
+RingtoneManager.setActualDefaultRingtoneUri (also
+called by com.android.settings.DefaultRingtonePreference),
+verify the mimeType can be obtained (not found when caller
+doesn't have access to it) and it is an audio resource.
+
+Bug: 205837340
+Test: atest android.media.audio.cts.RingtoneManagerTest
+(cherry picked from commit 38618f9fb16d3b5617e2289354d47abe5af17dad)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:a67982c990496d8efded6cc3a7471e30b66dce60)
+Merged-In: I3f2c487ded405c0c1a83ef0a2fe99cff7cc9328e
+Change-Id: I3f2c487ded405c0c1a83ef0a2fe99cff7cc9328e",2023-10-07 10:14:01-06:00
+215,c1f89296f8b3ebb3d472f18771f012e4628d69fe,"Import translations. DO NOT MERGE ANYWHERE
+
+BUG:286996125
+
+Auto-generated-cl: translation import
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:204ea4a673cc47f154cbff66d664618f1942b6b9)
+Merged-In: I88f32886c5748d119bf37745060403a0e31d829d
+Change-Id: I88f32886c5748d119bf37745060403a0e31d829d",2023-10-07 10:14:05-06:00
+216,193a8234fe89f9ede2ade8972056fbecc1722cd7,"Verify URI permissions for EXTRA_REMOTE_INPUT_HISTORY_ITEMS.
+
+Also added a step to serialize & deserialize the notification in the
+test, to prevent exceptions about not being able to cast e.g.
+Parcelable[] to RemoteInputHistoryItem[].
+
+Test: atest NotificationManagerServiceTest & tested with POC from bug
+Bug: 276729064
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:88e597d2b31d054ab5286b3a666accb08a8db5d5)
+Merged-In: I7053ca59f9c7f1df5226418594109cfb8b609b1e
+Change-Id: I7053ca59f9c7f1df5226418594109cfb8b609b1e",2023-10-07 10:14:06-06:00
+217,fde1f11bd63c49623fc639182eff508a58dfefc1,"Do not share key mappings with JNI object
+
+The key mapping information between the native key mappings and
+the KeyCharacterMap object available in Java is currently shared,
+which means that a read can be attempted while it's being modified.
+
+Bug: 274058082
+Test: Patch tested by Oppo
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:3d993de0d1ada8065d1fe561f690c8f82b6a7d4b)
+Merged-In: I745008a0a8ea30830660c45dcebee917b3913d13
+Change-Id: I745008a0a8ea30830660c45dcebee917b3913d13",2023-10-07 10:14:06-06:00
+218,5b1e387eb079f165d3cbef4c263cc9b030791db9,"[DO NOT MERGE] Verify URI Permissions in Autofill RemoteViews
+
+Check permissions of URI inside of FillResponse's RemoteViews. If the
+current user does not have the required permissions to view the URI, the
+RemoteView is dropped from displaying.
+
+This fixes a security spill in which a user can view content of another
+user through a malicious Autofill provider.
+
+Bug: 283137865
+Fixes: b/283264674 b/281666022 b/281665050 b/281848557 b/281533566
+b/281534749 b/283101289
+Test: Verified by POC app attached in bugs
+Test: atest CtsAutoFillServiceTestCases (added new tests)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:73fa082a7202100da107ae14dd7742ecd86da053)
+Merged-In: I6f4d2a35e89bbed7bd9e07bf5cd3e2d68b20af9a
+Change-Id: I6f4d2a35e89bbed7bd9e07bf5cd3e2d68b20af9a",2023-10-07 10:14:06-06:00
+219,bc240fffa8cf75caf9fb5a8b14ea125809b8b5f6,"Disallow loading icon from content URI to PipMenu
+
+Bug: 278246904
+Test: manually, with the PoC app attached to the bug
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:4bf71d74fc21cd9389dbe00fb750e2f9802eb789)
+Merged-In: Idbd4081bf464e2b3420d4c3fd22ca37867d26bc0
+Change-Id: Idbd4081bf464e2b3420d4c3fd22ca37867d26bc0",2023-10-07 10:14:07-06:00
+220,c28b8b46fbbf28633ecd7a78b7272a0abc3ac245,"Fixing DatabaseUtils to detect malformed UTF-16 strings
+
+Test: tested with POC in bug, also using atest
+Bug: 224771621
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:fb4a72e3943d166088407e61aa4439ac349f3f12)
+Merged-In: Ide65205b83063801971c5778af3154bcf3f0e530
+Change-Id: Ide65205b83063801971c5778af3154bcf3f0e530",2023-10-07 10:14:07-06:00
+221,62f6110c9cbe862b432fd7e9dd55f903528a8a94,"Add userId check before loading icon in Device Controls
+
+Test: manual with the steps from the bug
+Test: manual with a normal icon
+Test: atest CanUseIconPredicate
+Test: atest ControlViewHolderTest
+Bug: 272025416
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:22f18e021fa884dc504616a5adfb99ea9d2d77c6)
+Merged-In: Iba846f19098c71c0519470cd7b8c1fd60d47e70b
+Change-Id: Iba846f19098c71c0519470cd7b8c1fd60d47e70b",2023-10-07 10:14:07-06:00
+222,65a7753ad199415c14a969289e8aea76320f8a78,"RESTRICT AUTOMERGE: SettingsProvider: exclude secure_frp_mode from resets
+
+When RescueParty detects that a system process is crashing frequently,
+it tries to recover in various ways, such as by resetting all settings.
+Unfortunately, this included resetting the secure_frp_mode setting,
+which is the means by which the system keeps track of whether the
+Factory Reset Protection (FRP) challenge has been passed yet.  With this
+setting reset, some FRP restrictions went away and it became possible to
+bypass FRP by setting a new lockscreen credential.
+
+Fix this by excluding secure_frp_mode from resets.
+
+Note: currently this bug isn't reproducible on 'main' due to ag/23727749
+disabling much of RescueParty, but that is a temporary change.
+
+Bug: 253043065
+Test: With ag/23727749 reverted and with my fix to prevent
+      com.android.settings from crashing *not* applied, tried repeatedly
+      setting lockscreen credential while in FRP mode, using the
+      smartlock setup activity launched by intent via adb.  Verified
+      that although RescueParty is still triggered after 5 attempts,
+      secure_frp_mode is no longer reset (its value remains ""1"").
+Test: Verified that secure_frp_mode still gets changed from 1 to 0 when
+      FRP is passed legitimately.
+Test: atest com.android.providers.settings.SettingsProviderTest
+Test: atest android.provider.SettingsProviderTest
+(cherry picked from commit 9890dd7f15c091f7d1a09e4fddb9f85d32015955)
+(changed Global.SECURE_FRP_MODE to Secure.SECURE_FRP_MODE,
+ needed because this setting was moved in U)
+(removed static keyword from shouldExcludeSettingFromReset(),
+ needed for compatibility with Java 15 and earlier)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:30d1770dbfa5d5264083de4d50560e1bde3c4ba1)
+Merged-In: Id95ed43b9cc2208090064392bcd5dc012710af93
+Change-Id: Id95ed43b9cc2208090064392bcd5dc012710af93",2023-10-07 10:14:08-06:00
+223,e3723d5b82b41892f11dab9fa12fb45cab186d73,"[RESTRICT AUTOMERGE] Ignore small source rect hint
+
+Which may be abused by malicious app to create a non-visible PiP
+window that bypasses the background restriction.
+
+Bug: 270368476
+Test: Manually, using the POC app
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:4fda9095ba9bdecb8250336d4f0ca328ed7c2aea)
+Merged-In: I3531a64fc67a1b6c43997ee33b7a7d4ab4e2d985
+Change-Id: I3531a64fc67a1b6c43997ee33b7a7d4ab4e2d985",2023-10-07 10:14:08-06:00
+224,c332fc5266a6276a42c52153b97a3c7f1bab2fd9,"Add placeholder when media control title is blank
+
+When an app posts a media control with no available title, show a
+placeholder string with the app name instead
+
+Bug: 274775190
+Test: atest MediaDataManagerTest
+(cherry picked from commit 070eff919c85fd83501e380a92e30caf082e9ffc)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:0ad65345e93a97edba24349c052f8e001e96ec14)
+Merged-In: Ie406c180af48653595e8e222a15b4dda27de2e0e
+Change-Id: Ie406c180af48653595e8e222a15b4dda27de2e0e",2023-10-07 10:14:08-06:00
+225,0b7e9f1dd833986faa7004f8fdbb9d65f213efa5,"Revert ""Dismiss keyguard when simpin auth'd and...""
+
+Revert submission 22621774-cherrypicker-L22000000959901080:N28400001357657640
+
+Reason for revert: causing a partner bug
+Fixes: 295205456
+Bug: 222446076
+
+Reverted changes: /q/submissionid:22621774-cherrypicker-L22000000959901080:N28400001357657640
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:cdb57ca0a6462cf1d2b3f2469952586138c2cc43)
+Merged-In: Icb27b4d897696b4fbb4e4a878751d925f5205dfd
+Change-Id: Icb27b4d897696b4fbb4e4a878751d925f5205dfd",2023-10-07 10:14:08-06:00
+226,d515bbc4d95802091785efda4f7182ca3037d18f,"Automatic translation import
+
+Change-Id: I02adcc63d2d449dad9952ee059d5c3a4e8077e89",2023-10-15 15:21:00+00:00
+227,74dcc7f8fbcd3ee7b1cf4173bfb758dda869a86c,"fixup! Add placeholder when media control title is blank
+
+This is a squash of a revert of c332fc5266a6276a42c52153b97a3c7f1bab2fd9
+and the version of that ""Add placeholder when media control title is
+blank"" commit from Google's android-platform-12.1.0_r20 tag.
+
+The original commit contains a huge error. On the first condition
+checking for if 'song' is null, the following line of code under it:
+	song = metadata?.getString(MediaMetadata.METADATA_KEY_TITLE)
+is changed to:
+	song = metadata.getString(MediaMetadata.METADATA_KEY_TITLE)
+
+That change causes crashes within SystemUI with the following null
+pointer exception whenever an app tries to restore a previous media
+playback session:
+AndroidRuntime: FATAL EXCEPTION: SysUiBg
+AndroidRuntime: Process: com.android.systemui, PID: 3016
+AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String android.media.MediaMetadata.getString(java.lang.String)' on a null object reference
+AndroidRuntime:        at com.android.systemui.media.MediaDataManager.loadMediaDataInBg(MediaDataManager.kt:584)
+AndroidRuntime:        at com.android.systemui.media.MediaDataManager.access$loadMediaDataInBg(MediaDataManager.kt:96)
+AndroidRuntime:        at com.android.systemui.media.MediaDataManager$loadMediaData$1.run(MediaDataManager.kt:354)
+AndroidRuntime:        at android.os.Handler.handleCallback(Handler.java:938)
+AndroidRuntime:        at android.os.Handler.dispatchMessage(Handler.java:99)
+AndroidRuntime:        at android.os.Looper.loopOnce(Looper.java:201)
+AndroidRuntime:        at android.os.Looper.loop(Looper.java:288)
+AndroidRuntime:        at android.os.HandlerThread.run(HandlerThread.java:67
+
+The commit from the android-platform-12.1.0_r20 tag correctly keeps the
+former variant of the line, and, while the original commit has incorrect
+changes to 'MediaDataManagerTest', it also has correct changes. So, this
+commit reverts that line to that former variant and corrects changes to
+MediaDataManagerTest.
+
+Change-Id: I293a046814de67419fd97dbf6dc98dc3bcd5618c",2023-10-16 06:07:19+00:00
+228,19d66c209a5e505ec352e6c64421297dd7627c8a,"DO NOT MERGE Fix BAL via notification.publicVersion
+
+We stripped the token that allows app to retrieve their own notification
+and fire their own PI to launch activities from background. But we
+forgot to strip the token from notification.publicVersion
+
+Bug: 278558814
+Test: NotificationManagerTest#testActivityStartFromRetrievedNotification_isBlocked
+(cherry picked from commit cf851d81a954f0a6dd0c2fd7defa93932539e7f9)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:8d839e4985d0acc662e1019390c88fab20bacbd6)
+Merged-In: I8f25d7a5e47890a0496af023149717e1df482f98
+Change-Id: I8f25d7a5e47890a0496af023149717e1df482f98",2023-11-12 07:33:23-07:00
+229,1aa5689959c783e10574b5b0c13e4ed4d34bbaae,"[DO NOT MERGE] Check caller's uid in backupAgentCreated callback
+
+AM.backupAgentCreated() should enforce that caller belongs the package called in the API.
+
+Bug: 289549315
+Test: atest android.security.cts.ActivityManagerTest#testActivityManager_backupAgentCreated_rejectIfCallerUidNotEqualsPackageUid
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:ebdcc72a235d6b2a65e1d1c99d7a9eb89f309357)
+Merged-In: I9f3ae5ec0b8f00e020d471cc0eddf8bd8bdbb82d
+Change-Id: I9f3ae5ec0b8f00e020d471cc0eddf8bd8bdbb82d",2023-11-12 07:33:24-07:00
+230,9a7ef3dc845c229d21061548d0f5d9b0be978b72,"Use type safe API of readParcelableArray
+
+Bug: 291299076
+Test: Build and flash the device and check if it throws exception for
+non UsbInterface object
+Test: atest CtsUsbManagerTestCases
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:85d7e6712a9eeeed3bdd68ea3c3862c7e88bfe70)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:0362efc06e5e3987270b452f6e2ee8fcd78e2b5a)
+Merged-In: I2917c8331b6d56caaa9a6479bcd9a2d089f5f503
+Change-Id: I2917c8331b6d56caaa9a6479bcd9a2d089f5f503",2023-11-12 07:33:24-07:00
+231,c2a24edb3e383e4abd3044e64e25fb9d5c3eb251,"[SettingsProvider] verify ringtone URI before setting
+
+Similar to ag/24422287, but the same URI verification should be done in
+SettingsProvider as well, which can be called by apps via
+Settings.System API or ContentProvider APIs without using
+RingtoneManager.
+
+BUG: 227201030
+Test: manual with a test app. Will add a CTS test.
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:1b234678ec122994ccbfc52ac48aafdad7fdb1ed)
+Merged-In: Ic0ffa1db14b5660d02880b632a7f2ad9e6e5d84b
+Change-Id: Ic0ffa1db14b5660d02880b632a7f2ad9e6e5d84b",2023-11-12 07:33:24-07:00
+232,a47eec4fba3344b724ae0ca2e0e37985307d0696,"Visit Uris added by WearableExtender
+
+Bug: 283962802
+Test: atest + manual (POC app now crashes on notify() as expected)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:3d36966ea2aeebc3501a69a8ef7afce5ef593cee)
+Merged-In: I0da18c631eb5e4844a48760c7aaedab715a0bfed
+Change-Id: I0da18c631eb5e4844a48760c7aaedab715a0bfed",2023-12-09 09:31:49-07:00
+233,a76d515c92b5a854536dc16768c47577c3bcc945,"Fix bypass BAL via `requestGeofence`
+
+Bug: 273729172
+Test: manually
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:7f9be7c3c859dc82d37452570d9878b58f6437a9)
+Merged-In: Ia8094244f908b20d42711b6ea8f58f9b3345b563
+Change-Id: Ia8094244f908b20d42711b6ea8f58f9b3345b563",2023-12-09 09:31:50-07:00
+234,c17682ed92206abf2db40f6f27de1a3d8ab2a855,"Visit Uris related to Notification style extras
+
+Even if the corresponding styles themselves were not applied to the Notification.Builder.
+
+Test: atest NotificationManagerServiceTest
+Bug: 287640400
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:87db980ca1270083a2ba3c7317402a0cd289fd65)
+Merged-In: I25acab19be7dd486aabede8c91dbad5a1a217abf
+Change-Id: I25acab19be7dd486aabede8c91dbad5a1a217abf",2023-12-09 09:31:50-07:00
+235,547b1d1ba0eecc25c98ae61e3d55903d0fc8d5bb,"RESTRICT AUTOMERGE: Drop invalid data.
+
+Drop invalid data when writing or reading from XML. PersistableBundle
+does lazy unparcelling, so checking the values during unparcelling would
+remove the benefit of the lazy unparcelling. Checking the validity when
+writing to or reading from XML seems like the best alternative.
+
+Bug: 246542285
+Bug: 247513680
+Test: install test app with invalid job config, start app to schedule job, then check logcat and jobscheduler persisted file
+(cherry picked from commit 666e8ac60a31e2cc52b335b41004263f28a8db06)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:0e0819c9d6a957e56764c89e68542bb51bdb7db4)
+Merged-In: Ie817aa0993e9046cb313a750d2323cadc8c1ef15
+Change-Id: Ie817aa0993e9046cb313a750d2323cadc8c1ef15",2023-12-09 09:31:50-07:00
+236,d8f3301840a28985d71438a7924bb884f36e8dbe,"Validate URI-based shortcut icon at creation time.
+
+Bug: 288113797
+Test: manual
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:3d41fb7620ffb9c81b23977c8367c323e4721e65)
+Merged-In: I392f8e923923bf40827a2b6207c4eaa262694fbc
+Change-Id: I392f8e923923bf40827a2b6207c4eaa262694fbc",2023-12-09 09:31:51-07:00
+237,9c0e09e708a704425e0acca6a75341f740c8fa70,"Disable priority conversation widget for secondary users
+
+Test: NotificationConversationInfoTest.java
+Test: make a conversation priority on the primary user
+Test: make a conversation priority on a secondary user
+Bug: 288896269
+(cherry picked from commit adf620316dcfaf19d7d4a73e2c63322b4a3a4d3a)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:b0522df0a33d0165656797df7edab978cb403bd4)
+Merged-In: I3f3991d2cb7fb9970cc8ada39ceae9a7ff2fcb31
+Change-Id: I3f3991d2cb7fb9970cc8ada39ceae9a7ff2fcb31",2023-12-09 09:34:53-07:00
+238,969e47613b43d0a281aae08cb0766da7035921f9,"Require permission to unlock keyguard
+
+Bug: 288896339
+Test: Manual, verify that the app which can be found on the bug can no longer call
+keyguardGoingAway successfully
+
+
+Require permission to unlock keyguard
+
+Bug: 288896339
+Test: Manual, verify that the app which can be found on the bug can no longer call
+keyguardGoingAway successfully
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:bd2aa5d309c5bf8e73161975bd5aba7945b25e84)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:be6ececad17f268b20cc252b29cbf3e848aef8ae)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:7f28e3eaaf7c91c6b22ef89a9f18bfe081ba5b1e)
+Merged-In: I7ba7e56f954c8e6f1f734311f735215918975bc6
+Change-Id: I7ba7e56f954c8e6f1f734311f735215918975bc6",2023-12-09 09:34:56-07:00
+239,aff1a9b475c4d8c1df92a600b809c55618b55ad1,"Restrict number of shortcuts can be added through addDynamicShortcuts
+
+This CL fixes the issue where, when an app have multiple main
+activities, the total number of shortcuts can grow indefinitely if they
+were published through addDynamicShortcuts.
+
+Bug: 281061287
+Test: manual
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:3215e73e36aa0463429226b5743ce24badf31227)
+Merged-In: Ib3eecefee34517b670c59dd5b8526fe9eb24f463
+Change-Id: Ib3eecefee34517b670c59dd5b8526fe9eb24f463",2023-12-09 09:34:56-07:00
+240,774b5ff9bc243abda3af19a64d7e24ab345d78f1,"Use readUniqueFileDescriptor in incidentd service
+
+readFileDescriptor doesn't provide ownership of the fds. fdopen
+needs ownership of the fds. Fds read from parcel should be duped
+in this scenario and readUniqueFileDescriptor dups fds internally.
+
+Test: m incidentd_service_fuzzer && adb sync data && adb shell /data/fuzz/x86_64/incidentd_service_fuzzer/incidentd_service_fuzzer
+Test: atest incidentd_test
+Bug: 286931110
+Bug: 283699145
+
+(cherry picked from commit ba78ef276951269f7b024baebdf1b8fa40bedb23)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:598dc664d4844363be12e0d164e1e522f92fa23f)
+Merged-In: Ibe03a17dee91ac5bf25d123d4fd9c0bdd3c7d80e
+Change-Id: Ibe03a17dee91ac5bf25d123d4fd9c0bdd3c7d80e",2023-12-09 09:34:56-07:00
+241,7f725d0750df7184351c3553f7cf66de3c6ad050,"Validate userId when publishing shortcuts
+
+Bug: 288110451
+Test: manual
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:01bfd04ff445db6290ae430d44ea1bf1a115fe3c)
+Merged-In: Idbde676f871db83825155730e3714f3727e25762
+Change-Id: Idbde676f871db83825155730e3714f3727e25762",2023-12-09 09:34:56-07:00
+242,c3594639ce04fa5e84136a01cc1aa65eeb0b8705,"Revert ""On device lockdown, always show the keyguard""
+
+This reverts commit b23c2d5fb6630ea0da503b937f62880594b13e94.
+
+Reason for revert: b/300463732 regression
+Bug: 300463732
+Bug: 218495634
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:f57217125f2b124c16c463ef4507fb054cc1ba4f)
+Merged-In: I31485d0d8caa3060e998636b071dbe03f6b4fc82
+Change-Id: I31485d0d8caa3060e998636b071dbe03f6b4fc82
+
+Change-Id: Ib113b7e1182855d9a90ff9937014c9ebce679d38",2023-12-09 09:38:02-07:00
+243,5a1c2d06321754ec065bf15fbe4208e89a0a15db,"Adding in verification of calling UID in onShellCommand
+
+Test: manual testing on device
+Bug: b/261709193
+(cherry picked from commit b651d295b44eb82d664861b77f33dbde1bce9453)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:3ef3f18ba3094c4cc4f954ba23d1da421f9ca8b0)
+Merged-In: I68903ebd6d3d85f4bc820b745e3233a448b62273
+Change-Id: I68903ebd6d3d85f4bc820b745e3233a448b62273",2023-12-09 09:38:05-07:00
+244,b452af38180ad07b3e8dd239a9a5193c8e87c40b,"Updated: always show the keyguard on device lockdown
+
+Additionally, don't hide keyguard when it's disabled if the user has locked
+down the device.
+
+Manual test steps:
+    1. Enable app pinning and disable ""Ask for PIN before unpinning"" setting
+    2. Pin an app (ie: Settings)
+    3. Lockdown from the power menu
+    4. Observe: user is brought to the keyguard, primary auth is
+       required to enter the device.
+       => After entering correct credential, the device is still in
+          app pinning mode.
+       => After entering an incorrect credential, the keyguard remains
+          showing and the user can attempt again up to the limit
+
+Bug: 300463732
+Bug: 218495634
+Test: atest KeyguardViewMediatorTest
+Test: manual
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:35a6e2f2c952440b1102033b2c3e496438503cff)
+Merged-In: I70fdae80f717712b3dfc9df54b9649959b4bb8f0
+Change-Id: I70fdae80f717712b3dfc9df54b9649959b4bb8f0",2023-12-09 09:38:05-07:00
+245,3c0ba660bd61d4b161d30be2c12b58feffe47cd5,"Move startWatchingModeWithFlags to the native supported binder calls
+
+Bug: 247768581
+Test: Add logging to verify invocation
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:b1f82ee37403e40513ef3b9e2657feb3871c4e71)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:fc85ac068d58f5cc690d5d587a46f6f691b0ce3a)
+Merged-In: I54eefca5f0aa4f924debc1817b04a103b6e8e2e6
+Change-Id: I54eefca5f0aa4f924debc1817b04a103b6e8e2e6",2023-12-09 09:38:05-07:00
+246,29eaa0200523318863847f51deab2f71cde71884,"RESTRICT AUTOMERGE: Check URI permissions for resumable media artwork
+
+When resumable media is added that has artwork set via URI, check the
+permissions for the URI before attempting to load it
+
+Test: atest MediaDataManagerTest UriGrantsManagerServiceTest
+Test: manual with test app
+Bug: 284297452
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:ffae193f19f902d4ae890be579cd44573feeaedc)
+Merged-In: Ie79915d3d1712f08dc2e8dfbd5bc7fd32bb308a3
+Change-Id: Ie79915d3d1712f08dc2e8dfbd5bc7fd32bb308a3
+
+Change-Id: I09b8b91f2dcc4d20862ba6be0ee03d98e434f771",2023-12-09 09:42:01-07:00
+247,43677e55f901341d1985abc28371c975eab010a1,"Automatic translation import
+
+Change-Id: I4d4fdf7fc97de930bc230a8d2798758f7e4acd8e",2024-01-01 18:22:30+00:00
+248,1bc3a825d92aa35c46083d767d2d1cd29abf2252,"Dismiss keyguard when simpin auth'd and...
+
+security method is none. This is mostly to fix the case where we auth
+sim pin in the set up wizard and it goes straight to keyguard instead of
+the setup wizard activity.
+
+This works with the prevent bypass keyguard flag because the device
+should be noe secure in this case.
+
+Fixes: 222446076
+Test: turn locked sim on, which opens the sim pin screen. Auth the
+screen and observe that keyguard is not shown.
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:48fa9bef3451e4a358c941af5b230f99881c5cb6)
+Cherry-picking this CL as a security fix
+
+Bug: 222446076
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:65ea56f54c059584eb27ec53d486dba8161316ab)
+Merged-In: Id302c41f63028bc6dd58ba686e23d73565de9675
+AOSP-Change-Id: Id302c41f63028bc6dd58ba686e23d73565de9675
+Change-Id: I91acff9b729e0546f64a6e5d0038a0e889a43f96",2024-01-07 10:04:41-07:00
+249,10e9c09cde3bbe154d88b7507c23fc79360c89b5,"DO NOT MERGE Ensure finish lockscreen when usersetup incomplete
+
+Ensure that when the usersetup for the user is not complete, we do not
+want to go to lockscreen, even if lockscreen is not disabled.
+
+Bug: 222446076
+Test: add Unit test,
+Test: Wipe device, auth sim pin in setup, observe that lockscreen is
+not there.
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:da4c8f81d9bc31ce856069bfe911dc6693b97e98)
+Merged-In: I8e33db8eb6e2c917966cab3d6a4f982670473040
+Change-Id: I8e33db8eb6e2c917966cab3d6a4f982670473040",2024-01-07 10:04:57-07:00
+250,a7c40fadfd053fec2fd5e76137e3953d8b433352,"Truncate user data to a limit of 500 characters
+
+Fix vulnerability that allows creating users with no restrictions. This is done by creating an intent to create a user and putting extras that are too long to be serialized. It causes IOException and the restrictions are not written in the file.
+
+By truncating the string values when writing them to the file, we ensure that the exception does not happen and it can be recorded correctly.
+
+Bug: 293602317
+Test: install app provided in the bug, open app and click add. Check logcat to see there is no more IOException. Reboot the device by either opening User details page or running adb shell dumpsys user | grep -A12 heen and see that the restrictions are in place.
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:46caac641941f2e8865a8d53400f959b3bd98d88)
+Merged-In: Ia71477601d036a3ca55e73cdc9698ae268a30f20
+Change-Id: Ia71477601d036a3ca55e73cdc9698ae268a30f20",2024-01-07 10:04:57-07:00
+251,e7326f9d5b85ebabcac3fd2c726c78b64f0fcb64,"[CDM] Validate component name length before requesting notification access.
+
+Bug: 295335110
+Test: Test app with long component name
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:edb1e78ee3a38f947b9518be90dbc12c223d1380)
+Merged-In: I7ea5d5c1f78858db9865f3310d1e0aff9c8b5579
+Change-Id: I7ea5d5c1f78858db9865f3310d1e0aff9c8b5579",2024-01-07 10:04:58-07:00
+252,1e5b9954ad00d7de02b7b39854b72991ed20659f,"[SB][Privacy] Fetch current active appops on startup.
+
+This also updates SysUI's chip animation scheduler to ignore an
+`isTooEarly` check if the chip animation is forced to be visible (which
+is true for privacy events).
+
+Bug: 294104969
+Test: start recording, then kill systemui via adb-> verify privacy chip
+reappears after restart. Pull down shade and verify chip is correctly
+attributed. Stop recording and verify chip/dot disappears.
+Test: open camera, then kill systemui via adb -> verify privacy chip
+reappears after restart. Pull down shade and verify chip is correctly
+attributed. Close camera and verify chip/dot disappears.
+Test: smoke test of privacy chip and dot
+Test: atest AppOpsControllerTest SystemStatusAnimationSchedulerImplTest
+
+(cherry picked from commit 084a7afb4bb41e0cdfdbe67bdd60728d940b4331)
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:dac02d61f8cf755f733ef6c2fbd0f939ea13ee23)
+Merged-In: I664bb3003a2f6871113406e3257b7118bbdf2ab5
+Change-Id: I664bb3003a2f6871113406e3257b7118bbdf2ab5",2024-01-07 10:04:58-07:00
+253,771669ad21217ad8a48ade48298e0f7276fd6bfb,"RESTRICT AUTOMERGE
+Log to detect usage of whitelistToken when sending non-PI target
+
+Log ActivityManagerService.sendIntentSender if the target is not a
+PendingIntent and a non-null whitelistToken is sent to the client.
+This is simply to detect if there are real cases this would happen
+before we decide simply remove whitelistToken in that case.
+
+Do not pass  whitelistToken when sending non-PI target
+
+In ActivityManagerService.sendIntentSender, if the target is not a
+PendingIntent, do not send whitelistToken to the client.
+
+Bug: 279428283
+Test: Manual test
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:7a76717b61d8cb90a4987454f34e88417d68608b)
+Merged-In: I017486354a1ab2f14d0472c355583d53c27c4810
+Change-Id: I017486354a1ab2f14d0472c355583d53c27c4810",2024-01-07 10:04:58-07:00
+254,3916fdc3cb4490fc828a633982c937da136fc791,"Fix vulnerability that allowed attackers to start arbitary activities
+
+Test: Flashed device and verified dream settings works as expected
+Test: Installed APK from bug and verified the dream didn't allow
+launching the inappropriate settings activity.
+Fixes: 300090204
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:6926fd15fb16c51468dde270bd61ee68772b8c14)
+Merged-In: I573040df84bf98a493b39f96c8581e4303206bac
+Change-Id: I573040df84bf98a493b39f96c8581e4303206bac",2024-01-07 10:04:59-07:00
+255,a1e8ab5e0dbb34361cbd548abac2f8cf980faab9,"DO NOT MERGE: Fix ActivityManager#killBackgroundProcesses permissions
+
+In the pevious CL, we incorrectly added the permission check in the
+killBackgroundProcessesExcept. Now fix this issue.
+
+Bug: 239423414
+Bug: 223376078
+Test: atest CtsAppTestCases:ActivityManagerTest
+(cherry picked from https://googleplex-android-review.googlesource.com/q/commit:140fce861944419a375c669010c6c47cd7ff5b37)
+Merged-In: I9471a77188ee63ec32cd0c81569193e4ccad885b
+Change-Id: I9471a77188ee63ec32cd0c81569193e4ccad885b",2024-01-07 10:04:59-07:00
